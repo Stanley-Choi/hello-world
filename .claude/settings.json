@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "wechat-mcp": {
+      "type": "stdio",
+      "command": "wechat-mcp"
+    }
+  }
+}
