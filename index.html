@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#b91c1c">
+<title>한솔이의 중국어 · Hansol's Chinese</title>
+<style>
+  :root{
+    --red:#b91c1c; --red2:#dc2626; --ink:#1f2937; --muted:#6b7280;
+    --bg:#fff7f5; --card:#ffffff; --line:#f0d9d4; --good:#16a34a; --bad:#dc2626;
+    --shadow:0 6px 24px rgba(185,28,28,.12);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:-apple-system,"Noto Sans KR","Noto Sans SC","Segoe UI",system-ui,sans-serif;
+    background:linear-gradient(160deg,#fff7f5,#fdeee9);color:var(--ink);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .wrap{max-width:560px;margin:0 auto;padding:14px 14px 40px;min-height:100%}
+  header{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:4px 2px 12px}
+  header h1{font-size:20px;margin:0;color:var(--red)}
+  header .sub{font-size:12px;color:var(--muted)}
+  .stat{font-size:12px;color:var(--muted);white-space:nowrap}
+  .stat b{color:var(--red)}
+
+  .modes{display:flex;gap:6px;margin-bottom:10px}
+  .modes button{flex:1;padding:10px 4px;border:0;border-radius:12px;background:#fff;
+    color:var(--ink);font-size:13px;font-weight:600;box-shadow:var(--shadow);cursor:pointer}
+  .modes button.on{background:var(--red);color:#fff}
+
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+  .seg{display:inline-flex;background:#fff;border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+  .seg button{border:0;background:transparent;padding:8px 10px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer}
+  .seg button.on{background:var(--red);color:#fff}
+  select,.btn{font-family:inherit;font-size:12.5px;padding:8px 10px;border-radius:10px;border:1px solid var(--line);
+    background:#fff;color:var(--ink);box-shadow:var(--shadow);cursor:pointer}
+  .toggle{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);
+    background:#fff;border-radius:10px;padding:7px 10px;box-shadow:var(--shadow);cursor:pointer;user-select:none}
+  .toggle input{accent-color:var(--red)}
+
+  .deckline{font-size:12px;color:var(--muted);margin:0 2px 10px;display:flex;justify-content:space-between}
+  .deckline .pill{background:#fff3f0;color:var(--red);border-radius:999px;padding:2px 9px;font-weight:600}
+
+  /* flashcard */
+  .card{background:var(--card);border-radius:20px;box-shadow:var(--shadow);min-height:300px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    padding:26px 20px;cursor:pointer;position:relative}
+  .tag{position:absolute;top:12px;left:14px;font-size:11px;color:var(--muted);background:#faf0ed;padding:2px 9px;border-radius:999px}
+  .rev{position:absolute;top:12px;right:14px;font-size:11px;color:#fff;background:var(--red2);padding:2px 9px;border-radius:999px}
+  .hanzi{font-size:54px;line-height:1.1;font-weight:700;color:var(--ink)}
+  .py{font-size:18px;color:var(--red);margin-top:8px;letter-spacing:.3px}
+  .py.hide{visibility:hidden}
+  .kr{font-size:22px;font-weight:600;color:var(--ink);padding:0 6px}
+  .prompt-label{font-size:12px;color:var(--muted);margin-bottom:10px}
+  .divider{width:46px;height:3px;background:var(--line);border-radius:3px;margin:16px 0}
+  .sentence{font-size:18px;color:var(--ink);line-height:1.5}
+  .sentence .py2{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+  .krline{font-size:13px;color:var(--muted);margin-top:8px}
+  .hint{font-size:12px;color:var(--muted);margin-top:18px}
+
+  .grade{display:flex;gap:10px;margin-top:14px}
+  .grade button{flex:1;padding:14px;border:0;border-radius:14px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;box-shadow:var(--shadow)}
+  .grade .miss{background:var(--bad)}
+  .grade .got{background:var(--good)}
+
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:var(--muted);font-size:13px}
+  .nav button{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 16px;font-size:14px;cursor:pointer;box-shadow:var(--shadow)}
+
+  /* quiz */
+  .q{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:24px 20px;text-align:center}
+  .q .ask{font-size:13px;color:var(--muted)}
+  .q .big{font-size:40px;font-weight:700;margin:8px 0 4px}
+  .q .bigkr{font-size:24px;font-weight:600}
+  .options{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+  .options button{padding:15px;border:1.5px solid var(--line);border-radius:14px;background:#fff;
+    font-size:18px;cursor:pointer;text-align:center;transition:.12s;color:var(--ink)}
+  .options button .o-py{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .options button.correct{background:#e9f9ee;border-color:var(--good);color:var(--good)}
+  .options button.wrong{background:#fdeaea;border-color:var(--bad);color:var(--bad)}
+  .options button:disabled{cursor:default}
+  .score{display:flex;justify-content:space-between;margin-top:12px;font-size:13px;color:var(--muted)}
+
+  /* add form / summary / empty */
+  .panel{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:22px 18px}
+  .panel h2{margin:0 0 14px;font-size:17px;color:var(--red)}
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px}
+  .field input,.field select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit}
+  .primary{width:100%;padding:14px;border:0;border-radius:12px;background:var(--red);color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px}
+  .ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .big-emoji{font-size:46px;text-align:center}
+  .center{text-align:center}
+  .row{display:flex;gap:8px}
+  .row>*{flex:1}
+  .note{font-size:12px;color:var(--muted);line-height:1.5}
+  .foot{margin-top:18px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .foot button{font-size:12px;background:transparent;border:0;color:var(--muted);text-decoration:underline;cursor:pointer}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>한솔이의 중국어 📚</h1>
+      <div class="sub">Hansol's June vocabulary</div>
+    </div>
+    <div class="stat" id="stat"></div>
+  </header>
+
+  <div class="modes">
+    <button data-mode="flash" class="on">플래시카드<br><span style="font-size:10px;opacity:.8">Cards</span></button>
+    <button data-mode="quiz">퀴즈<br><span style="font-size:10px;opacity:.8">Quiz</span></button>
+    <button data-mode="review">복습<br><span style="font-size:10px;opacity:.8">Mistakes</span></button>
+    <button data-mode="add">단어추가<br><span style="font-size:10px;opacity:.8">Add</span></button>
+  </div>
+
+  <div class="bar" id="controls">
+    <div class="seg" id="dir">
+      <button data-dir="kc" class="on">한국어 → 中</button>
+      <button data-dir="ck">中 → 한국어</button>
+    </div>
+    <select id="theme"></select>
+    <label class="toggle"><input type="checkbox" id="pinyin" checked> 병음</label>
+    <label class="toggle"><input type="checkbox" id="mix" checked> 틀린 단어 섞기</label>
+    <button class="btn" id="restart">↻ 다시</button>
+  </div>
+
+  <div class="deckline" id="deckline"></div>
+
+  <div id="stage"></div>
+
+  <div class="foot">
+    <button id="exportBtn">진도·단어 내보내기</button>
+    <button id="importBtn">불러오기</button>
+    <input type="file" id="importFile" accept="application/json" class="hidden">
+    <button id="resetBtn">진도 초기화</button>
+  </div>
+</div>
+
+<script src="vocab.js"></script>
+<script>
+(function(){
+  "use strict";
+  var LS = {stats:"hansol.stats.v1", custom:"hansol.custom.v1", set:"hansol.set.v1"};
+  var THEME_LABEL = {
+    all:"전체 (All)", family:"가족 Family", clothing:"옷 Clothing", body:"몸 Body",
+    weather:"날씨 Weather", health:"건강 Health", subjects:"과목 Subjects",
+    facilities:"학교·장소 School", stationery:"문구 Stationery", sports:"운동 Sports",
+    directions:"방향 Directions", places:"지명 Places", time:"시간 Time",
+    grammar:"문법 Grammar", other:"기타 Misc"
+  };
+
+  // ---- storage helpers ----
+  function load(k,d){ try{ return JSON.parse(localStorage.getItem(k)) || d; }catch(e){ return d; } }
+  function save(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  var stats  = load(LS.stats, {});           // hanzi -> {box,right,wrong}
+  var custom = load(LS.custom, []);          // user-added words
+  var settings = load(LS.set, {dir:"kc", theme:"all", pinyin:true, mix:true, mode:"flash"});
+
+  function allWords(){ return window.VOCAB.concat(custom); }
+  function st(h){ return stats[h] || (stats[h]={box:0,right:0,wrong:0}); }
+  function isMistake(h){ var s=stats[h]; return s && s.wrong>0 && s.box<2; }
+  function isKnown(h){ var s=stats[h]; return s && s.box>=4; }
+
+  // ---- deck building (mixes due "mistake" words into new study) ----
+  var deck=[], pos=0;
+  function inTheme(w){ return settings.theme==="all" || w.theme===settings.theme; }
+
+  function buildDeck(mode){
+    var words = allWords();
+    if(mode==="review"){
+      deck = shuffle(words.filter(function(w){return isMistake(w.hanzi);}));
+      pos=0; return;
+    }
+    var pool = words.filter(inTheme);
+    var fresh = shuffle(pool.filter(function(w){return !isMistake(w.hanzi);}));
+    if(!settings.mix){ deck=fresh; pos=0; return; }
+    // interleave previously-missed words (from anywhere) every ~3rd card
+    var review = shuffle(words.filter(function(w){return isMistake(w.hanzi);}));
+    var out=[], ri=0;
+    for(var i=0;i<fresh.length;i++){
+      out.push(fresh[i]);
+      if((i+1)%3===0 && ri<review.length) out.push(review[ri++]);
+    }
+    while(ri<review.length) out.push(review[ri++]); // any leftovers at the end
+    deck = out.length?out:review; pos=0;
+  }
+
+  function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+
+  // ---- grading ----
+  function grade(h, ok){
+    var s=st(h);
+    if(ok){ s.right++; s.box=Math.min(5,s.box+1); }
+    else  { s.wrong++; s.box=0; }
+    save(LS.stats, stats);
+    renderStat();
+  }
+
+  // ---- rendering ----
+  var stage=document.getElementById("stage");
+  var flipped=false;
+
+  function render(){
+    renderStat(); renderDeckline();
+    var m=settings.mode;
+    if(m==="add"){ renderAdd(); return; }
+    if(deck.length===0){ renderEmpty(m); return; }
+    if(pos>=deck.length){ renderSummary(); return; }
+    if(m==="quiz") renderQuiz(); else renderCard(); // flash + review share the card UI
+  }
+
+  function renderStat(){
+    var words=allWords();
+    var known=words.filter(function(w){return isKnown(w.hanzi);}).length;
+    var miss=words.filter(function(w){return isMistake(w.hanzi);}).length;
+    document.getElementById("stat").innerHTML =
+      "외운 단어 <b>"+known+"</b>/"+words.length+"<br>복습할 단어 <b>"+miss+"</b>";
+  }
+  function renderDeckline(){
+    var d=document.getElementById("deckline");
+    if(settings.mode==="add"){ d.innerHTML=""; return; }
+    var n=deck.length, cur=Math.min(pos+1,n);
+    var modeName = settings.mode==="quiz"?"퀴즈":settings.mode==="review"?"복습":"카드";
+    d.innerHTML = n?("<span>"+modeName+"</span><span class='pill'>"+cur+" / "+n+"</span>"):"";
+  }
+
+  function dir(){ return settings.dir; } // kc: KR->中(produce hanzi) ; ck: 中->KR(recognise)
+
+  function renderCard(){
+    var w=deck[pos];
+    var py = settings.pinyin?"":"hide";
+    var front, back;
+    if(dir()==="ck"){
+      front = "<div class='hanzi'>"+esc(w.hanzi)+"</div><div class='py "+py+"'>"+esc(w.pinyin)+"</div>";
+      back  = "<div class='kr'>"+esc(w.kr)+"</div>";
+    } else {
+      front = "<div class='prompt-label'>한국어 문장</div><div class='kr'>"+esc(w.kr)+"</div>";
+      back  = "<div class='hanzi'>"+esc(w.hanzi)+"</div><div class='py "+py+"'>"+esc(w.pinyin)+"</div>";
+    }
+    var tag = "<span class='tag'>"+(THEME_LABEL[w.theme]||w.theme)+"</span>";
+    var revtag = isMistake(w.hanzi)?"<span class='rev'>복습 ⟳</span>":"";
+    var sentence =
+      "<div class='divider'></div>"+
+      "<div class='sentence' lang='zh-CN'>"+esc(w.cn_sentence)+
+        "<span class='py2 "+py+"'>"+esc(w.cn_pinyin)+"</span></div>"+
+      "<div class='krline'>"+esc(w.kr)+"</div>";
+
+    if(!flipped){
+      stage.innerHTML =
+        "<div class='card' id='card'>"+tag+revtag+front+
+        "<div class='hint'>👆 눌러서 정답 보기</div></div>";
+    } else {
+      stage.innerHTML =
+        "<div class='card' id='card'>"+tag+revtag+back+sentence+"</div>"+
+        "<div class='grade'><button class='miss'>✗ 틀렸어</button><button class='got'>✓ 맞았어</button></div>";
+      stage.querySelector(".miss").onclick=function(e){e.stopPropagation();grade(w.hanzi,false);next();};
+      stage.querySelector(".got").onclick =function(e){e.stopPropagation();grade(w.hanzi,true);next();};
+    }
+    document.getElementById("card").onclick=function(){ flipped=!flipped; render(); };
+    addNav();
+  }
+
+  function renderQuiz(){
+    var w=deck[pos];
+    var ask, correct, optKey, withPy;
+    if(dir()==="ck"){           // show hanzi, pick Korean meaning
+      ask="<div class='ask'>뜻이 뭘까요?</div><div class='big' lang='zh-CN'>"+esc(w.hanzi)+"</div>"+
+          (settings.pinyin?"<div class='py'>"+esc(w.pinyin)+"</div>":"");
+      optKey="kr"; withPy=false;
+    } else {                    // show Korean, pick hanzi
+      ask="<div class='ask'>중국어로?</div><div class='bigkr'>"+esc(w.kr)+"</div>";
+      optKey="hanzi"; withPy=true;
+    }
+    var opts=makeOptions(w, optKey);
+    var html="<div class='q'>"+ask+"<div class='options'>";
+    opts.forEach(function(o){
+      var sub = (withPy && settings.pinyin)?"<span class='o-py'>"+esc(o.pinyin)+"</span>":"";
+      html+="<button data-h='"+esc(o.hanzi)+"' lang='"+(optKey==='hanzi'?'zh-CN':'ko')+"'>"+esc(o[optKey])+sub+"</button>";
+    });
+    html+="</div><div class='score'><span>점수 <b>"+sessRight+"/"+sessSeen+"</b></span><span>복습 대상 "+
+          allWords().filter(function(x){return isMistake(x.hanzi);}).length+"</span></div></div>";
+    stage.innerHTML=html;
+    var btns=stage.querySelectorAll(".options button");
+    btns.forEach(function(b){
+      b.onclick=function(){
+        var ok=b.getAttribute("data-h")===w.hanzi;
+        sessSeen++; if(ok) sessRight++;
+        grade(w.hanzi, ok);
+        btns.forEach(function(x){
+          x.disabled=true;
+          if(x.getAttribute("data-h")===w.hanzi) x.classList.add("correct");
+          else if(x===b && !ok) x.classList.add("wrong");
+        });
+        setTimeout(next, ok?650:1300);
+      };
+    });
+    addNav();
+  }
+
+  function makeOptions(w, key){
+    var words=allWords();
+    var same=shuffle(words.filter(function(x){return x.theme===w.theme && x.hanzi!==w.hanzi && x[key]!==w[key];}));
+    var pick=same.slice(0,3);
+    if(pick.length<3){
+      var more=shuffle(words.filter(function(x){return x.hanzi!==w.hanzi && x[key]!==w[key] && pick.indexOf(x)<0;}));
+      pick=pick.concat(more.slice(0,3-pick.length));
+    }
+    return shuffle(pick.concat([w]));
+  }
+
+  function addNav(){
+    var nav=document.createElement("div"); nav.className="nav";
+    nav.innerHTML="<button id='prev'>← 이전</button><span>"+(pos+1)+" / "+deck.length+"</span><button id='skip'>다음 →</button>";
+    stage.appendChild(nav);
+    nav.querySelector("#prev").onclick=function(){ if(pos>0){pos--;flipped=false;render();} };
+    nav.querySelector("#skip").onclick=function(){ next(); };
+  }
+
+  function next(){ pos++; flipped=false; render(); }
+
+  function renderSummary(){
+    var miss=allWords().filter(function(w){return isMistake(w.hanzi);}).length;
+    stage.innerHTML=
+      "<div class='panel center'><div class='big-emoji'>🎉</div>"+
+      "<h2>잘했어, 한솔! 끝!</h2>"+
+      (settings.mode==="quiz"?"<p class='note'>이번 점수 <b>"+sessRight+" / "+sessSeen+"</b></p>":"")+
+      "<p class='note'>아직 복습할 단어가 <b>"+miss+"</b>개 있어요."+(miss?" '복습'에서 다시 풀어봐요.":" 전부 맞았어요! 👏")+"</p>"+
+      "<button class='primary' id='again'>다시 하기 ↻</button>"+
+      (miss?"<button class='primary ghost' id='goReview' style='margin-top:8px'>틀린 단어 복습하기</button>":"")+
+      "</div>";
+    document.getElementById("again").onclick=function(){ startSession(settings.mode); };
+    var gr=document.getElementById("goReview"); if(gr) gr.onclick=function(){ setMode("review"); };
+  }
+
+  function renderEmpty(m){
+    var msg = m==="review"
+      ? "복습할 단어가 없어요. 퀴즈를 풀다가 틀리면 여기에 모여요. 😊"
+      : "이 주제에 단어가 없어요. 다른 주제를 골라보세요.";
+    stage.innerHTML="<div class='panel center'><div class='big-emoji'>✨</div><p class='note'>"+msg+"</p></div>";
+  }
+
+  function renderAdd(){
+    stage.innerHTML=
+      "<div class='panel'><h2>새 단어 추가 ✏️</h2>"+
+      field("hanzi","중국어 (汉字)","예: 苹果")+
+      field("pinyin","병음 (pinyin)","예: píng guǒ")+
+      field("kr","한국어 뜻 / 문장","예: 사과를 먹어요.")+
+      field("cn_sentence","중국어 예문","예: 我吃苹果。")+
+      field("cn_pinyin","예문 병음","예: Wǒ chī píng guǒ.")+
+      "<div class='field'><label>주제 (theme)</label><select id='f_theme'>"+
+        Object.keys(THEME_LABEL).filter(function(k){return k!=='all';})
+          .map(function(k){return "<option value='"+k+"'>"+THEME_LABEL[k]+"</option>";}).join("")+
+      "</select></div>"+
+      "<button class='primary' id='addSave'>저장 💾</button>"+
+      "<p class='note' id='addMsg' style='margin-top:12px'></p>"+
+      "<div style='margin-top:16px'><p class='note'><b>내가 추가한 단어 ("+custom.length+")</b></p><div id='customList'></div></div>"+
+      "</div>";
+    document.getElementById("addSave").onclick=saveNew;
+    renderCustomList();
+  }
+  function field(id,label,ph){
+    return "<div class='field'><label>"+label+"</label><input id='f_"+id+"' placeholder='"+ph+"'></div>";
+  }
+  function val(id){ return (document.getElementById("f_"+id).value||"").trim(); }
+  function saveNew(){
+    var w={hanzi:val("hanzi"),pinyin:val("pinyin"),kr:val("kr"),
+           cn_sentence:val("cn_sentence"),cn_pinyin:val("cn_pinyin"),
+           theme:document.getElementById("f_theme").value};
+    var msg=document.getElementById("addMsg");
+    if(!w.hanzi||!w.kr){ msg.textContent="중국어와 한국어 뜻은 꼭 넣어주세요."; msg.style.color="#dc2626"; return; }
+    if(allWords().some(function(x){return x.hanzi===w.hanzi;})){ msg.textContent="이미 있는 단어예요: "+w.hanzi; msg.style.color="#dc2626"; return; }
+    w.id="c"+Date.now(); custom.push(w); save(LS.custom,custom);
+    msg.textContent="추가됐어요! ✓ "+w.hanzi; msg.style.color="#16a34a";
+    ["hanzi","pinyin","kr","cn_sentence","cn_pinyin"].forEach(function(i){document.getElementById("f_"+i).value="";});
+    renderStat(); renderCustomList(); refreshThemes();
+  }
+  function renderCustomList(){
+    var box=document.getElementById("customList"); if(!box) return;
+    if(!custom.length){ box.innerHTML="<p class='note'>아직 없어요.</p>"; return; }
+    box.innerHTML=custom.map(function(w,i){
+      return "<div style='display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)'>"+
+        "<span><b>"+esc(w.hanzi)+"</b> <span class='note'>"+esc(w.pinyin)+" · "+esc(w.kr)+"</span></span>"+
+        "<button class='note' data-i='"+i+"' style='border:0;background:transparent;color:#dc2626;cursor:pointer'>삭제</button></div>";
+    }).join("");
+    box.querySelectorAll("button[data-i]").forEach(function(b){
+      b.onclick=function(){ custom.splice(+b.getAttribute("data-i"),1); save(LS.custom,custom); renderAdd(); renderStat(); refreshThemes(); };
+    });
+  }
+
+  function esc(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+
+  // ---- session control ----
+  var sessRight=0, sessSeen=0;
+  function startSession(mode){ sessRight=0; sessSeen=0; flipped=false; buildDeck(mode); render(); }
+  function setMode(mode){
+    settings.mode=mode; save(LS.set,settings);
+    document.querySelectorAll(".modes button").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-mode")===mode); });
+    document.getElementById("controls").classList.toggle("hidden", mode==="add");
+    startSession(mode);
+  }
+
+  // ---- theme dropdown ----
+  function refreshThemes(){
+    var sel=document.getElementById("theme");
+    var present={}; allWords().forEach(function(w){present[w.theme]=true;});
+    var keys=["all"].concat(Object.keys(THEME_LABEL).filter(function(k){return k!=="all"&&present[k];}));
+    sel.innerHTML=keys.map(function(k){
+      var n = k==="all"?allWords().length:allWords().filter(function(w){return w.theme===k;}).length;
+      return "<option value='"+k+"'>"+(THEME_LABEL[k]||k)+" ("+n+")</option>";
+    }).join("");
+    sel.value=settings.theme;
+  }
+
+  // ---- export / import (move progress + custom words between devices) ----
+  document.getElementById("exportBtn").onclick=function(){
+    var blob=new Blob([JSON.stringify({stats:stats,custom:custom,settings:settings},null,2)],{type:"application/json"});
+    var a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+    a.download="hansol-chinese-progress.json"; a.click();
+  };
+  document.getElementById("importBtn").onclick=function(){ document.getElementById("importFile").click(); };
+  document.getElementById("importFile").onchange=function(e){
+    var f=e.target.files[0]; if(!f) return; var r=new FileReader();
+    r.onload=function(){ try{
+      var d=JSON.parse(r.result);
+      if(d.stats) stats=d.stats; if(d.custom) custom=d.custom; if(d.settings) Object.assign(settings,d.settings);
+      save(LS.stats,stats); save(LS.custom,custom); save(LS.set,settings);
+      refreshThemes(); syncControls(); startSession(settings.mode);
+      alert("불러왔어요! ✓");
+    }catch(err){ alert("파일을 읽을 수 없어요."); } };
+    r.readAsText(f); e.target.value="";
+  };
+  document.getElementById("resetBtn").onclick=function(){
+    if(confirm("진도(외운 단어·틀린 단어 기록)를 모두 지울까요? 추가한 단어는 그대로 둡니다.")){
+      stats={}; save(LS.stats,stats); startSession(settings.mode);
+    }
+  };
+
+  // ---- wire controls ----
+  function syncControls(){
+    document.querySelectorAll("#dir button").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-dir")===settings.dir); });
+    document.getElementById("pinyin").checked=settings.pinyin;
+    document.getElementById("mix").checked=settings.mix;
+    document.getElementById("theme").value=settings.theme;
+    document.querySelectorAll(".modes button").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-mode")===settings.mode); });
+    document.getElementById("controls").classList.toggle("hidden", settings.mode==="add");
+  }
+  document.querySelectorAll(".modes button").forEach(function(b){
+    b.onclick=function(){ setMode(b.getAttribute("data-mode")); };
+  });
+  document.querySelectorAll("#dir button").forEach(function(b){
+    b.onclick=function(){
+      settings.dir=b.getAttribute("data-dir"); save(LS.set,settings);
+      document.querySelectorAll("#dir button").forEach(function(x){x.classList.toggle("on",x===b);});
+      flipped=false; render();
+    };
+  });
+  document.getElementById("theme").onchange=function(e){ settings.theme=e.target.value; save(LS.set,settings); startSession(settings.mode); };
+  document.getElementById("pinyin").onchange=function(e){ settings.pinyin=e.target.checked; save(LS.set,settings); render(); };
+  document.getElementById("mix").onchange=function(e){ settings.mix=e.target.checked; save(LS.set,settings); startSession(settings.mode); };
+  document.getElementById("restart").onclick=function(){ startSession(settings.mode); };
+
+  // ---- boot ----
+  if(!window.VOCAB){ stage.innerHTML="<div class='panel center'>vocab.js 를 불러오지 못했어요.</div>"; return; }
+  refreshThemes(); syncControls(); startSession(settings.mode);
+})();
+</script>
+</body>
+</html>
