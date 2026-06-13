@@ -243,11 +243,11 @@
     }
     var tag = "<span class='tag'>"+(THEME_LABEL[w.theme]||w.theme)+"</span>";
     var revtag = isMistake(w.hanzi)?"<span class='rev'>복습 ⟳</span>":"";
-    var sentence =
-      "<div class='divider'></div>"+
-      "<div class='sentence' lang='zh-CN'>"+esc(w.cn_sentence)+
-        "<span class='py2 "+py+"'>"+esc(w.cn_pinyin)+"</span></div>"+
-      "<div class='krline'>"+esc(w.kr)+"</div>";
+    var sentence = w.cn_sentence ?
+      ("<div class='divider'></div>"+
+       "<div class='sentence' lang='zh-CN'>"+esc(w.cn_sentence)+
+         (w.cn_pinyin?"<span class='py2 "+py+"'>"+esc(w.cn_pinyin)+"</span>":"")+"</div>"+
+       "<div class='krline'>"+esc(w.kr)+"</div>") : "";
 
     if(!flipped){
       stage.innerHTML =

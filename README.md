@@ -41,15 +41,37 @@ into new study sessions automatically.
 Progress and added words are saved in the browser. Use **내보내기 / 불러오기**
 (export / import) at the bottom to move them between devices.
 
+## Adding new words (the usual way) 📸
+
+When Hansol has a new worksheet, **send the photo or document to Claude** (in a
+Claude Code session on this repo). Claude transcribes the words — hanzi, pinyin,
+Korean meaning/sentence, Chinese example — into `data/extra/<name>.tsv`,
+regenerates `vocab.js`, and pushes. The app picks them up automatically on its
+next deploy. This is more accurate than in-browser OCR, especially for tones,
+handwriting, and the Korean lines.
+
+The in-app **단어추가 (Add)** tab is still there for the occasional one-off word.
+
+### `data/extra/*.tsv` format
+
+One tab-separated word per line (see `data/extra/template.tsv`). Only **hanzi**
+and **kr** are required; the example sentence is optional, and `theme` is
+auto-guessed if left blank:
+
+```
+hanzi <TAB> pinyin <TAB> kr <TAB> cn_sentence <TAB> cn_pinyin <TAB> theme
+```
+
 ## For maintainers
 
-The word list lives in `vocab.js`, generated from the original worksheets:
+The word list lives in `vocab.js`, generated from the worksheets plus any extras:
 
 ```bash
-python3 tools/build_vocab.py   # reads data/worksheet{1,2}.docx → writes vocab.js
+python3 tools/build_vocab.py   # data/worksheet{1,2}.docx + data/extra/*.tsv → vocab.js
 ```
 
 - `index.html` — the whole app (HTML + CSS + JS, no dependencies, no build step)
 - `vocab.js` — `window.VOCAB`, the cleaned/deduplicated/theme-tagged word list
 - `data/` — the original worksheet `.docx` source files
-- `tools/build_vocab.py` — regenerates `vocab.js` if the worksheets change
+- `data/extra/` — supplementary words transcribed from photos / new documents
+- `tools/build_vocab.py` — regenerates `vocab.js` (deduplicates by hanzi)
