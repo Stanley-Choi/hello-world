@@ -59,6 +59,8 @@
   .sentence .py2{display:block;font-size:13px;color:var(--muted);margin-top:3px}
   .krline{font-size:13px;color:var(--muted);margin-top:8px}
   .hint{font-size:12px;color:var(--muted);margin-top:18px}
+  .read-label{font-size:13px;color:var(--red);font-weight:600;margin-bottom:16px}
+  mark.hl{background:#ffe08a;color:#7c2d12;border-radius:5px;padding:1px 4px;font-weight:700}
 
   .grade{display:flex;gap:10px;margin-top:14px}
   .grade button{flex:1;padding:14px;border:0;border-radius:14px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;box-shadow:var(--shadow)}
@@ -202,7 +204,7 @@
 
   // ---- rendering ----
   var stage=document.getElementById("stage");
-  var flipped=false;
+  var cardStep=0;  // 0 = prompt, 1 = answer + memory check, 2 = read word in sentence
 
   function render(){
     renderStat(); renderDeckline();
@@ -233,35 +235,55 @@
   function renderCard(){
     var w=deck[pos];
     var py = settings.pinyin?"":"hide";
-    var front, back;
-    if(dir()==="ck"){
-      front = "<div class='hanzi'>"+esc(w.hanzi)+"</div><div class='py "+py+"'>"+esc(w.pinyin)+"</div>";
-      back  = "<div class='kr'>"+esc(w.kr)+"</div>";
-    } else {
-      front = "<div class='prompt-label'>한국어 문장</div><div class='kr'>"+esc(w.kr)+"</div>";
-      back  = "<div class='hanzi'>"+esc(w.hanzi)+"</div><div class='py "+py+"'>"+esc(w.pinyin)+"</div>";
-    }
     var tag = "<span class='tag'>"+(THEME_LABEL[w.theme]||w.theme)+"</span>";
     var revtag = isMistake(w.hanzi)?"<span class='rev'>복습 ⟳</span>":"";
-    var sentence = w.cn_sentence ?
-      ("<div class='divider'></div>"+
-       "<div class='sentence' lang='zh-CN'>"+esc(w.cn_sentence)+
-         (w.cn_pinyin?"<span class='py2 "+py+"'>"+esc(w.cn_pinyin)+"</span>":"")+"</div>"+
-       "<div class='krline'>"+esc(w.kr)+"</div>") : "";
 
-    if(!flipped){
-      stage.innerHTML =
-        "<div class='card' id='card'>"+tag+revtag+front+
-        "<div class='hint'>👆 눌러서 정답 보기</div></div>";
-    } else {
-      stage.innerHTML =
-        "<div class='card' id='card'>"+tag+revtag+back+sentence+"</div>"+
-        "<div class='grade'><button class='miss'>✗ 틀렸어</button><button class='got'>✓ 맞았어</button></div>";
-      stage.querySelector(".miss").onclick=function(e){e.stopPropagation();grade(w.hanzi,false);next();};
-      stage.querySelector(".got").onclick =function(e){e.stopPropagation();grade(w.hanzi,true);next();};
+    // direction-specific prompt (shown first) and answer (revealed on tap)
+    var promptHtml, answerHtml;
+    if(dir()==="ck"){            // 中 → 한국어 : prompt = hanzi, answer = meaning
+      promptHtml = "<div class='hanzi' lang='zh-CN'>"+esc(w.hanzi)+"</div><div class='py "+py+"'>"+esc(w.pinyin)+"</div>";
+      answerHtml = "<div class='kr'>"+esc(w.kr)+"</div>";
+    } else {                    // 한국어 → 中 : prompt = Korean, answer = hanzi
+      promptHtml = "<div class='prompt-label'>한국어 문장</div><div class='kr'>"+esc(w.kr)+"</div>";
+      answerHtml = "<div class='hanzi' lang='zh-CN'>"+esc(w.hanzi)+"</div><div class='py "+py+"'>"+esc(w.pinyin)+"</div>";
     }
-    document.getElementById("card").onclick=function(){ flipped=!flipped; render(); };
+
+    if(cardStep===0){                       // 1) prompt only
+      stage.innerHTML =
+        "<div class='card' id='card'>"+tag+revtag+promptHtml+
+        "<div class='hint'>👆 눌러서 정답 보기</div></div>";
+      document.getElementById("card").onclick=function(){ cardStep=1; render(); };
+
+    } else if(cardStep===1){                // 2) answer + memory check
+      stage.innerHTML =
+        "<div class='card' id='card'>"+tag+revtag+answerHtml+
+          "<div class='hint'>기억나셨나요?</div></div>"+
+        "<div class='grade'><button class='miss'>아직이요</button><button class='got'>기억났어요</button></div>";
+      var advance=function(ok){ grade(w.hanzi, ok); if(w.cn_sentence){ cardStep=2; render(); } else { next(); } };
+      stage.querySelector(".miss").onclick=function(e){e.stopPropagation();advance(false);};
+      stage.querySelector(".got").onclick =function(e){e.stopPropagation();advance(true);};
+      document.getElementById("card").onclick=function(){ cardStep=0; render(); }; // tap to re-hide
+
+    } else {                                // 3) read the word inside its sentence
+      stage.innerHTML =
+        "<div class='card read' id='card'>"+tag+
+          "<div class='read-label'>문장 속에서 단어를 읽어보세요 🗣️</div>"+
+          "<div class='sentence' lang='zh-CN'>"+highlightWord(w.cn_sentence, w.hanzi)+
+            (w.cn_pinyin?"<span class='py2 "+py+"'>"+esc(w.cn_pinyin)+"</span>":"")+"</div>"+
+          (dir()==="ck" ? "<div class='krline'>"+esc(w.kr)+"</div>" : "")+
+        "</div>"+
+        "<div class='grade'><button class='got'>다음 →</button></div>";
+      stage.querySelector(".got").onclick=function(e){e.stopPropagation();next();};
+    }
     addNav();
+  }
+
+  // highlight the target word (each part of grammar patterns like 又…又…) in a sentence
+  function highlightWord(sentence, hanzi){
+    var safe=esc(sentence);
+    var parts=String(hanzi).split("…").filter(Boolean).filter(function(p,i,a){return a.indexOf(p)===i;});
+    parts.forEach(function(p){ if(p && safe.indexOf(p)>=0) safe=safe.split(p).join("<mark class='hl'>"+p+"</mark>"); });
+    return safe;
   }
 
   function renderQuiz(){
@@ -316,11 +338,11 @@
     var nav=document.createElement("div"); nav.className="nav";
     nav.innerHTML="<button id='prev'>← 이전</button><span>"+(pos+1)+" / "+deck.length+"</span><button id='skip'>다음 →</button>";
     stage.appendChild(nav);
-    nav.querySelector("#prev").onclick=function(){ if(pos>0){pos--;flipped=false;render();} };
+    nav.querySelector("#prev").onclick=function(){ if(pos>0){pos--;cardStep=0;render();} };
     nav.querySelector("#skip").onclick=function(){ next(); };
   }
 
-  function next(){ pos++; flipped=false; render(); }
+  function next(){ pos++; cardStep=0; render(); }
 
   function renderSummary(){
     var miss=allWords().filter(function(w){return isMistake(w.hanzi);}).length;
@@ -395,7 +417,7 @@
 
   // ---- session control ----
   var sessRight=0, sessSeen=0;
-  function startSession(mode){ sessRight=0; sessSeen=0; flipped=false; buildDeck(mode); render(); }
+  function startSession(mode){ sessRight=0; sessSeen=0; cardStep=0; buildDeck(mode); render(); }
   function setMode(mode){
     settings.mode=mode; save(LS.set,settings);
     document.querySelectorAll(".modes button").forEach(function(b){ b.classList.toggle("on", b.getAttribute("data-mode")===mode); });
@@ -455,7 +477,7 @@
     b.onclick=function(){
       settings.dir=b.getAttribute("data-dir"); save(LS.set,settings);
       document.querySelectorAll("#dir button").forEach(function(x){x.classList.toggle("on",x===b);});
-      flipped=false; render();
+      cardStep=0; render();
     };
   });
   document.getElementById("theme").onchange=function(e){ settings.theme=e.target.value; save(LS.set,settings); startSession(settings.mode); };
