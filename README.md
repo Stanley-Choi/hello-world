@@ -27,10 +27,14 @@ Download `index.html` and `vocab.js` into the same folder and open
 - **플래시카드 (Flashcards)** — see a prompt, tap to flip, then tap **✓ 맞았어**
   or **✗ 틀렸어**. The back shows the word, pinyin, and the full example
   sentence so she sees it in context.
-- **퀴즈 (Quiz)** — 4 multiple-choice options (wrong choices come from the same
-  theme, so they're a real test). Score is tracked.
-- **복습 (Mistakes)** — every word she gets wrong is collected here to redo
-  until it sticks.
+- **퀴즈 (Quiz)** — 4 multiple-choice options on the **word** (wrong choices
+  come from the same theme, so they're a real test). Score is tracked.
+- **문장연습 (Sentence)** — see a sentence, pick the matching sentence in the
+  other language (follows the 한↔中 direction toggle).
+- **문장채우기 (Fill-in)** — the example sentence with the target word blanked;
+  pick the right word from options (cloze, by meaning unit not characters).
+- **복습 (Mistakes)** — every word she gets wrong (in any mode) is collected here
+  to redo until it sticks.
 - **단어추가 (Add)** — add her own new words anytime; they join the decks.
 
 **Direction toggle** lets her practice both ways: 한국어 → 中 (produce the
