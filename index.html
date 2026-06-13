@@ -25,10 +25,11 @@
   .stat{font-size:12px;color:var(--muted);white-space:nowrap}
   .stat b{color:var(--red)}
 
-  .modes{display:flex;gap:6px;margin-bottom:10px}
-  .modes button{flex:1;padding:10px 4px;border:0;border-radius:12px;background:#fff;
-    color:var(--ink);font-size:13px;font-weight:600;box-shadow:var(--shadow);cursor:pointer}
+  .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px}
+  .modes button{padding:9px 4px;border:0;border-radius:12px;background:#fff;
+    color:var(--ink);font-size:13px;font-weight:600;box-shadow:var(--shadow);cursor:pointer;line-height:1.25}
   .modes button.on{background:var(--red);color:#fff}
+  .msub{font-size:10px;opacity:.8}
 
   .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
   .seg{display:inline-flex;background:#fff;border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
@@ -61,6 +62,11 @@
   .hint{font-size:12px;color:var(--muted);margin-top:18px}
   .read-label{font-size:13px;color:var(--red);font-weight:600;margin-bottom:16px}
   mark.hl{background:#ffe08a;color:#7c2d12;border-radius:5px;padding:1px 4px;font-weight:700}
+  .qkr{font-size:23px;font-weight:600;margin:8px 0}
+  .cloze-sent{font-size:24px;line-height:1.6;margin:8px 0 6px}
+  .cloze-sent .py2{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+  .blank{color:var(--red);font-weight:800;letter-spacing:1px;border-bottom:2px dashed var(--red);padding:0 6px}
+  .options button.opt-sent{text-align:left;font-size:16px;line-height:1.4}
 
   .grade{display:flex;gap:10px;margin-top:14px}
   .grade button{flex:1;padding:14px;border:0;border-radius:14px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;box-shadow:var(--shadow)}
@@ -113,10 +119,12 @@
   </header>
 
   <div class="modes">
-    <button data-mode="flash" class="on">플래시카드<br><span style="font-size:10px;opacity:.8">Cards</span></button>
-    <button data-mode="quiz">퀴즈<br><span style="font-size:10px;opacity:.8">Quiz</span></button>
-    <button data-mode="review">복습<br><span style="font-size:10px;opacity:.8">Mistakes</span></button>
-    <button data-mode="add">단어추가<br><span style="font-size:10px;opacity:.8">Add</span></button>
+    <button data-mode="flash" class="on">플래시카드<br><span class="msub">Cards</span></button>
+    <button data-mode="quiz">퀴즈<br><span class="msub">Quiz</span></button>
+    <button data-mode="sentence">문장연습<br><span class="msub">Sentence</span></button>
+    <button data-mode="cloze">문장채우기<br><span class="msub">Fill-in</span></button>
+    <button data-mode="review">복습<br><span class="msub">Mistakes</span></button>
+    <button data-mode="add">단어추가<br><span class="msub">Add</span></button>
   </div>
 
   <div class="bar" id="controls">
@@ -160,6 +168,7 @@
   function save(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
   var stats  = load(LS.stats, {});           // hanzi -> {box,right,wrong}
   var custom = load(LS.custom, []);          // user-added words
+  custom.forEach(function(w){ if(!w.meaning) w.meaning=w.kr; }); // older adds had no gloss
   var settings = load(LS.set, {dir:"kc", theme:"all", pinyin:true, mix:true, mode:"flash"});
 
   function allWords(){ return window.VOCAB.concat(custom); }
@@ -171,17 +180,27 @@
   var deck=[], pos=0;
   function inTheme(w){ return settings.theme==="all" || w.theme===settings.theme; }
 
+  // 문장연습 needs an example sentence; 문장채우기 also needs the word to sit
+  // contiguously inside it (so we can blank it out — excludes 又…又… etc.)
+  function clozeOk(w){ return !!w.cn_sentence && w.hanzi.indexOf("…")<0 && w.cn_sentence.indexOf(w.hanzi)>=0; }
+  function eligibleFor(mode){
+    if(mode==="sentence") return function(w){ return !!w.cn_sentence; };
+    if(mode==="cloze") return clozeOk;
+    return function(){ return true; };
+  }
+
   function buildDeck(mode){
     var words = allWords();
+    var elig = eligibleFor(mode);
     if(mode==="review"){
       deck = shuffle(words.filter(function(w){return isMistake(w.hanzi);}));
       pos=0; return;
     }
-    var pool = words.filter(inTheme);
+    var pool = words.filter(inTheme).filter(elig);
     var fresh = shuffle(pool.filter(function(w){return !isMistake(w.hanzi);}));
     if(!settings.mix){ deck=fresh; pos=0; return; }
-    // interleave previously-missed words (from anywhere) every ~3rd card
-    var review = shuffle(words.filter(function(w){return isMistake(w.hanzi);}));
+    // interleave previously-missed words (from anywhere, still mode-eligible) every ~3rd card
+    var review = shuffle(words.filter(function(w){return isMistake(w.hanzi);}).filter(elig));
     var out=[], ri=0;
     for(var i=0;i<fresh.length;i++){
       out.push(fresh[i]);
@@ -212,7 +231,10 @@
     if(m==="add"){ renderAdd(); return; }
     if(deck.length===0){ renderEmpty(m); return; }
     if(pos>=deck.length){ renderSummary(); return; }
-    if(m==="quiz") renderQuiz(); else renderCard(); // flash + review share the card UI
+    if(m==="quiz") renderQuiz();
+    else if(m==="sentence") renderSentenceQuiz();
+    else if(m==="cloze") renderCloze();
+    else renderCard(); // flash + review share the card UI
   }
 
   function renderStat(){
@@ -226,7 +248,7 @@
     var d=document.getElementById("deckline");
     if(settings.mode==="add"){ d.innerHTML=""; return; }
     var n=deck.length, cur=Math.min(pos+1,n);
-    var modeName = settings.mode==="quiz"?"퀴즈":settings.mode==="review"?"복습":"카드";
+    var modeName = {quiz:"퀴즈",review:"복습",sentence:"문장연습",cloze:"문장채우기"}[settings.mode]||"카드";
     d.innerHTML = n?("<span>"+modeName+"</span><span class='pill'>"+cur+" / "+n+"</span>"):"";
   }
 
@@ -240,12 +262,12 @@
 
     // direction-specific prompt (shown first) and answer (revealed on tap)
     var promptHtml, answerHtml;
-    if(dir()==="ck"){            // 中 → 한국어 : prompt = hanzi, answer = meaning
-      promptHtml = "<div class='hanzi' lang='zh-CN'>"+esc(w.hanzi)+"</div><div class='py "+py+"'>"+esc(w.pinyin)+"</div>";
-      answerHtml = "<div class='kr'>"+esc(w.kr)+"</div>";
-    } else {                    // 한국어 → 中 : prompt = Korean, answer = hanzi
-      promptHtml = "<div class='prompt-label'>한국어 문장</div><div class='kr'>"+esc(w.kr)+"</div>";
-      answerHtml = "<div class='hanzi' lang='zh-CN'>"+esc(w.hanzi)+"</div><div class='py "+py+"'>"+esc(w.pinyin)+"</div>";
+    var wordHtml = "<div class='hanzi' lang='zh-CN'>"+esc(w.hanzi)+"</div><div class='py "+py+"'>"+esc(w.pinyin)+"</div>";
+    var meaningHtml = "<div class='prompt-label'>뜻</div><div class='kr'>"+esc(w.meaning)+"</div>";
+    if(dir()==="ck"){            // 中 → 한국어 : prompt = hanzi, answer = Korean word
+      promptHtml = wordHtml; answerHtml = meaningHtml;
+    } else {                    // 한국어 → 中 : prompt = Korean word, answer = hanzi
+      promptHtml = meaningHtml; answerHtml = wordHtml;
     }
 
     if(cardStep===0){                       // 1) prompt only
@@ -270,7 +292,7 @@
           "<div class='read-label'>문장 속에서 단어를 읽어보세요 🗣️</div>"+
           "<div class='sentence' lang='zh-CN'>"+highlightWord(w.cn_sentence, w.hanzi)+
             (w.cn_pinyin?"<span class='py2 "+py+"'>"+esc(w.cn_pinyin)+"</span>":"")+"</div>"+
-          (dir()==="ck" ? "<div class='krline'>"+esc(w.kr)+"</div>" : "")+
+          "<div class='krline'>"+esc(w.kr)+"</div>"+
         "</div>"+
         "<div class='grade'><button class='got'>다음 →</button></div>";
       stage.querySelector(".got").onclick=function(e){e.stopPropagation();next();};
@@ -289,12 +311,12 @@
   function renderQuiz(){
     var w=deck[pos];
     var ask, correct, optKey, withPy;
-    if(dir()==="ck"){           // show hanzi, pick Korean meaning
+    if(dir()==="ck"){           // show hanzi, pick Korean meaning (word)
       ask="<div class='ask'>뜻이 뭘까요?</div><div class='big' lang='zh-CN'>"+esc(w.hanzi)+"</div>"+
           (settings.pinyin?"<div class='py'>"+esc(w.pinyin)+"</div>":"");
-      optKey="kr"; withPy=false;
-    } else {                    // show Korean, pick hanzi
-      ask="<div class='ask'>중국어로?</div><div class='bigkr'>"+esc(w.kr)+"</div>";
+      optKey="meaning"; withPy=false;
+    } else {                    // show Korean word, pick hanzi
+      ask="<div class='ask'>중국어로?</div><div class='bigkr'>"+esc(w.meaning)+"</div>";
       optKey="hanzi"; withPy=true;
     }
     var opts=makeOptions(w, optKey);
@@ -323,15 +345,81 @@
     addNav();
   }
 
-  function makeOptions(w, key){
-    var words=allWords();
-    var same=shuffle(words.filter(function(x){return x.theme===w.theme && x.hanzi!==w.hanzi && x[key]!==w[key];}));
+  function makeOptions(w, key){ return optionsFrom(w, key, allWords()); }
+  // sentence options must actually have the field we display
+  function optionsFrom(w, key, words){
+    var same=shuffle(words.filter(function(x){return x[key] && x.theme===w.theme && x.hanzi!==w.hanzi && x[key]!==w[key];}));
     var pick=same.slice(0,3);
     if(pick.length<3){
-      var more=shuffle(words.filter(function(x){return x.hanzi!==w.hanzi && x[key]!==w[key] && pick.indexOf(x)<0;}));
+      var more=shuffle(words.filter(function(x){return x[key] && x.hanzi!==w.hanzi && x[key]!==w[key] && pick.indexOf(x)<0;}));
       pick=pick.concat(more.slice(0,3-pick.length));
     }
     return shuffle(pick.concat([w]));
+  }
+
+  // shared scoring + reveal for the multiple-choice modes (quiz / sentence / cloze)
+  function wireChoices(w, onReveal){
+    var btns=stage.querySelectorAll(".options button");
+    btns.forEach(function(b){
+      b.onclick=function(){
+        var ok=b.getAttribute("data-h")===w.hanzi;
+        sessSeen++; if(ok) sessRight++;
+        grade(w.hanzi, ok);
+        btns.forEach(function(x){ x.disabled=true;
+          if(x.getAttribute("data-h")===w.hanzi) x.classList.add("correct");
+          else if(x===b && !ok) x.classList.add("wrong"); });
+        if(onReveal) onReveal(ok);
+        setTimeout(next, ok?750:1400);
+      };
+    });
+  }
+  function scoreBar(){
+    return "<div class='score'><span>점수 <b>"+sessRight+"/"+sessSeen+"</b></span><span>복습 대상 "+
+      allWords().filter(function(x){return isMistake(x.hanzi);}).length+"</span></div>";
+  }
+
+  // 문장연습: see a sentence, pick the matching sentence in the other language
+  function renderSentenceQuiz(){
+    var w=deck[pos], ask, optKey, optLang, optPy;
+    if(dir()==="ck"){   // show Chinese sentence → pick Korean
+      ask="<div class='ask'>뜻에 맞는 한국어 문장은?</div><div class='sentence' lang='zh-CN'>"+esc(w.cn_sentence)+
+          (settings.pinyin?"<span class='py2'>"+esc(w.cn_pinyin)+"</span>":"")+"</div>";
+      optKey="kr"; optLang="ko"; optPy=false;
+    } else {            // show Korean sentence → pick Chinese
+      ask="<div class='ask'>알맞은 중국어 문장은?</div><div class='qkr'>"+esc(w.kr)+"</div>";
+      optKey="cn_sentence"; optLang="zh-CN"; optPy=true;
+    }
+    var opts=optionsFrom(w, optKey, allWords().filter(function(x){return x.cn_sentence;}));
+    var html="<div class='q'>"+ask+"<div class='options'>";
+    opts.forEach(function(o){
+      var sub=(optPy && settings.pinyin && o.cn_pinyin)?"<span class='o-py'>"+esc(o.cn_pinyin)+"</span>":"";
+      html+="<button data-h='"+esc(o.hanzi)+"' class='opt-sent' lang='"+optLang+"'>"+esc(o[optKey])+sub+"</button>";
+    });
+    stage.innerHTML=html+"</div>"+scoreBar()+"</div>";
+    wireChoices(w);
+    addNav();
+  }
+
+  // 문장채우기: a sentence with the target word blanked — pick the right word
+  function renderCloze(){
+    var w=deck[pos];
+    var blank="<span class='blank'>____</span>";
+    var blanked=esc(w.cn_sentence).split(w.hanzi).join(blank);
+    var html="<div class='q'>"+
+      "<div class='ask'>빈칸에 들어갈 단어는?</div>"+
+      "<div class='cloze-sent' lang='zh-CN'>"+blanked+"</div>"+
+      "<div class='krline'>"+esc(w.kr)+"</div><div class='options'>";
+    var opts=makeOptions(w,"hanzi");
+    opts.forEach(function(o){
+      var sub=settings.pinyin?"<span class='o-py'>"+esc(o.pinyin)+"</span>":"";
+      html+="<button data-h='"+esc(o.hanzi)+"' lang='zh-CN'>"+esc(o.hanzi)+sub+"</button>";
+    });
+    stage.innerHTML=html+"</div>"+scoreBar()+"</div>";
+    wireChoices(w, function(){
+      var filled=esc(w.cn_sentence).split(w.hanzi).join("<mark class='hl'>"+esc(w.hanzi)+"</mark>");
+      stage.querySelector(".cloze-sent").innerHTML=filled+(w.cn_pinyin?"<span class='py2'>"+esc(w.cn_pinyin)+"</span>":"");
+    });
+    addNav();
   }
 
   function addNav(){
@@ -349,7 +437,7 @@
     stage.innerHTML=
       "<div class='panel center'><div class='big-emoji'>🎉</div>"+
       "<h2>잘했어, 한솔! 끝!</h2>"+
-      (settings.mode==="quiz"?"<p class='note'>이번 점수 <b>"+sessRight+" / "+sessSeen+"</b></p>":"")+
+      (sessSeen?"<p class='note'>이번 점수 <b>"+sessRight+" / "+sessSeen+"</b></p>":"")+
       "<p class='note'>아직 복습할 단어가 <b>"+miss+"</b>개 있어요."+(miss?" '복습'에서 다시 풀어봐요.":" 전부 맞았어요! 👏")+"</p>"+
       "<button class='primary' id='again'>다시 하기 ↻</button>"+
       (miss?"<button class='primary ghost' id='goReview' style='margin-top:8px'>틀린 단어 복습하기</button>":"")+
@@ -361,6 +449,8 @@
   function renderEmpty(m){
     var msg = m==="review"
       ? "복습할 단어가 없어요. 퀴즈를 풀다가 틀리면 여기에 모여요. 😊"
+      : (m==="sentence"||m==="cloze")
+      ? "이 주제엔 예문이 있는 단어가 없어요. 다른 주제를 골라보세요."
       : "이 주제에 단어가 없어요. 다른 주제를 골라보세요.";
     stage.innerHTML="<div class='panel center'><div class='big-emoji'>✨</div><p class='note'>"+msg+"</p></div>";
   }
@@ -370,7 +460,8 @@
       "<div class='panel'><h2>새 단어 추가 ✏️</h2>"+
       field("hanzi","중국어 (汉字)","예: 苹果")+
       field("pinyin","병음 (pinyin)","예: píng guǒ")+
-      field("kr","한국어 뜻 / 문장","예: 사과를 먹어요.")+
+      field("meaning","한국어 뜻 (단어)","예: 사과")+
+      field("kr","한국어 예문","예: 사과를 먹어요.")+
       field("cn_sentence","중국어 예문","예: 我吃苹果。")+
       field("cn_pinyin","예문 병음","예: Wǒ chī píng guǒ.")+
       "<div class='field'><label>주제 (theme)</label><select id='f_theme'>"+
@@ -389,15 +480,16 @@
   }
   function val(id){ return (document.getElementById("f_"+id).value||"").trim(); }
   function saveNew(){
-    var w={hanzi:val("hanzi"),pinyin:val("pinyin"),kr:val("kr"),
+    var w={hanzi:val("hanzi"),pinyin:val("pinyin"),meaning:val("meaning"),kr:val("kr"),
            cn_sentence:val("cn_sentence"),cn_pinyin:val("cn_pinyin"),
            theme:document.getElementById("f_theme").value};
     var msg=document.getElementById("addMsg");
-    if(!w.hanzi||!w.kr){ msg.textContent="중국어와 한국어 뜻은 꼭 넣어주세요."; msg.style.color="#dc2626"; return; }
+    if(!w.hanzi||!w.meaning){ msg.textContent="중국어와 한국어 뜻은 꼭 넣어주세요."; msg.style.color="#dc2626"; return; }
+    if(!w.kr) w.kr=w.meaning;                 // example optional; fall back to the meaning
     if(allWords().some(function(x){return x.hanzi===w.hanzi;})){ msg.textContent="이미 있는 단어예요: "+w.hanzi; msg.style.color="#dc2626"; return; }
     w.id="c"+Date.now(); custom.push(w); save(LS.custom,custom);
     msg.textContent="추가됐어요! ✓ "+w.hanzi; msg.style.color="#16a34a";
-    ["hanzi","pinyin","kr","cn_sentence","cn_pinyin"].forEach(function(i){document.getElementById("f_"+i).value="";});
+    ["hanzi","pinyin","meaning","kr","cn_sentence","cn_pinyin"].forEach(function(i){document.getElementById("f_"+i).value="";});
     renderStat(); renderCustomList(); refreshThemes();
   }
   function renderCustomList(){
@@ -405,7 +497,7 @@
     if(!custom.length){ box.innerHTML="<p class='note'>아직 없어요.</p>"; return; }
     box.innerHTML=custom.map(function(w,i){
       return "<div style='display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)'>"+
-        "<span><b>"+esc(w.hanzi)+"</b> <span class='note'>"+esc(w.pinyin)+" · "+esc(w.kr)+"</span></span>"+
+        "<span><b>"+esc(w.hanzi)+"</b> <span class='note'>"+esc(w.pinyin)+" · "+esc(w.meaning||w.kr)+"</span></span>"+
         "<button class='note' data-i='"+i+"' style='border:0;background:transparent;color:#dc2626;cursor:pointer'>삭제</button></div>";
     }).join("");
     box.querySelectorAll("button[data-i]").forEach(function(b){

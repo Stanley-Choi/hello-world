@@ -2,9 +2,10 @@
 #
 # One word per line, columns separated by a TAB. Lines starting with "#" are
 # ignored. Required: hanzi and kr. The rest are optional (leave blank but keep
-# the tabs if you want to set a later column). theme is auto-guessed if blank.
+# the tabs if you want to set a later column). theme is auto-guessed if blank;
+# meaning (the short Korean word gloss shown on flashcards/quiz) falls back to kr.
 #
-# hanzi <TAB> pinyin <TAB> kr <TAB> cn_sentence <TAB> cn_pinyin <TAB> theme
+# hanzi <TAB> pinyin <TAB> kr <TAB> cn_sentence <TAB> cn_pinyin <TAB> theme <TAB> meaning
 #
 # Example row (commented out so it is NOT added — copy the format below it):
-# 苹果	píng guǒ	사과를 먹어요.	我喜欢吃苹果。	Wǒ xǐ huan chī píng guǒ.	other
+# 苹果	píng guǒ	사과를 먹어요.	我喜欢吃苹果。	Wǒ xǐ huan chī píng guǒ.	other	사과
