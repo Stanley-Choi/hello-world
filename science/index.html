@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Grade 4 Science, Unit 1: Animal Parts and Their Functions. Vocabulary with pronunciation and audio, a spelling quiz, habitat planner and project guide.">
+<meta name="theme-color" content="#0F7F8E" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1E24" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Animal Parts">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%8E%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%8E%3C/text%3E%3C/svg%3E">
+<style>
+  :root{color-scheme:light dark}
+  html{background:#EEF3F1}
+  @media (prefers-color-scheme:dark){html:not([data-theme="light"]){background:#0D1E24}}
+  html[data-theme="dark"]{background:#0D1E24}
+  body{margin:0}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+</style>
+<title>Animal Parts Pocket Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lexend:wght@300;400;500;600&family=Patrick+Hand&display=swap">
+<style>
+:root{
+  --paper:#EEF3F1; --surface:#FFFFFF; --surface-2:#F6FAF8;
+  --ink:#12303A; --ink-soft:#4A6570; --line:#D5E2DE;
+  --teal:#0F7F8E; --teal-soft:#D6EEF0;
+  --coral:#EE6A52; --coral-soft:#FDE2DB;
+  --sun:#F3C33C; --sun-soft:#FCF0CE; --sun-ink:#7A5B08;
+  --moss:#5B8C3E; --moss-soft:#E0EDD5;
+  --shadow:0 1px 0 rgba(18,48,58,.05), 0 6px 16px -10px rgba(18,48,58,.45);
+  --r:14px;
+  --display:"Fredoka","Trebuchet MS",sans-serif;
+  --body:"Lexend","Segoe UI",system-ui,sans-serif;
+  --hand:"Patrick Hand","Comic Sans MS",cursive;
+  --bar:calc(62px + env(safe-area-inset-bottom, 0px));
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D1E24; --surface:#132B33; --surface-2:#17333C;
+    --ink:#E7F1EE; --ink-soft:#9DB6BC; --line:#26454F;
+    --teal:#4FC3D2; --teal-soft:#12414A;
+    --coral:#FF8A72; --coral-soft:#4A2A24;
+    --sun:#F6D06A; --sun-soft:#4A3D1A; --sun-ink:#F6D06A;
+    --moss:#8FC46A; --moss-soft:#2A3D22;
+    --shadow:0 1px 0 rgba(0,0,0,.2), 0 6px 16px -10px rgba(0,0,0,.85);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D1E24; --surface:#132B33; --surface-2:#17333C;
+  --ink:#E7F1EE; --ink-soft:#9DB6BC; --line:#26454F;
+  --teal:#4FC3D2; --teal-soft:#12414A;
+  --coral:#FF8A72; --coral-soft:#4A2A24;
+  --sun:#F6D06A; --sun-soft:#4A3D1A; --sun-ink:#F6D06A;
+  --moss:#8FC46A; --moss-soft:#2A3D22;
+  --shadow:0 1px 0 rgba(0,0,0,.2), 0 6px 16px -10px rgba(0,0,0,.85);
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;font-size:16px;line-height:1.65;
+     padding-bottom:var(--bar);-webkit-text-size-adjust:100%;overflow-x:hidden}
+h1,h2,h3,h4,h5{text-wrap:balance;margin:0}
+:focus-visible{outline:3px solid var(--coral);outline-offset:2px;border-radius:8px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.app{max-width:560px;margin:0 auto;padding:0 14px}
+
+/* ---- top bar ---- */
+.top{position:sticky;top:0;z-index:30;background:var(--teal);color:#fff;
+     padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px;display:flex;align-items:center;gap:10px}
+.top .ttl{font-family:var(--display);font-weight:600;font-size:1.06rem;line-height:1.2;flex:1;min-width:0}
+.top .ttl small{display:block;font-family:var(--hand);font-weight:400;font-size:.9rem;color:var(--sun);letter-spacing:.03em}
+.top .em{font-size:1.5rem;line-height:1}
+
+/* ---- screens ---- */
+.screen{padding:18px 0 26px;animation:fade .18s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.h{font-family:var(--display);font-weight:600;font-size:1.3rem;margin-bottom:4px}
+.sub{color:var(--ink-soft);font-size:.92rem;margin:0 0 16px}
+.h2{font-family:var(--display);font-weight:600;font-size:1.08rem;margin:26px 0 10px;display:flex;align-items:center;gap:8px}
+.h2::before{content:"";width:4px;height:17px;border-radius:3px;background:var(--coral);flex:0 0 auto}
+
+/* ---- chips ---- */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 14px 12px;margin:0 -14px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font-family:var(--body);font-weight:400;font-size:.88rem;background:var(--surface);
+      border:1.5px solid var(--line);border-radius:999px;padding:9px 15px;color:var(--ink-soft);cursor:pointer;min-height:40px}
+.chip[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* ---- buttons ---- */
+.btn{font-family:var(--body);font-weight:400;font-size:.9rem;background:var(--surface);color:var(--ink);
+     border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer;min-height:44px;box-shadow:var(--shadow)}
+.btn[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.tally{font-family:var(--hand);font-size:1.1rem;color:var(--ink-soft);margin-left:auto}
+.tally b{color:var(--coral);font-weight:400}
+.spk{flex:0 0 auto;border:1.5px solid var(--line);background:var(--surface-2);color:var(--teal);
+     width:44px;height:44px;border-radius:50%;cursor:pointer;display:inline-grid;place-items:center;font-size:1rem;padding:0;line-height:1}
+.spk.on{background:var(--coral);border-color:var(--coral);color:#fff}
+.spk.sm{width:42px;height:42px;font-size:.9rem}
+.no-audio{display:none;background:var(--sun-soft);border:1.5px solid var(--sun);border-radius:12px;padding:11px 13px;font-size:.88rem;margin-bottom:14px}
+body.no-speech .no-audio{display:block}
+body.no-speech .spk{display:none}
+
+/* ---- word cards ---- */
+.cards{display:flex;flex-direction:column;gap:11px}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow);position:relative}
+.card.known{border-color:var(--moss);background:var(--surface-2)}
+.card.known::after{content:"\2713";position:absolute;top:12px;right:13px;background:var(--moss);color:#fff;
+     width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.78rem}
+.ctop{display:flex;align-items:center;gap:11px}
+.ctop .em{font-size:1.7rem;line-height:1;flex:0 0 auto}
+.ctop .nm{flex:1;min-width:0}
+.word{font-family:var(--display);font-weight:600;font-size:1.28rem;line-height:1.25}
+.ipa{font-size:.88rem;color:var(--teal)}
+.mean{font-size:.95rem;margin:11px 0 0}
+.hook{margin-top:10px;background:var(--moss-soft);border-radius:11px;padding:10px 12px;font-size:.88rem;display:flex;gap:8px}
+.hook::before{content:"\1F4A1";flex:0 0 auto}
+.ex{margin-top:10px;background:var(--surface-2);border-left:3px solid var(--sun);border-radius:0 10px 10px 0;
+    padding:10px 12px;display:flex;gap:10px;align-items:center}
+.ex span{font-size:.93rem;line-height:1.5}
+.tick{margin-top:12px;display:flex;align-items:center;gap:9px;font-size:.9rem;color:var(--ink-soft);cursor:pointer;
+      min-height:44px;user-select:none}
+.tick input{accent-color:var(--moss);width:22px;height:22px;cursor:pointer;flex:0 0 auto}
+body.hide-mean .mean,body.hide-mean .hook{visibility:hidden}
+
+/* ---- generic panel ---- */
+.panel{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.panel + .panel{margin-top:11px}
+.panel h4{font-family:var(--display);font-weight:600;font-size:1.08rem;margin-bottom:7px}
+.panel p{margin:0 0 10px;font-size:.94rem}
+.tagline{font-family:var(--hand);font-size:1.15rem;color:var(--coral);margin-bottom:2px}
+.formula{background:var(--teal);color:#fff;border-radius:11px;padding:12px 14px;font-family:var(--display);
+         font-weight:500;font-size:1rem;line-height:1.5}
+.formula em{font-style:normal;background:rgba(255,255,255,.22);border-radius:5px;padding:1px 7px;display:inline-block}
+.note{background:var(--sun-soft);border:1.5px solid var(--sun);border-radius:11px;padding:11px 13px;margin-top:11px;font-size:.88rem}
+.note b{color:var(--coral);font-weight:500}
+.pill{display:inline-block;border-radius:999px;padding:3px 12px;font-size:.82rem;margin-bottom:8px}
+.p-plant{background:var(--moss-soft);color:var(--moss)}
+.p-meat{background:var(--coral-soft);color:var(--coral)}
+.p-both{background:var(--sun-soft);color:var(--sun-ink)}
+.kv{display:flex;gap:8px;font-size:.9rem;padding:5px 0;border-top:1px dashed var(--line)}
+.kv b{font-weight:500;color:var(--ink-soft);flex:0 0 88px}
+
+/* ---- habitat ---- */
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+.hbtn{font-family:var(--display);font-weight:500;font-size:.92rem;background:var(--surface);border:1.5px solid var(--line);
+      border-radius:var(--r);padding:13px 8px;cursor:pointer;color:var(--ink);box-shadow:var(--shadow);min-height:76px}
+.hbtn .ic{font-size:1.7rem;display:block;line-height:1;margin-bottom:5px}
+.hbtn[aria-pressed="true"]{background:var(--teal);color:#fff;border-color:var(--teal)}
+.facts{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 16px}
+.facts span{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:.82rem}
+.hh{font-family:var(--display);font-weight:600;font-size:1rem;margin:16px 0 9px;display:flex;align-items:center;gap:8px}
+.hh::before{content:"";width:10px;height:10px;border-radius:50%;flex:0 0 auto}
+.hh.prob::before{background:var(--coral)}
+.hh.sol::before{background:var(--moss)}
+.hlist{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:9px}
+.hlist li{font-size:.93rem}
+.hlist b{font-weight:500}
+
+/* ---- trail ---- */
+.step{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow)}
+.step + .step{margin-top:10px}
+.stop{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.stop .num{font-family:var(--display);font-weight:600;font-size:.95rem;color:#fff;background:var(--coral);
+     border-radius:9px;min-width:34px;height:32px;display:grid;place-items:center;flex:0 0 auto;padding:0 7px}
+.step.out .stop .num{background:var(--teal)}
+.stop .pg{font-family:var(--hand);color:var(--coral);font-size:1.05rem}
+.step.out .stop .pg{color:var(--teal)}
+.step h5{font-family:var(--display);font-weight:600;font-size:1rem;margin-bottom:4px}
+.step p{margin:0;font-size:.92rem;color:var(--ink-soft)}
+.step .look{margin-top:9px;background:var(--sun-soft);border-radius:10px;padding:10px 12px;font-size:.88rem}
+.step .look b{color:var(--coral);font-weight:500}
+
+/* ---- frames ---- */
+.frame{background:var(--surface);border:1.5px solid var(--line);border-left:5px solid var(--teal);
+       border-radius:8px var(--r) var(--r) 8px;padding:14px;box-shadow:var(--shadow)}
+.frame + .frame{margin-top:10px}
+.frame .use{font-family:var(--hand);font-size:1.1rem;color:var(--teal);margin-bottom:5px}
+.frame .f{font-family:var(--display);font-weight:400;font-size:1rem;line-height:1.7}
+.blank{display:inline-block;min-width:62px;border-bottom:2.5px dotted var(--coral);height:1.05em;vertical-align:-2px;margin:0 3px}
+.frame .eg{margin-top:10px;padding-top:9px;border-top:1px dashed var(--line);font-size:.89rem;color:var(--ink-soft);
+           display:flex;gap:9px;align-items:center}
+
+/* ---- checklist ---- */
+.final{background:var(--teal);color:#fff;border-radius:var(--r);padding:18px}
+.final h4{font-family:var(--display);font-weight:600;font-size:1.15rem;margin-bottom:3px}
+.final .s{font-size:.88rem;color:rgba(255,255,255,.85);margin-bottom:14px}
+.final ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.final li{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);border-radius:11px;
+          padding:11px 13px;font-size:.9rem;display:flex;gap:10px}
+.final li .b{font-family:var(--hand);font-size:1.05rem;color:var(--sun);flex:0 0 auto}
+
+/* ---- quiz ---- */
+.quiz{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.qbar{height:6px;background:var(--surface-2)}
+.qbar i{display:block;height:100%;background:var(--teal);width:0;transition:width .3s ease}
+.qbody{padding:16px}
+.qmeta{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:13px;font-size:.82rem;color:var(--ink-soft)}
+.qkind{background:var(--teal-soft);color:var(--teal);border-radius:999px;padding:3px 11px;font-size:.78rem}
+.qsc{font-family:var(--hand);font-size:1.05rem}
+.qsc b{color:var(--moss);font-weight:400}.qsc i{color:var(--coral);font-style:normal}
+.qdef{font-size:1.1rem;line-height:1.55;margin:0 0 12px}
+.qhint{background:var(--moss-soft);border-radius:11px;padding:10px 12px;font-size:.88rem;margin-bottom:12px;display:flex;gap:8px}
+.qhint::before{content:"\1F4A1";flex:0 0 auto}
+.qsent{background:var(--surface-2);border-left:3px solid var(--sun);border-radius:0 10px 10px 0;padding:10px 12px;
+       font-size:.93rem;margin-bottom:9px;display:flex;gap:10px;align-items:center}
+.qsent u{text-decoration:none;border-bottom:2.5px dotted var(--coral);padding:0 18px;margin:0 2px}
+.qsent .nb{white-space:nowrap}
+.qshape{font-family:var(--hand);font-size:1.35rem;letter-spacing:.2em;color:var(--ink-soft);min-height:1.4em;margin-bottom:12px}
+.qin{width:100%;font-family:var(--display);font-weight:500;font-size:17px;padding:14px 15px;border:2px solid var(--line);
+     border-radius:12px;background:var(--surface-2);color:var(--ink);margin-bottom:10px}
+.qin:focus{outline:none;border-color:var(--teal)}
+.quiz.good .qin{border-color:var(--moss);background:var(--moss-soft)}
+.quiz.bad .qin{border-color:var(--coral);background:var(--coral-soft);animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.qacts{display:flex;gap:9px;align-items:center}
+.qgo{flex:1;font-family:var(--display);font-weight:600;font-size:1.02rem;background:var(--teal);color:#fff;border:none;
+     border-radius:12px;padding:14px;cursor:pointer;min-height:50px}
+.qskip{font-family:var(--body);font-size:.88rem;background:none;border:none;color:var(--ink-soft);
+       text-decoration:underline;cursor:pointer;padding:12px 6px;min-height:44px;flex:0 0 auto}
+.qmsg{margin-top:12px;font-size:.94rem;min-height:1.4em}
+.qmsg .ok{color:var(--moss);font-weight:500}
+.qmsg .no{color:var(--coral);font-weight:500}
+.qmsg .ans{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--ink);display:block;margin-top:3px}
+.qend{text-align:center;padding:26px 16px}
+.qend .big{font-family:var(--display);font-weight:700;font-size:2.8rem;color:var(--teal);line-height:1}
+.qend .lbl{color:var(--ink-soft);margin-bottom:15px}
+.qend .missed{background:var(--surface-2);border-radius:12px;padding:13px;margin-bottom:15px;text-align:left}
+.qend .missed h5{font-family:var(--display);font-weight:600;font-size:.94rem;margin-bottom:7px}
+.qend .missed span{display:inline-block;background:var(--coral-soft);color:var(--coral);border-radius:999px;
+                   padding:3px 11px;margin:3px 3px 0 0;font-size:.87rem}
+.qend .acts{display:flex;flex-direction:column;gap:9px}
+
+/* ---- tab bar ---- */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);border-top:1.5px solid var(--line);
+      display:flex;padding-bottom:env(safe-area-inset-bottom,0px)}
+.tab{flex:1;background:none;border:none;cursor:pointer;padding:8px 2px 9px;color:var(--ink-soft);
+     font-family:var(--body);font-size:.68rem;font-weight:400;display:flex;flex-direction:column;align-items:center;gap:3px;min-height:62px}
+.tab .ic{font-size:1.32rem;line-height:1;transition:transform .15s ease}
+.tab[aria-selected="true"]{color:var(--teal);font-weight:500}
+.tab[aria-selected="true"] .ic{transform:translateY(-2px) scale(1.14)}
+.foot{text-align:center;font-family:var(--hand);font-size:1.05rem;color:var(--ink-soft);padding:22px 0 6px}
+</style>
+
+</head>
+<body>
+<header class="top">
+  <span class="em">🦎</span>
+  <div class="ttl">Animal Parts &amp; Functions<small>Grade 4 · Unit 1 · pocket guide</small></div>
+</header>
+
+<div class="app">
+
+  <div class="screen" id="sc-words">
+    <div class="h">Word Bank</div>
+    <p class="sub">Tap 🔊 to hear any word. Pick a group below to keep the list short.</p>
+    <div class="no-audio">🔇 This browser cannot read words aloud. Everything else still works.</div>
+    <div class="chips" id="wChips"></div>
+    <div class="row">
+      <button class="btn" id="speed" aria-pressed="true">🐢 Slow</button>
+      <button class="btn" id="hideMean" aria-pressed="false">🙈 Hide</button>
+      <span class="tally" id="tally"></span>
+    </div>
+    <div class="cards" id="wordZone"></div>
+  </div>
+
+  <div class="screen" id="sc-quiz" hidden>
+    <div class="h">Spelling Quiz</div>
+    <p class="sub">Read the clue, then type the word. Stuck? Tap 🔊 or Skip.</p>
+    <div class="chips" id="qChips"></div>
+    <div class="quiz" id="quiz"><div class="qbar"><i id="qBar"></i></div><div class="qbody" id="qBody"></div></div>
+  </div>
+
+  <div class="screen" id="sc-ideas" hidden>
+    <div class="h">Two Big Ideas</div>
+    <p class="sub">The whole unit is just these two sentences.</p>
+    <div class="panel">
+      <div class="tagline">1.1 — every part has a job</div>
+      <h4>Different parts do different jobs</h4>
+      <p>Animals have many parts: legs, fins, wings, tails, teeth, tongues and beaks. Each part has a <strong>function</strong>. A function is the job that a part does.</p>
+      <div class="formula">The <em>animal</em> uses its <em>part</em> to <em>do something</em>.</div>
+      <div class="note">📌 Almost every sentence in the textbook has this shape. Learn it once and your report writes itself.</div>
+    </div>
+    <div class="panel">
+      <div class="tagline">1.2 — the shape explains the job</div>
+      <h4>The shape fits the function</h4>
+      <p>Parts come in different <strong>shapes</strong>. The shape is never an accident. It helps the animal move <strong>efficiently</strong> or obtain food.</p>
+      <div class="formula">The <em>long, sharp</em> beak helps it <em>catch fish</em>.</div>
+      <div class="note">📌 This is where the marks are. <em>"It has a tail"</em> is level 1. <b><em>"It has a long, thick tail, so it can wrap it around its body to keep warm"</em></b> is level 5.</div>
+    </div>
+
+    <div class="h2">Teeth — food decides the shape</div>
+    <div id="teethZone"></div>
+    <div class="h2">Beaks — food decides the shape</div>
+    <div id="beakZone"></div>
+  </div>
+
+  <div class="screen" id="sc-hab" hidden>
+    <div class="h">Pick Your Habitat</div>
+    <p class="sub">Find the problems of living there first. Then invent a body part that solves each one.</p>
+    <div class="hgrid" id="hBtns"></div>
+    <div class="panel" id="hPanel"></div>
+  </div>
+
+  <div class="screen" id="sc-proj" hidden>
+    <div class="h">Your Project</div>
+    <p class="sub">Read in this order, then build your sentences.</p>
+    <div class="h2">Read this first</div>
+    <div id="trail"></div>
+    <div class="h2">Sentence builder</div>
+    <div id="frames"></div>
+    <div class="h2">Before you hand it in</div>
+    <div class="final">
+      <h4>Final Checklist</h4>
+      <div class="s">Four criteria, five marks each. Twenty in total.</div>
+      <ul>
+        <li><span class="b">01</span><span>Five special parts, each with a label?</span></li>
+        <li><span class="b">02</span><span>For each part: <strong>what it does</strong> AND <strong>why that helps</strong>?</span></li>
+        <li><span class="b">03</span><span>Did you describe the <strong>shape</strong>? (long, sharp, flat, wide…)</span></li>
+        <li><span class="b">04</span><span>Does every part connect to <strong>your habitat</strong>?</span></li>
+        <li><span class="b">05</span><span>Is the model, drawing or collage <strong>finished</strong>?</span></li>
+        <li><span class="b">06</span><span>Report has the <strong>name, habitat and five parts</strong>?</span></li>
+        <li><span class="b">07</span><span>Answered all <strong>six reflection questions</strong>?</span></li>
+        <li><span class="b">08</span><span>Practised the talk <strong>out loud</strong> at least once?</span></li>
+      </ul>
+    </div>
+    <div class="foot">You can do this. Good luck, Hansol! 🦎🔬</div>
+  </div>
+
+</div>
+
+<nav class="tabs" id="tabs" role="tablist">
+  <button class="tab" role="tab" data-s="words" aria-selected="true"><span class="ic">📖</span>Words</button>
+  <button class="tab" role="tab" data-s="quiz"  aria-selected="false"><span class="ic">✏️</span>Quiz</button>
+  <button class="tab" role="tab" data-s="ideas" aria-selected="false"><span class="ic">💡</span>Ideas</button>
+  <button class="tab" role="tab" data-s="hab"   aria-selected="false"><span class="ic">🌍</span>Habitat</button>
+  <button class="tab" role="tab" data-s="proj"  aria-selected="false"><span class="ic">📋</span>Project</button>
+</nav>
+
+<script>
+const GROUPS = [
+  { id:"parts", cls:"g-parts", label:"🦴 Body Parts", words:[
+    {en:"leg", ipa:"leɡ", sp:"🐆", mean:"The part an animal stands, walks and runs on.", ex:"The cheetah uses its legs to run."},
+    {en:"arm", ipa:"ɑːrm", sp:"🐒", mean:"Some animals have arms as well as legs.", ex:"The monkey uses its arms to climb trees."},
+    {en:"fin", ipa:"fɪn", sp:"🐟", mean:"A thin, flat part on the body of a fish.", ex:"Fish use their fins to swim."},
+    {en:"tail fin", ipa:"ˈteɪl fɪn", sp:"🦈", mean:"The fin at the very back of a fish.", ex:"The shark uses its tail fin to swim."},
+    {en:"flipper", ipa:"ˈflɪpər", sp:"🐢", mean:"A wide, flat limb used for swimming.", hook:"flip + -er = a thing that flips. It flips through the water.", ex:"The sea turtle uses its flippers to swim."},
+    {en:"wing", ipa:"wɪŋ", sp:"🦜", mean:"The part a bird uses to fly. Penguins swim with theirs.", ex:"The parrot uses its wings to fly."},
+    {en:"tail", ipa:"teɪl", sp:"🦊", mean:"The part at the back of an animal. It has many jobs.", hook:"“Tail” and “tale” (a story) sound exactly the same.", ex:"The Arctic fox wraps its tail around its body to keep warm."},
+    {en:"teeth", ipa:"tiːθ", sp:"🦓", mean:"The hard white parts inside the mouth.", hook:"One tooth, two teeth. It never takes an -s. For the th, put your tongue between your teeth.", ex:"The zebra uses its teeth to chew grass."},
+    {en:"tongue", ipa:"tʌŋ", sp:"🦎", mean:"The soft part in the mouth that can move and reach out.", hook:"The -ue at the end is silent. Say “tung”.", ex:"The chameleon uses its tongue to catch food."},
+    {en:"beak", ipa:"biːk", sp:"🦅", mean:"A bird's hard mouth. Birds have no teeth.", ex:"Birds use their beaks to obtain food."},
+    {en:"claws", ipa:"klɔːz", sp:"🐾", mean:"Sharp, curved nails on an animal's feet.", hook:"The grabber inside a claw machine has this exact shape.", ex:"The sharp claws of an eagle help it grab its food."},
+    {en:"fangs", ipa:"fæŋz", sp:"🐍", mean:"Long, sharp, hollow teeth that carry venom.", hook:"A vampire in a story has fangs.", ex:"The fangs of a snake are long and sharp."},
+    {en:"neck", ipa:"nek", sp:"🦒", mean:"The part that joins the head to the body.", hook:"A necklace goes around your neck.", ex:"A giraffe has a long neck to reach high leaves."},
+    {en:"mouth parts", ipa:"ˈmaʊθ pɑːrts", sp:"👄", mean:"All the parts of the mouth together: teeth, tongue, beak.", ex:"Animals use their mouth parts to eat."}
+  ]},
+  { id:"verbs", cls:"g-verbs", label:"⚡ What Parts Do", words:[
+    {en:"move", ipa:"muːv", sp:"🏃", mean:"To go from one place to another.", ex:"Different parts help animals move."},
+    {en:"swim", ipa:"swɪm", sp:"🏊", mean:"To move through water.", ex:"The seal uses its flippers to swim."},
+    {en:"fly", ipa:"flaɪ", sp:"🕊️", mean:"To move through the air.", ex:"The wide wings of a seagull help it fly."},
+    {en:"climb", ipa:"klaɪm", sp:"🌳", mean:"To go up something, using arms and legs.", hook:"The b is silent. Say “clime”, not “climb-buh”.", ex:"The long arms of a sloth help it climb trees."},
+    {en:"hop", ipa:"hɒp", sp:"🐸", mean:"To jump with short, quick jumps.", ex:"The frog uses its legs to hop."},
+    {en:"catch", ipa:"kætʃ", sp:"🎣", mean:"To take hold of something that is moving.", hook:"In baseball, the catcher catches the ball.", ex:"The pelican uses its beak to catch fish."},
+    {en:"chew", ipa:"tʃuː", sp:"🌿", mean:"To break food up with your teeth.", hook:"Chewing gum is gum that you chew.", ex:"The flat teeth of a horse help it chew grass."},
+    {en:"tear", ipa:"ter", sp:"🐅", mean:"To pull something apart, like meat.", hook:"Two words, one spelling. “Tear” that rhymes with air = rip. “Tear” that rhymes with ear = a drop from your eye.", ex:"The sharp teeth of a tiger help it tear meat."},
+    {en:"grab", ipa:"ɡræb", sp:"🦅", mean:"To take and hold something quickly.", ex:"Its claws grab and hold onto its food."},
+    {en:"hold onto", ipa:"hoʊld ˈɑːntu", sp:"🐒", mean:"To keep holding something so you do not fall.", ex:"The monkey uses its tail to hold onto a branch."},
+    {en:"obtain", ipa:"əbˈteɪn", sp:"🍯", mean:"To get something.", hook:"This is the science word for “get”. Your textbook uses it a lot.", ex:"Birds use their beaks to obtain food."},
+    {en:"break", ipa:"breɪk", sp:"🌰", mean:"To open or split something hard.", hook:"Car brakes sound the same but are spelled differently.", ex:"The cone-shaped beak of a sparrow helps it break seeds."},
+    {en:"protect", ipa:"prəˈtekt", sp:"🛡️", mean:"To keep something safe from danger.", hook:"A phone screen protector protects your screen.", ex:"Some animals use their tails to protect themselves."},
+    {en:"defend", ipa:"dɪˈfend", sp:"⚔️", mean:"To fight back against danger.", hook:"A defender in football stops the other team.", ex:"Birds use their beaks to defend themselves."},
+    {en:"drive away", ipa:"draɪv əˈweɪ", sp:"🦟", mean:"To make something go away.", ex:"The zebras swing their tails to drive away insects."},
+    {en:"keep warm", ipa:"kiːp wɔːrm", sp:"🔥", mean:"To stop the body from getting cold.", ex:"Some animals use their tails to keep warm."},
+    {en:"feed", ipa:"fiːd", sp:"🐣", mean:"To give food to a baby animal.", ex:"The bird uses its beak to feed its young."},
+    {en:"survive", ipa:"sərˈvaɪv", sp:"💪", mean:"To stay alive in a hard place.", hook:"A survival game means staying alive to the end.", ex:"These parts help the animal survive in its habitat."},
+    {en:"build a nest", ipa:"bɪld ə nest", sp:"🪺", mean:"To make a home for eggs and babies.", ex:"Birds use their beaks to build their nests."}
+  ]},
+  { id:"shape", cls:"g-shape", label:"📐 Shape Words", words:[
+    {en:"sharp", ipa:"ʃɑːrp", sp:"🔪", mean:"Able to cut or make a hole.", hook:"A sharpener makes a pencil sharp.", ex:"The sharp claws of an eagle help it grab food."},
+    {en:"pointed", ipa:"ˈpɔɪntɪd", sp:"📍", mean:"Narrow and thin at the end.", hook:"A point is a sharp end. Add -ed and it describes the shape.", ex:"The pointed teeth of a tiger tear meat."},
+    {en:"flat", ipa:"flæt", sp:"🪙", mean:"Smooth and level, not pointed.", ex:"Flat teeth help a horse chew grass."},
+    {en:"broad", ipa:"brɔːd", sp:"🐋", mean:"Wide from one side to the other.", hook:"Broadcast = cast it broad, meaning spread it wide.", ex:"The broad tail of a dugong helps it swim."},
+    {en:"wide", ipa:"waɪd", sp:"🕊️", mean:"Large from side to side.", hook:"A widescreen TV is a wide picture.", ex:"The wide wings of a seagull help it fly."},
+    {en:"long", ipa:"lɔːŋ", sp:"📏", mean:"Reaching a big distance.", ex:"The long tongue of a chameleon catches food from far away."},
+    {en:"thin", ipa:"θɪn", sp:"🪡", mean:"Narrow, not thick.", hook:"Put your tongue between your teeth for the th. It is not “tin”.", ex:"The long, thin beak of a hummingbird obtains nectar."},
+    {en:"hooked", ipa:"hʊkt", sp:"🪝", mean:"Curved at the end, like a hook.", hook:"Captain Hook has a hand shaped like a hook.", ex:"The hooked beak of a falcon helps it tear meat."},
+    {en:"cone-shaped", ipa:"ˈkoʊn ʃeɪpt", sp:"🍦", mean:"Round at the bottom and pointed at the top.", hook:"Shaped like an ice cream cone.", ex:"A sparrow has a short, cone-shaped beak."},
+    {en:"hollow", ipa:"ˈhɑːloʊ", sp:"🥤", mean:"Empty inside.", hook:"A straw is hollow. That is how venom travels down a fang.", ex:"Fangs are sharp, hollow teeth."}
+  ]},
+  { id:"idea", cls:"g-idea", label:"🧠 Science Words", words:[
+    {en:"function", ipa:"ˈfʌŋkʃən", sp:"⚙️", mean:"The way in which something works. Its job.", hook:"In maths, a function also does one set job. Same idea.", ex:"Different animal parts have different functions."},
+    {en:"shape", ipa:"ʃeɪp", sp:"🔷", mean:"The form of something: long, flat, round, pointed.", ex:"The shape of a part relates to its function."},
+    {en:"efficiently", ipa:"ɪˈfɪʃəntli", sp:"✨", mean:"Working well, without wasting energy.", hook:"Your textbook glossary says simply: working well.", ex:"These shapes allow animals to move efficiently."},
+    {en:"habitat", ipa:"ˈhæbɪtæt", sp:"🏞️", mean:"The place where an animal lives.", hook:"“Habitat” and “habit” are family words. A habit is what you always do; a habitat is where an animal always lives.", ex:"My animal can live well in this habitat."},
+    {en:"adaptation", ipa:"ˌædəpˈteɪʃən", sp:"🧬", mean:"A body part or habit that helps an animal live in its home.", hook:"An adapter makes a plug fit a socket. To adapt means to fit.", ex:"I learnt about adaptation in this project."},
+    {en:"environment", ipa:"ɪnˈvaɪrənmənt", sp:"🌍", mean:"Everything around an animal: air, water, weather, plants.", ex:"These parts help animals survive in their environment."},
+    {en:"plant-eater", ipa:"ˈplænt ˌiːtər", sp:"🐄", mean:"A living thing that eats only plants.", hook:"plant + eater. Two easy words joined together.", ex:"Horses and cows are plant-eaters."},
+    {en:"animal-eater", ipa:"ˈænɪməl ˌiːtər", sp:"🐅", mean:"A living thing that eats only other animals.", ex:"Tigers and cheetahs are animal-eaters."},
+    {en:"plant-and-animal eater", ipa:"ˈplænt ənd ˈænɪməl ˌiːtər", sp:"🐻", mean:"A living thing that eats both plants and animals.", ex:"Bears and mice are plant-and-animal eaters."},
+    {en:"classify", ipa:"ˈklæsɪfaɪ", sp:"🗂️", mean:"To put things into groups that are alike.", hook:"class = a group. classify = put into groups.", ex:"How are the animals classified?"},
+    {en:"observe", ipa:"əbˈzɜːrv", sp:"🔍", mean:"To look at something carefully.", hook:"Not just “look”. Observe means look closely and notice things.", ex:"What parts of the eagle can you observe?"},
+    {en:"venom", ipa:"ˈvenəm", sp:"☠️", mean:"A poison made inside an animal's body.", ex:"Snakes use their fangs and venom to kill other animals."},
+    {en:"antivenom", ipa:"ˈæntiˌvenəm", sp:"💉", mean:"A medicine that treats a snake bite.", hook:"anti- means against. Antivenom works against venom.", ex:"Antivenom treats people who are bitten by snakes."},
+    {en:"nectar", ipa:"ˈnektər", sp:"🌺", mean:"The sweet liquid inside a flower.", hook:"Nectar juice in a carton is named after this.", ex:"Some birds feed on the nectar of flowers."}
+  ]},
+  { id:"hab", cls:"g-hab", label:"🌏 Habitat Words", words:[
+    {en:"tropical rainforest", ipa:"ˈtrɑːpɪkəl ˈreɪnfɔːrɪst", sp:"🌴", mean:"A warm, wet forest where it rains almost every day.", hook:"rain + forest. Tropical means hot, near the middle of the Earth.", ex:"The rainforest stays warm all year."},
+    {en:"desert", ipa:"ˈdezərt", sp:"🏜️", mean:"A very dry place with almost no rain.", hook:"One s = desert (sand). Two s = dessert (sweet food). Dessert has two because you want two helpings!", ex:"The desert has very little water."},
+    {en:"Arctic", ipa:"ˈɑːrktɪk", sp:"🧊", mean:"The freezing land and sea around the North Pole.", ex:"The Arctic is freezing most of the year."},
+    {en:"grassland", ipa:"ˈɡræslænd", sp:"🌾", mean:"Open land covered with grass.", hook:"grass + land. It is also called savanna.", ex:"Grasslands have a wet season and a dry season."},
+    {en:"coral reef", ipa:"ˈkɔːrəl riːf", sp:"🪸", mean:"A warm, shallow part of the ocean built from coral.", hook:"Coral is also a colour: pinkish orange.", ex:"Sunlight passes through the clear reef water."},
+    {en:"humid", ipa:"ˈhjuːmɪd", sp:"💦", mean:"The air is full of water. Sticky and wet.", hook:"A humidifier is a machine that makes a room humid.", ex:"The rainforest air is very humid and moist."},
+    {en:"freezing", ipa:"ˈfriːzɪŋ", sp:"❄️", mean:"So cold that water turns into ice.", hook:"Your freezer keeps food frozen.", ex:"Fresh water is frozen as ice in the Arctic."},
+    {en:"scarce", ipa:"skers", sp:"🚱", mean:"There is not much of it.", hook:"Do not mix it up with “scare”. Scarce means hard to find.", ex:"Water is scarce during the dry season."},
+    {en:"temperature", ipa:"ˈtemprətʃər", sp:"🌡️", mean:"How hot or cold something is.", hook:"Say TEM-pruh-cher. The middle a almost disappears.", ex:"The daily temperature reaches 45 degrees."},
+    {en:"sunlight", ipa:"ˈsʌnlaɪt", sp:"☀️", mean:"Light that comes from the sun.", hook:"sun + light. Two easy words joined.", ex:"There is very strong sunlight in the desert."}
+  ]}
+];
+
+const HABS = [
+  { id:"rain", ic:"🌴", en:"Tropical Rainforest",
+    sub:"Hot, and it rains almost every day. Under the trees it is dark.",
+    facts:["🌡️ 24–30°C all year","🌧️ Rain nearly every day","🌑 Dark on the forest floor","💦 Very humid air","🐆 Jaguar · Sloth · Toucan"],
+    probs:["It is <b>dark</b> under the tall trees.","Everything is <b>wet</b> all the time.","Food and safe homes are <b>high up</b> in the trees.","The branches are slippery."],
+    sols:["<b>Long arms</b> to climb trees, like a sloth.","A <b>gripping tail</b> to hold onto branches, like a monkey.","<b>Big eyes</b> to see in low light.","<b>Smooth, waterproof skin</b> so the rain runs off.","<b>Sharp claws</b> to grip wet bark."] },
+  { id:"desert", ic:"🏜️", en:"Hot Desert",
+    sub:"Burning hot by day, cold at night, and almost no water.",
+    facts:["🌡️ 5°C at night → 45°C by day","☀️ Very strong sunlight","🚱 Rain only a few times a year","🌬️ Dry and dusty air","🐪 Camel · Fennec fox · Scorpion"],
+    probs:["The day is <b>far too hot</b>.","The night is <b>cold</b>.","There is <b>almost no water</b>.","The sand is <b>soft and hot</b> to walk on."],
+    sols:["<b>Big ears</b> to let heat escape, like a fennec fox.","A <b>hump</b> to store fat and water, like a camel.","<b>Thick eyelashes</b> to keep sand out of the eyes.","<b>Wide, flat feet</b> to walk on soft sand without sinking.","<b>Pale fur</b> to reflect the strong sunlight."] },
+  { id:"arctic", ic:"❄️", en:"Arctic (Polar Region)",
+    sub:"Freezing all year, with strong winds and weeks of darkness.",
+    facts:["🌡️ –40°C to –10°C","🌑 No sun for weeks in winter","🧊 Water is frozen as ice","🌬️ Very cold, strong winds","🐻‍❄️ Polar bear · Arctic fox · Walrus"],
+    probs:["It is <b>freezing cold</b>.","Liquid water is <b>hard to find</b>.","Everything is white, so it is <b>hard to hide</b>.","The snow is <b>deep and soft</b>."],
+    sols:["<b>Thick fur and fat</b> to keep the body warm.","A <b>bushy tail</b> to wrap around the body, like an Arctic fox.","<b>White fur</b> to hide against the snow.","<b>Small ears</b> so less heat escapes.","<b>Wide, furry paws</b> to walk on top of the snow."] },
+  { id:"grass", ic:"🌾", en:"Grasslands (Savanna)",
+    sub:"Wide and open, with tall grass and nowhere to hide.",
+    facts:["🌡️ 20–34°C","☀️ Lots of sunlight","💧 Water is scarce in the dry season","🌬️ Windy and open","🦁 Lion · Zebra · Giraffe · Elephant"],
+    probs:["There is <b>nowhere to hide</b>.","<b>Fast hunters</b> live here.","Water is <b>scarce</b> in the dry season.","There are <b>many biting insects</b>."],
+    sols:["<b>Long legs</b> to run fast and escape.","A <b>long tail</b> to swing at insects, like a zebra.","<b>Flat teeth</b> to chew tough grass.","A <b>long neck</b> to see far and reach high leaves, like a giraffe.","A <b>striped or spotted coat</b> to hide in the tall grass."] },
+  { id:"reef", ic:"🪸", en:"Coral Reef",
+    sub:"Warm, bright and underwater. Full of hiding places.",
+    facts:["🌡️ Water 23–29°C","☀️ Very bright, clear water","🧂 Salt water","🌊 Moving water brings oxygen","🐠 Clownfish · Octopus · Sea turtle"],
+    probs:["You must <b>breathe under water</b>.","<b>Big fish hunt</b> here.","The coral has <b>narrow cracks</b> to hide inside.","The moving water <b>pushes you around</b>."],
+    sols:["<b>Gills</b> to breathe under water.","<b>Fins and a tail fin</b> to swim and steer.","<b>Bright colours</b> to hide among the coral, like a clownfish.","A <b>flat, thin body</b> to slip into narrow cracks.","<b>Suckers on its arms</b> to hold onto rocks, like an octopus."] }
+];
+
+const TRAIL = [
+  { n:"1", pg:"Textbook pages 2–3", h:"Legs, arms, fins and flippers", out:false,
+    p:"Start with the parts that move. You will meet the monkey, cheetah, frog, duck, shark, seal and sea turtle.",
+    look:"Every sentence has the same shape: <b>The ___ uses its ___ to ___.</b> Read five of them out loud." },
+  { n:"2", pg:"Textbook pages 4–5", h:"Wings and tails", out:false,
+    p:"Wings and tails. The surprising bit: a penguin uses its wings to swim, not to fly.",
+    look:"One tail does <b>four different jobs</b> — swim, hold on, drive away insects, keep warm. If your parts each do <b>two jobs</b>, your mark goes up." },
+  { n:"3", pg:"Textbook pages 6–7", h:"Teeth, tongues and beaks", out:false,
+    p:"The mouth parts. Birds have no teeth at all — they use beaks instead.",
+    look:"Do the <b>QUICK CHECK</b> on page 7. Both answers go straight into your project." },
+  { n:"4", pg:"Textbook pages 8–9", h:"1.2 — the shape fits the function", out:false,
+    p:"The most important pages in the unit. This is where the book explains why a part has the shape it has.",
+    look:"This is <b>the difference between level 4 and level 5</b> on your marking sheet. Use these shape words in your report: long, wide, broad, flat, sharp, pointed." },
+  { n:"5", pg:"Textbook pages 10–11", h:"Beak shapes, then the summary map", out:false,
+    p:"How beak shape matches food, then the “What We Have Learnt” map of the whole unit.",
+    look:"<b>Copy the map on page 11 into your notebook.</b> It takes five minutes and puts the entire unit on one page." },
+  { n:"6", pg:"Textbook pages 12–13", h:"Test Yourself and the glossary", out:false,
+    p:"Four practice questions, plus the five glossary words: animal-eater, plant-eater, plant-and-animal eater, efficiently, function.",
+    look:"Use those five words in your talk. The rubric gives marks for <b>“correct scientific language”</b> — this is exactly what it means." },
+  { n:"7", pg:"Textbook page 14", h:"Science Today — snake fangs", out:false,
+    p:"A short article about fangs, venom and antivenom.",
+    look:"This article is a <b>model for your own report</b>: part (fangs) → shape (long, sharp, hollow) → job (inject venom) → why it matters. Follow that order." },
+  { n:"8", pg:"Project sheet pages 2–3", h:"Read all five habitats, then choose", out:false,
+    p:"Compare the temperature, water, sunlight and air of each habitat, then pick one.",
+    look:"How to choose: do not pick your <b>favourite</b> habitat. Pick the one with the <b>clearest problems</b>. Clear problems make the five body parts much easier to invent." },
+  { n:"+", pg:"Go further", h:"Research one real animal", out:true,
+    p:"Pick a real animal from your habitat and study it closely. Desert → fennec fox. Arctic → arctic fox. Reef → clownfish.",
+    look:"Search for <b>the animal's name + “adaptations for kids”</b>. National Geographic Kids and BBC Earth videos are the easiest to follow." },
+  { n:"+", pg:"Go further", h:"Look up how to make a collage", out:true,
+    p:"Your project sheet offers a collage as one option. It is art made by gluing paper, magazine pictures, fabric, string and leaves onto one page.",
+    look:"Search for <b>“animal collage for kids”</b>. If a 3D model feels hard, a collage is the <b>fastest route to a high creativity mark</b>." },
+  { n:"+", pg:"Go further", h:"Practise your talk out loud", out:true,
+    p:"Use the sentence frames in section F to describe all five parts. Say it to a mirror, or to someone at home.",
+    look:"One minute is enough. Give each part about <b>ten seconds</b>: name it, describe its shape, say what it does." }
+];
+
+const TEETH = [
+  { pill:"plant-eater", cls:"p-plant", shape:"flat", why:"for grinding grass and leaves", who:"horse, cow, zebra",
+    s:"The flat teeth of a horse help it chew leaves and grass." },
+  { pill:"animal-eater", cls:"p-meat", shape:"pointed & sharp", why:"for tearing meat", who:"tiger, cheetah",
+    s:"The pointed and sharp teeth of a tiger help it tear meat." },
+  { pill:"plant-and-animal eater", cls:"p-both", shape:"both kinds", why:"sharp at the front, flat at the back", who:"bear, mouse",
+    s:"The bear has sharp teeth to tear meat and flat teeth to chew fruit." }
+];
+const BEAKS = [
+  { shape:"hooked", look:"curved at the tip", food:"meat", who:"falcon", s:"The hooked beak of a falcon helps it tear meat." },
+  { shape:"short & cone-shaped", look:"thick and strong", food:"seeds", who:"sparrow", s:"The short, sharp, cone-shaped beak of a sparrow helps it break seeds." },
+  { shape:"long & thin", look:"like a straw", food:"nectar", who:"hummingbird", s:"The long, thin beak of a hummingbird helps it obtain nectar from flowers." },
+  { shape:"long & sharp", look:"like a spear", food:"fish", who:"kingfisher", s:"The long, sharp beak of a kingfisher helps it catch fish." },
+  { shape:"big pouch", look:"a bag under the beak", food:"fish", who:"pelican", s:"The pelican uses its beak to catch fish." }
+];
+const FRAMES = [
+  { use:"Name and home", f:'My animal is called the <span class="blank"></span>. It lives in the <span class="blank"></span>.',
+    eg:"My animal is called the Sandwhisker. It lives in the desert." },
+  { use:"Part and job — the basic shape", f:'It has <span class="blank"></span>. It uses its <span class="blank"></span> to <span class="blank"></span>.',
+    eg:"It has big ears. It uses its big ears to stay cool." },
+  { use:"Add the shape — this raises your mark", f:'The <span class="blank"></span> and <span class="blank"></span> <span class="blank"></span> help it <span class="blank"></span>.',
+    eg:"The wide and flat feet help it walk on soft sand." },
+  { use:"Say why it survives", f:'This helps it survive because <span class="blank"></span>.',
+    eg:"This helps it survive because the desert has very little water." },
+  { use:"Two parts together — Reflection Q3", f:'Its <span class="blank"></span> and its <span class="blank"></span> work together to <span class="blank"></span>.',
+    eg:"Its long tail and its sharp claws work together to catch food." },
+  { use:"Start your talk", f:'Today I will show you my animal, the <span class="blank"></span>. It has five special parts.',
+    eg:"Today I will show you my animal, the Sandwhisker. It has five special parts." }
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---------- speech ---------- */
+const synth = window.speechSynthesis;
+let voice = null, rate = 0.7, current = null;
+if (!synth) document.body.classList.add("no-speech");
+function pickVoice(){
+  if (!synth) return null;
+  const vs = synth.getVoices() || [];
+  if (!vs.length) return null;
+  return vs.find(v => /^en[-_]US/i.test(v.lang) && /samantha|zira|aria|jenny|google us/i.test(v.name))
+      || vs.find(v => /^en[-_]US/i.test(v.lang)) || vs.find(v => /^en[-_]GB/i.test(v.lang))
+      || vs.find(v => /^en/i.test(v.lang)) || null;
+}
+if (synth){ voice = pickVoice(); synth.addEventListener("voiceschanged", () => { voice = pickVoice(); }); }
+function speak(text, btn){
+  if (!synth) return;
+  try{
+    synth.cancel();
+    if (current) current.classList.remove("on");
+    const u = new SpeechSynthesisUtterance(text);
+    if (!voice) voice = pickVoice();
+    if (voice) u.voice = voice;
+    u.lang = (voice && voice.lang) || "en-US";
+    u.rate = rate;
+    if (btn){ current = btn; btn.classList.add("on"); u.onend = u.onerror = () => btn.classList.remove("on"); }
+    synth.speak(u);
+  } catch(e){ document.body.classList.add("no-speech"); }
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-say]");
+  if (b) speak(b.getAttribute("data-say"), b);
+});
+const spk = (text, sm) => '<button class="spk' + (sm ? " sm" : "") + '" data-say="' + esc(text) +
+  '" aria-label="Listen">🔊</button>';
+
+const speedBtn = document.getElementById("speed");
+speedBtn.addEventListener("click", () => {
+  const slow = rate < 0.85;
+  rate = slow ? 0.95 : 0.7;
+  speedBtn.setAttribute("aria-pressed", String(!slow));
+  speedBtn.textContent = slow ? "🐇 Normal" : "🐢 Slow";
+});
+
+/* ---------- tabs ---------- */
+const tabs = document.getElementById("tabs");
+tabs.addEventListener("click", e => {
+  const t = e.target.closest(".tab");
+  if (!t) return;
+  tabs.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", String(x === t)));
+  ["words","quiz","ideas","hab","proj"].forEach(id => {
+    document.getElementById("sc-" + id).hidden = (id !== t.dataset.s);
+  });
+  window.scrollTo({ top:0, behavior:"instant" in window ? "instant" : "auto" });
+});
+
+/* ---------- words ---------- */
+const ALLW = [];
+GROUPS.forEach(g => g.words.forEach(w => ALLW.push(Object.assign({ group:g.label }, w))));
+const KEY = "hansol-animal-known-v2";
+let known = {};
+try { known = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ known = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(known)); } catch(e){} };
+const wid = (gid, en) => gid + "-" + en.replace(/\s+/g, "_");
+
+const wChips = document.getElementById("wChips");
+wChips.innerHTML = '<button class="chip" data-g="all" aria-pressed="true">All ' + ALLW.length + '</button>' +
+  GROUPS.map(g => '<button class="chip" data-g="' + g.id + '" aria-pressed="false">' + g.label + '</button>').join("");
+
+const zone = document.getElementById("wordZone");
+function drawWords(gid){
+  const list = gid === "all"
+    ? GROUPS.flatMap(g => g.words.map(w => ({ g:g.id, w })))
+    : GROUPS.find(g => g.id === gid).words.map(w => ({ g:gid, w }));
+  zone.innerHTML = list.map(({ g, w }) => {
+    const id = wid(g, w.en);
+    return '<div class="card' + (known[id] ? " known" : "") + '" data-id="' + id + '">' +
+      '<div class="ctop"><span class="em">' + w.sp + '</span><div class="nm">' +
+        '<div class="word">' + esc(w.en) + '</div><div class="ipa">/' + esc(w.ipa) + '/</div></div>' +
+        spk(w.en) + '</div>' +
+      '<p class="mean">' + esc(w.mean) + '</p>' +
+      (w.hook ? '<div class="hook"><span>' + esc(w.hook) + '</span></div>' : '') +
+      '<div class="ex">' + spk(w.ex, true) + '<span>' + esc(w.ex) + '</span></div>' +
+      '<label class="tick"><input type="checkbox"' + (known[id] ? " checked" : "") + '> I know this one</label>' +
+    '</div>';
+  }).join("");
+}
+const tallyEl = document.getElementById("tally");
+const refresh = () => {
+  tallyEl.innerHTML = '<b>' + Object.values(known).filter(Boolean).length + '</b> / ' + ALLW.length;
+};
+wChips.addEventListener("click", e => {
+  const c = e.target.closest(".chip");
+  if (!c) return;
+  wChips.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === c)));
+  drawWords(c.dataset.g);
+});
+zone.addEventListener("change", e => {
+  if (e.target.type !== "checkbox") return;
+  const card = e.target.closest(".card");
+  known[card.dataset.id] = e.target.checked;
+  card.classList.toggle("known", e.target.checked);
+  save(); refresh();
+});
+const hideBtn = document.getElementById("hideMean");
+hideBtn.addEventListener("click", () => {
+  const on = document.body.classList.toggle("hide-mean");
+  hideBtn.setAttribute("aria-pressed", String(on));
+  hideBtn.textContent = on ? "👀 Show" : "🙈 Hide";
+});
+drawWords("all"); refresh();
+
+/* ---------- ideas tables as cards ---------- */
+document.getElementById("teethZone").innerHTML = TEETH.map(t =>
+  '<div class="panel"><span class="pill ' + t.cls + '">' + esc(t.pill) + '</span>' +
+  '<h4>' + esc(t.shape) + '</h4><p>' + esc(t.why) + '</p>' +
+  '<div class="kv"><b>Animals</b><span>' + esc(t.who) + '</span></div>' +
+  '<div class="ex">' + spk(t.s, true) + '<span>' + esc(t.s) + '</span></div></div>').join("");
+
+document.getElementById("beakZone").innerHTML = BEAKS.map(b =>
+  '<div class="panel"><h4>' + esc(b.shape) + '</h4><p>' + esc(b.look) + '</p>' +
+  '<div class="kv"><b>Eats</b><span>' + esc(b.food) + '</span></div>' +
+  '<div class="kv"><b>Bird</b><span>' + esc(b.who) + '</span></div>' +
+  '<div class="ex">' + spk(b.s, true) + '<span>' + esc(b.s) + '</span></div></div>').join("");
+
+/* ---------- habitats ---------- */
+const hBtns = document.getElementById("hBtns"), hPanel = document.getElementById("hPanel");
+hBtns.innerHTML = HABS.map((h, i) =>
+  '<button class="hbtn" data-i="' + i + '" aria-pressed="' + (i === 0) + '"><span class="ic">' + h.ic + '</span>' +
+  esc(h.en) + '</button>').join("");
+function drawHab(i){
+  const h = HABS[i];
+  hPanel.innerHTML = '<h4>' + h.ic + ' ' + esc(h.en) + '</h4><p>' + esc(h.sub) + '</p>' +
+    '<div class="facts">' + h.facts.map(f => '<span>' + esc(f) + '</span>').join("") + '</div>' +
+    '<div class="hh prob">The problems of living here</div><ul class="hlist">' +
+      h.probs.map(p => '<li>' + p + '</li>').join("") + '</ul>' +
+    '<div class="hh sol">Body parts that solve them</div><ul class="hlist">' +
+      h.sols.map(s => '<li>' + s + '</li>').join("") + '</ul>';
+  hBtns.querySelectorAll(".hbtn").forEach((b, j) => b.setAttribute("aria-pressed", String(i === j)));
+}
+hBtns.addEventListener("click", e => {
+  const b = e.target.closest(".hbtn");
+  if (b) drawHab(Number(b.dataset.i));
+});
+drawHab(0);
+
+/* ---------- project ---------- */
+document.getElementById("trail").innerHTML = TRAIL.map(t =>
+  '<div class="step' + (t.out ? " out" : "") + '">' +
+  '<div class="stop"><span class="num">' + esc(t.n) + '</span><span class="pg">' + esc(t.pg) + '</span></div>' +
+  '<h5>' + esc(t.h) + '</h5><p>' + esc(t.p) + '</p><div class="look">' + t.look + '</div></div>').join("");
+
+document.getElementById("frames").innerHTML = FRAMES.map(f =>
+  '<div class="frame"><div class="use">' + esc(f.use) + '</div><div class="f">' + f.f + '</div>' +
+  '<div class="eg">' + spk(f.eg, true) + '<span>' + esc(f.eg) + '</span></div></div>').join("");
+
+/* ---------- quiz ---------- */
+(function(){
+  const chips = document.getElementById("qChips"), quizEl = document.getElementById("quiz");
+  const bodyEl = document.getElementById("qBody"), barEl = document.getElementById("qBar");
+  const norm = t => t.toLowerCase().trim().replace(/[‘’']/g,"'").replace(/[-\s]+/g," ");
+  const reEsc = t => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  function cloze(sentence, word){
+    const B = "<u></u>";
+    if (/[\s-]/.test(word)){
+      const re = new RegExp(reEsc(word).replace(/\\?[-\s]/g, "[-\\s]") + "s?", "ig");
+      return re.test(sentence) ? sentence.replace(re, B) : sentence;
+    }
+    const stem = word.toLowerCase().slice(0, Math.max(3, word.length - 2));
+    return sentence.replace(/[A-Za-z]+/g, tok => tok.toLowerCase().startsWith(stem) ? B : tok);
+  }
+  // glue the blank to any punctuation that follows it, so "." never wraps alone
+  const glue = html => html.replace(/(<u><\/u>)([.,!?;:]*)/g, '<span class="nb">$1$2</span>');
+  const shape = w => w.split("").map(c => c === " " ? " " : (c === "-" ? "-" : "_")).join(" ");
+  let pool = ALLW.slice(), queue = [], i = 0, right = 0, wrong = 0, tries = 0, missed = [];
+
+  chips.innerHTML = '<button class="chip" data-g="all" aria-pressed="true">All ' + ALLW.length + '</button>' +
+    GROUPS.map(g => '<button class="chip" data-g="' + g.id + '" aria-pressed="false">' + g.label + '</button>').join("");
+  chips.addEventListener("click", e => {
+    const c = e.target.closest(".chip");
+    if (!c) return;
+    chips.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x === c)));
+    pool = c.dataset.g === "all" ? ALLW.slice()
+      : GROUPS.find(g => g.id === c.dataset.g).words.map(w => Object.assign({ group:"" }, w));
+    start(pool);
+  });
+
+  function shuffle(a){
+    a = a.slice();
+    for (let j = a.length - 1; j > 0; j--){ const k = Math.floor(Math.random() * (j + 1)); [a[j],a[k]] = [a[k],a[j]]; }
+    return a;
+  }
+  function start(words){ queue = shuffle(words); i = 0; right = 0; wrong = 0; missed = []; ask(); }
+
+  function ask(){
+    quizEl.classList.remove("good","bad");
+    if (i >= queue.length) return finish();
+    tries = 0;
+    const w = queue[i];
+    barEl.style.width = (i / queue.length * 100) + "%";
+    bodyEl.innerHTML =
+      '<div class="qmeta"><span class="qkind">' + (w.group || "Word") + '</span>' +
+      '<span class="qsc"><b>' + right + '</b> · <i>' + wrong + '</i> · ' + (i + 1) + '/' + queue.length + '</span></div>' +
+      '<p class="qdef">' + esc(w.mean) + '</p>' +
+      (w.hook ? '<div class="qhint"><span>' + esc(w.hook) + '</span></div>' : '') +
+      '<div class="qsent">' + spk(w.ex, true) + '<span>' + glue(cloze(esc(w.ex), w.en)) + '</span></div>' +
+      '<div class="qshape" id="qShape"></div>' +
+      '<input class="qin" id="qIn" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" ' +
+        'spellcheck="false" placeholder="Type the word…" aria-label="Type the word">' +
+      '<div class="qacts"><button class="qgo" id="qGo">Check</button>' + spk(w.en) +
+        '<button class="qskip" id="qSkip">Skip</button></div>' +
+      '<div class="qmsg" id="qMsg"></div>';
+    const input = document.getElementById("qIn");
+    input.addEventListener("keydown", ev => { if (ev.key === "Enter"){ ev.preventDefault(); check(); } });
+    document.getElementById("qGo").addEventListener("click", check);
+    document.getElementById("qSkip").addEventListener("click", reveal);
+  }
+
+  function check(){
+    const w = queue[i], input = document.getElementById("qIn"), msg = document.getElementById("qMsg");
+    if (!input.value.trim()) return;
+    if (norm(input.value) === norm(w.en)){
+      right++;
+      quizEl.classList.remove("bad"); quizEl.classList.add("good");
+      msg.innerHTML = '<span class="ok">✓ Correct!</span>';
+      input.blur(); speak(w.en);
+      setTimeout(() => { i++; ask(); }, 1000);
+      return;
+    }
+    tries++;
+    quizEl.classList.remove("good"); quizEl.classList.add("bad");
+    setTimeout(() => quizEl.classList.remove("bad"), 320);
+    if (tries === 1){
+      document.getElementById("qShape").textContent = shape(w.en);
+      msg.innerHTML = '<span class="no">✗ Not quite. Here is the shape — try once more.</span>';
+      input.select();
+    } else { reveal(); }
+  }
+
+  function reveal(){
+    const w = queue[i];
+    wrong++; missed.push(w);
+    document.getElementById("qMsg").innerHTML =
+      '<span class="no">The answer is:</span><span class="ans">' + esc(w.en) + '</span>';
+    document.getElementById("qShape").textContent = shape(w.en);
+    const go = document.getElementById("qGo");
+    go.textContent = "Next →";
+    go.replaceWith(go.cloneNode(true));
+    document.getElementById("qGo").addEventListener("click", () => { i++; ask(); });
+    const inp = document.getElementById("qIn");
+    if (inp) inp.blur();
+    speak(w.en);
+  }
+
+  function finish(){
+    barEl.style.width = "100%";
+    const total = queue.length, pct = total ? Math.round(right / total * 100) : 0;
+    bodyEl.innerHTML = '<div class="qend"><div class="big">' + pct + '%</div>' +
+      '<div class="lbl">' + right + ' right out of ' + total + '</div>' +
+      (missed.length
+        ? '<div class="missed"><h5>Words to practise again</h5>' + missed.map(m => '<span>' + esc(m.en) + '</span>').join("") + '</div>'
+        : '<div class="missed"><h5>Perfect round — nothing missed! 🎉</h5></div>') +
+      '<div class="acts">' +
+        (missed.length ? '<button class="qgo" id="qRetry">Practise my ' + missed.length + ' missed words</button>' : '') +
+        '<button class="btn" id="qAgain">Start over</button></div></div>';
+    const r = document.getElementById("qRetry");
+    if (r) r.addEventListener("click", () => start(missed));
+    document.getElementById("qAgain").addEventListener("click", () => start(pool));
+  }
+  start(pool);
+})();
+</script>
+</body>
+</html>

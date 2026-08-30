@@ -17,6 +17,32 @@ One-time setup (repo owner, ~10 seconds): **Settings → Pages → Build and
 deployment → Source: _GitHub Actions_**. After the PR is merged to `master`,
 it deploys automatically and updates on every push.
 
+## 🦎 Science: Animal Parts and Their Functions
+
+A second, separate study app for Hansol's **Grade 4 Science, Unit 1** project
+("Create a New Animal for Its Habitat"). Built for a phone, in English only:
+
+**https://stanley-choi.github.io/hello-world/science/**
+
+Five tabs along the bottom:
+
+- **Words** — 67 words from the unit, each with IPA pronunciation, a plain
+  definition, an example sentence, and a tap-to-hear button. 42 of them carry a
+  memory hook built from a familiar word (*adaptation* ← adapter, *humid* ←
+  humidifier). Filter by group; tick off the ones she knows.
+- **Quiz** — read the definition, see the example sentence with the word blanked
+  out, and type it. A wrong answer reveals the shape of the word (`_ _ _ _`) for
+  a second try; missed words come back at the end.
+- **Ideas** — the two ideas the unit is built on, plus the teeth and beak shapes.
+- **Habitat** — the five habitats from the project sheet. Each one lists the
+  problems of living there next to body parts that solve them.
+- **Project** — the reading order through the textbook, fill-in-the-blank
+  sentence frames for the report, and a checklist drawn from the marking rubric.
+
+Read-aloud uses the browser's built-in speech engine, so there is nothing to
+install and no network call. On iOS, **Share → Add to Home Screen** makes it
+open like an app.
+
 ## 💻 Use it offline
 
 Download `index.html` and `vocab.js` into the same folder and open
