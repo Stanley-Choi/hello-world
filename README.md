@@ -59,6 +59,10 @@ made the person rich, warm and caring. A comparison table and a list of ideas
 to borrow close the page. Links to real photographs are given at the end of
 every story. Single self-contained file: `heroes/index.html`.
 
+The page has an A4 print layout (one story per sheet, about 21 pages). Print
+it from the browser with "Background graphics" turned on, or use the
+ready-made `heroes/nine-generous-fortunes.pdf`.
+
 ## 💻 Use it offline
 
 Download `index.html` and `vocab.js` into the same folder and open
