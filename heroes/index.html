@@ -199,6 +199,78 @@
   .ideas li{padding-left:.2rem}
   .credits{margin-top:3rem; font-size:.85rem; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:1rem}
   .top{font-size:.85rem; margin-top:1.6rem; display:inline-block}
+  /* ---------- read aloud ---------- */
+  .reader{display:flex; flex-wrap:wrap; gap:.6rem .9rem; align-items:center; font-size:.9rem; color:var(--ink-soft)}
+  .reader label{font-weight:700; font-size:.78rem; text-transform:uppercase; letter-spacing:.08em}
+  .reader select{font:inherit; font-size:.9rem; padding:.35rem .5rem; border:1px solid var(--line); background:var(--paper); color:var(--ink); border-radius:6px; max-width:100%}
+  .btn{
+    font:inherit; font-weight:700; font-size:.9rem; line-height:1.2;
+    padding:.5rem .95rem .5rem .8rem; border:1.5px solid var(--ink); border-radius:999px;
+    background:var(--paper); color:var(--ink); cursor:pointer;
+    display:inline-flex; gap:.45rem; align-items:center;
+  }
+  .btn svg{width:16px; height:16px; flex:none; fill:currentColor}
+  .btn:hover{background:var(--gold-soft)}
+  .btn[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
+  .listen-btn{margin:-.6rem 0 1.4rem}
+  .speaking{background:var(--gold-soft); box-shadow:0 0 0 7px var(--gold-soft); border-radius:3px}
+  blockquote.speaking{box-shadow:0 0 0 7px var(--gold-soft), inset 3px 0 0 var(--sea)}
+  #reader-bar{
+    position:fixed; left:50%; bottom:1rem; transform:translateX(-50%); z-index:10;
+    max-width:calc(100% - 32px); box-sizing:border-box;
+    background:var(--ink); color:var(--paper); font-size:.9rem;
+    padding:.5rem .6rem .5rem 1rem; border-radius:999px;
+    display:flex; gap:.5rem; align-items:center; box-shadow:0 12px 30px -12px rgba(0,0,0,.6);
+  }
+  #reader-bar[hidden]{display:none}
+  #reader-bar .now{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:40vw}
+  .bar-btn{font:inherit; font-weight:700; font-size:.85rem; padding:.35rem .75rem; border:0; border-radius:999px; background:var(--paper); color:var(--ink); cursor:pointer}
+  .bar-btn:hover{background:var(--gold-soft)}
+  @media print{ .reader, .listen-btn, #reader-bar{display:none !important} .speaking{background:none; box-shadow:none} }
+
+  /* ---------- glossary ---------- */
+  .glossary{border-top:2px solid var(--gold); padding-top:2.5rem; margin-top:3rem}
+  .glossary h2{font-size:clamp(1.7rem, 4vw, 2.1rem); margin-bottom:1rem}
+  .gloss-tools{display:flex; flex-wrap:wrap; gap:.6rem 1.2rem; align-items:center; margin:1.2rem 0 1.4rem; font-size:.92rem}
+  .gloss-tools .toggle{display:inline-flex; gap:.45rem; align-items:center; font-weight:700; cursor:pointer}
+  .gloss-tools input[type="checkbox"]{width:1.1rem; height:1.1rem; accent-color:var(--gold)}
+  .progress{color:var(--ink-soft); font-variant-numeric:tabular-nums}
+  .btn.small{font-size:.8rem; padding:.35rem .75rem}
+  .gloss{list-style:none; margin:0; padding:0; display:grid; gap:.6rem}
+  .entry{background:var(--paper); border:1px solid var(--line); padding:.85rem 1rem .9rem}
+  .entry-head{display:flex; flex-wrap:wrap; align-items:center; gap:.5rem .6rem; margin-bottom:.35rem}
+  .entry .know{width:1.15rem; height:1.15rem; accent-color:var(--gold); margin:0; cursor:pointer}
+  .entry .term{font-family:"Fraunces", Georgia, serif; font-variation-settings:"SOFT" 100; font-weight:700; font-size:1.25rem; cursor:pointer}
+  .entry .say{border:1px solid var(--line); background:var(--paper); color:var(--ink); width:1.7rem; height:1.7rem; border-radius:50%; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; padding:0}
+  .entry .say svg{width:14px; height:14px; fill:currentColor}
+  .entry .say:hover{background:var(--gold-soft)}
+  .entry .from{margin-left:auto; font-size:.8rem; color:var(--ink-soft); text-decoration:none}
+  .entry .from:hover{text-decoration:underline}
+  .entry .meaning{margin:0 0 .35rem; font-size:1rem}
+  .entry .example{margin:0; font-size:.92rem; color:var(--ink-soft)}
+  .entry mark{background:var(--gold-soft); color:var(--ink); padding:0 .15em; border-radius:2px; font-weight:700}
+  .entry.known{opacity:.55}
+  .gloss.quiz .entry{cursor:pointer}
+  .gloss.quiz .entry:not(.revealed) .meaning{display:none}
+  .gloss.quiz .entry:not(.revealed) .example{filter:blur(0)}
+  .gloss.quiz .entry:not(.revealed) .entry-head::after{content:"tap to reveal"; flex-basis:100%; font-size:.75rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.08em}
+  .gloss.quiz .entry .from{margin-left:0}
+  @media (min-width:640px){ .gloss{grid-template-columns:1fr 1fr} }
+  @media print{
+    .glossary{break-before:page; border-top:0; padding-top:0; margin-top:0}
+    .gloss-tools, .entry .say{display:none !important}
+    .gloss{display:block; column-count:2; column-gap:8mm}
+    .entry{break-inside:avoid; margin-bottom:2.2mm; padding:.55rem .7rem .6rem; font-size:9pt}
+    .entry .term{font-size:11pt}
+    .entry .meaning{font-size:9pt}
+    .entry .example{font-size:8pt}
+    .entry .know{width:.9rem; height:.9rem}
+    .gloss.quiz .entry:not(.revealed) .meaning{display:block}
+    .gloss.quiz .entry:not(.revealed) .entry-head::after{content:none}
+    .entry.known{opacity:1}
+    .credits-wrap{padding-top:0; border-top:0}
+  }
+
   /* ---------- print (A4) ---------- */
   @media print{
     :root, :root[data-theme="dark"]{
@@ -265,6 +337,7 @@
   </div>
   <h1>Nine Generous Fortunes</h1>
   <p class="lede">True stories of people who became very rich, and then used their money to look after the towns, islands and neighbours around them. Some lived three hundred years ago. One is still alive and still giving.</p>
+  <div class="reader" id="reader-panel">Read-aloud needs a browser with speech support, such as Safari, Chrome or Edge.</div>
   <p class="for print-hint">Printing: this page is laid out for A4, with one story per sheet. In the print dialog, turn on "Background graphics" so the illustrations keep their colours. Or <a href="nine-generous-fortunes.pdf">download the ready-made A4 PDF</a>.</p>
   <p class="for">Collected for Hansol's project about an imaginary person who is rich, warm and caring. Every story here really happened. Read them slowly, and borrow whatever you like for your own character.</p>
 </header>
@@ -281,6 +354,7 @@
     <li><span class="when">1867 – 1919</span><span><a href="#walker">Madam C. J. Walker</a><span class="tag">The washerwoman who built a company for women</span></span></li>
     <li><span class="when">1931 – 2023</span><span><a href="#feeney">Chuck Feeney</a><span class="tag">The billionaire who wanted to die with nothing</span></span></li>
     <li><span class="when">1946 – now</span><span><a href="#dolly">Dolly Parton</a><span class="tag">The Book Lady</span></span></li>
+    <li><span class="when">at the end</span><span><a href="#glossary">Glossary</a><span class="tag">64 words from the stories, with meanings and example sentences</span></span></li>
   </ol>
 </nav>
 
@@ -1126,10 +1200,1001 @@
     <li><b>Let them be human.</b> Carnegie's workers suffered. Salt banned pubs. Real generous people are not perfect, and a character with one flaw is more interesting than one without.</li>
   </ol>
 
+</section>
+<section class="glossary" id="glossary">
+  <h2>Glossary: words from the stories</h2>
+  <p>64 words worth knowing, in alphabetical order. Each one comes with its meaning and the exact sentence where it appears in the stories, so you can see how it is used. Tick the box when you know a word. To test yourself, hide the meanings and tap a word to check.</p>
+  <div class="gloss-tools" id="gloss-tools">
+    <label class="toggle"><input type="checkbox" id="hide-meanings"> Hide meanings (test yourself)</label>
+    <span class="progress" id="gloss-progress">0 of 64 ticked</span>
+    <button type="button" class="btn small" id="gloss-reset">Untick all</button>
+  </div>
+  <ol class="gloss" id="gloss">
+      <li class="entry" id="g-agent">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-agent" aria-label="I know the word agent">
+          <label class="term" for="know-agent">agent</label>
+          <button type="button" class="say" data-say="agent. Walker trained other Black women to become &quot;Walker agents&quot;, selling her products in their own neighbourhoods and teaching her method to their customers." aria-label="Say agent and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">A person who sells a company&#x27;s products in their own area and keeps part of the money.</p>
+        <p class="example">“Walker trained other Black women to become &quot;Walker <mark>agents</mark>&quot;, selling her products in their own neighbourhoods and teaching her method to their customers.”</p>
+      </li>
+      <li class="entry" id="g-almshouse">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-almshouse" aria-label="I know the word almshouse">
+          <label class="term" for="know-almshouse">almshouse</label>
+          <button type="button" class="say" data-say="almshouse. It had a row of almshouses where old and sick workers could live for free with a small pension." aria-label="Say almshouse and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#salt">Titus Salt</a>
+        </div>
+        <p class="meaning">A free home for people who are old, sick or poor.</p>
+        <p class="example">“It had a row of <mark>almshouses</mark> where old and sick workers could live for free with a small pension.”</p>
+      </li>
+      <li class="entry" id="g-anonymous">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-anonymous" aria-label="I know the word anonymous">
+          <label class="term" for="know-anonymous">anonymous</label>
+          <button type="button" class="say" data-say="anonymous. The people who received the money were told only that it came from an anonymous donor who would stop giving if they ever told." aria-label="Say anonymous and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#feeney">Chuck Feeney</a>
+        </div>
+        <p class="meaning">Without giving your name.</p>
+        <p class="example">“The people who received the money were told only that it came from an <mark>anonymous</mark> donor who would stop giving if they ever told.”</p>
+      </li>
+      <li class="entry" id="g-architect">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-architect" aria-label="I know the word architect">
+          <label class="term" for="know-architect">architect</label>
+          <button type="button" class="say" data-say="architect. The schools themselves were designed with care by architects, and the plans were given away free." aria-label="Say architect and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#rosenwald">Julius Rosenwald</a>
+        </div>
+        <p class="meaning">A person who designs buildings.</p>
+        <p class="example">“The schools themselves were designed with care by <mark>architects</mark>, and the plans were given away free.”</p>
+      </li>
+      <li class="entry" id="g-ashamed">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-ashamed" aria-label="I know the word ashamed">
+          <label class="term" for="know-ashamed">ashamed</label>
+          <button type="button" class="say" data-say="ashamed. Lee Parton had been ashamed all his life that he could not read." aria-label="Say ashamed and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#dolly">Dolly Parton</a>
+        </div>
+        <p class="meaning">Feeling bad about yourself because of something you did or cannot do.</p>
+        <p class="example">“Lee Parton had been <mark>ashamed</mark> all his life that he could not read.”</p>
+      </li>
+      <li class="entry" id="g-bale">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-bale" aria-label="I know the word bale">
+          <label class="term" for="know-bale">bale</label>
+          <button type="button" class="say" data-say="bale. In 1836, in a warehouse in Liverpool, he found some bales of a strange wool nobody wanted." aria-label="Say bale and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#salt">Titus Salt</a>
+        </div>
+        <p class="meaning">A big bundle of wool, cotton or hay tied up tightly.</p>
+        <p class="example">“In 1836, in a warehouse in Liverpool, he found some <mark>bales</mark> of a strange wool nobody wanted.”</p>
+      </li>
+      <li class="entry" id="g-catalogue">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-catalogue" aria-label="I know the word catalogue">
+          <label class="term" for="know-catalogue">catalogue</label>
+          <button type="button" class="say" data-say="catalogue. In 1895 he was offered a chance to buy a share of a small mail-order company in Chicago that sold watches and, increasingly, everything else, through a thick catalogue that farmers ordered from by post." aria-label="Say catalogue and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#rosenwald">Julius Rosenwald</a>
+        </div>
+        <p class="meaning">A thick book showing things you can order and buy by post.</p>
+        <p class="example">“In 1895 he was offered a chance to buy a share of a small mail-order company in Chicago that sold watches and, increasingly, everything else, through a thick <mark>catalogue</mark> that farmers ordered from by post.”</p>
+      </li>
+      <li class="entry" id="g-charity">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-charity" aria-label="I know the word charity">
+          <label class="term" for="know-charity">charity</label>
+          <button type="button" class="say" data-say="charity. They went to the clubs that had done the most charity in their own towns." aria-label="Say charity and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">Giving money or help to people who need it, or a group that does this.</p>
+        <p class="example">“They went to the clubs that had done the most <mark>charity</mark> in their own towns.”</p>
+      </li>
+      <li class="entry" id="g-cholera">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-cholera" aria-label="I know the word cholera">
+          <label class="term" for="know-cholera">cholera</label>
+          <button type="button" class="say" data-say="cholera. Diseases like cholera swept through every few years." aria-label="Say cholera and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#salt">Titus Salt</a>
+        </div>
+        <p class="meaning">A dangerous disease spread by dirty water.</p>
+        <p class="example">“Diseases like <mark>cholera</mark> swept through every few years.”</p>
+      </li>
+      <li class="entry" id="g-cottage">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-cottage" aria-label="I know the word cottage">
+          <label class="term" for="know-cottage">cottage</label>
+          <button type="button" class="say" data-say="cottage. Andrew Carnegie was born in a one-room cottage in Dunfermline, Scotland, in 1835." aria-label="Say cottage and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#carnegie">Andrew Carnegie</a>
+        </div>
+        <p class="meaning">A small, simple house, often in the countryside.</p>
+        <p class="example">“Andrew Carnegie was born in a one-room <mark>cottage</mark> in Dunfermline, Scotland, in 1835.”</p>
+      </li>
+      <li class="entry" id="g-debt">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-debt" aria-label="I know the word debt">
+          <label class="term" for="know-debt">debt</label>
+          <button type="button" class="say" data-say="debt. And he took out the papers that listed everyone who owed the family money and burned them, saying that you cannot collect a debt from someone who cannot eat." aria-label="Say debt and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#choi">The Choi family</a>
+        </div>
+        <p class="meaning">Money that you owe to someone.</p>
+        <p class="example">“And he took out the papers that listed everyone who owed the family money and burned them, saying that you cannot collect a <mark>debt</mark> from someone who cannot eat.”</p>
+      </li>
+      <li class="entry" id="g-deed">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-deed" aria-label="I know the word deed">
+          <label class="term" for="know-deed">deed</label>
+          <button type="button" class="say" data-say="deed. They signed a deed giving their farm, the very farm Milton was born on, to a new school for orphan boys." aria-label="Say deed and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#hershey">Milton Hershey</a>
+        </div>
+        <p class="meaning">A legal paper that gives something you own to someone else.</p>
+        <p class="example">“They signed a <mark>deed</mark> giving their farm, the very farm Milton was born on, to a new school for orphan boys.”</p>
+      </li>
+      <li class="entry" id="g-disgraced">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-disgraced" aria-label="I know the word disgraced">
+          <label class="term" for="know-disgraced">disgraced</label>
+          <button type="button" class="say" data-say="disgraced. His most famous line was blunt: the man who dies rich dies disgraced." aria-label="Say disgraced and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#carnegie">Andrew Carnegie</a>
+        </div>
+        <p class="meaning">Having lost people&#x27;s respect; shamed.</p>
+        <p class="example">“His most famous line was blunt: the man who dies rich dies <mark>disgraced</mark>.”</p>
+      </li>
+      <li class="entry" id="g-donor">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-donor" aria-label="I know the word donor">
+          <label class="term" for="know-donor">donor</label>
+          <button type="button" class="say" data-say="donor. The people who received the money were told only that it came from an anonymous donor who would stop giving if they ever told." aria-label="Say donor and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#feeney">Chuck Feeney</a>
+        </div>
+        <p class="meaning">A person who gives money or things to help others.</p>
+        <p class="example">“The people who received the money were told only that it came from an anonymous <mark>donor</mark> who would stop giving if they ever told.”</p>
+      </li>
+      <li class="entry" id="g-employer">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-employer" aria-label="I know the word employer">
+          <label class="term" for="know-employer">employer</label>
+          <button type="button" class="say" data-say="employer. Today Dollywood is the biggest employer in the county, with thousands of jobs, and it brings millions of visitors to the mountains every year." aria-label="Say employer and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#dolly">Dolly Parton</a>
+        </div>
+        <p class="meaning">A person or company that gives people jobs.</p>
+        <p class="example">“Today Dollywood is the biggest <mark>employer</mark> in the county, with thousands of jobs, and it brings millions of visitors to the mountains every year.”</p>
+      </li>
+      <li class="entry" id="g-famine">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-famine" aria-label="I know the word famine">
+          <label class="term" for="know-famine">famine</label>
+          <button type="button" class="say" data-say="famine. But the family became famous in 1671, in the middle of a terrible famine." aria-label="Say famine and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#choi">The Choi family</a>
+        </div>
+        <p class="meaning">A time when there is so little food that many people go hungry or die.</p>
+        <p class="example">“But the family became famous in 1671, in the middle of a terrible <mark>famine</mark>.”</p>
+      </li>
+      <li class="entry" id="g-fortune">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-fortune" aria-label="I know the word fortune">
+          <label class="term" for="know-fortune">fortune</label>
+          <button type="button" class="say" data-say="fortune. She wrote thousands of songs, sold millions of records, starred in films and built a fortune." aria-label="Say fortune and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#dolly">Dolly Parton</a>
+        </div>
+        <p class="meaning">A very large amount of money.</p>
+        <p class="example">“She wrote thousands of songs, sold millions of records, starred in films and built a <mark>fortune</mark>.”</p>
+      </li>
+      <li class="entry" id="g-foundation">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-foundation" aria-label="I know the word foundation">
+          <label class="term" for="know-foundation">foundation</label>
+          <button type="button" class="say" data-say="foundation. He signed over his entire share of the company, almost everything he owned, to a foundation he had set up in Bermuda called Atlantic Philanthropies." aria-label="Say foundation and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#feeney">Chuck Feeney</a>
+        </div>
+        <p class="meaning">An organisation set up to give money to good causes.</p>
+        <p class="example">“He signed over his entire share of the company, almost everything he owned, to a <mark>foundation</mark> he had set up in Bermuda called Atlantic Philanthropies.”</p>
+      </li>
+      <li class="entry" id="g-generation">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-generation" aria-label="I know the word generation">
+          <label class="term" for="know-generation">generation</label>
+          <button type="button" class="say" data-say="generation. Most rich families in old Korea lost everything within a few generations, sometimes because of bad luck, and sometimes because angry, hungry neighbours came and burned the house down." aria-label="Say generation and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#choi">The Choi family</a>
+        </div>
+        <p class="meaning">All the people born around the same time; in a family, parents are one generation and children the next.</p>
+        <p class="example">“Most rich families in old Korea lost everything within a few <mark>generations</mark>, sometimes because of bad luck, and sometimes because angry, hungry neighbours came and burned the house down.”</p>
+      </li>
+      <li class="entry" id="g-generously">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-generously" aria-label="I know the word generously">
+          <label class="term" for="know-generously">generously</label>
+          <button type="button" class="say" data-say="generously. Treat every guest generously." aria-label="Say generously and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#choi">The Choi family</a>
+        </div>
+        <p class="meaning">In a kind way that gives more than is expected.</p>
+        <p class="example">“Treat every guest <mark>generously</mark>.”</p>
+      </li>
+      <li class="entry" id="g-grant">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-grant" aria-label="I know the word grant">
+          <label class="term" for="know-grant">grant</label>
+          <button type="button" class="say" data-say="grant. In 2020, after giving away eight billion dollars, Atlantic Philanthropies made its final grant and shut its doors, exactly as he had planned." aria-label="Say grant and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#feeney">Chuck Feeney</a>
+        </div>
+        <p class="meaning">Money given by an organisation for a particular purpose.</p>
+        <p class="example">“In 2020, after giving away eight billion dollars, Atlantic Philanthropies made its final <mark>grant</mark> and shut its doors, exactly as he had planned.”</p>
+      </li>
+      <li class="entry" id="g-great-depression">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-great-depression" aria-label="I know the word Great Depression">
+          <label class="term" for="know-great-depression">Great Depression</label>
+          <button type="button" class="say" data-say="Great Depression. Charles Feeney grew up in Elizabeth, New Jersey, during the Great Depression, in an Irish-American family with very little." aria-label="Say Great Depression and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#feeney">Chuck Feeney</a>
+        </div>
+        <p class="meaning">The years after 1929 when businesses failed and huge numbers of people had no work.</p>
+        <p class="example">“Charles Feeney grew up in Elizabeth, New Jersey, during the <mark>Great Depression</mark>, in an Irish-American family with very little.”</p>
+      </li>
+      <li class="entry" id="g-heritage">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-heritage" aria-label="I know the word heritage">
+          <label class="term" for="know-heritage">heritage</label>
+          <button type="button" class="say" data-say="heritage. The mill has become a gallery, the houses are still lived in, and in 2001 the whole town was named a World Heritage Site, like the pyramids or the Great Wall, because it changed the way people thought a factory town could be." aria-label="Say heritage and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#salt">Titus Salt</a>
+        </div>
+        <p class="meaning">Important things from the past that are kept for the future.</p>
+        <p class="example">“The mill has become a gallery, the houses are still lived in, and in 2001 the whole town was named a World <mark>Heritage</mark> Site, like the pyramids or the Great Wall, because it changed the way people thought a factory town could be.”</p>
+      </li>
+      <li class="entry" id="g-honest">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-honest" aria-label="I know the word honest">
+          <label class="term" for="know-honest">honest</label>
+          <button type="button" class="say" data-say="honest. She was known for being honest and for giving fair prices, so people kept coming back." aria-label="Say honest and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#mandeok">Kim Man-deok</a>
+        </div>
+        <p class="meaning">Truthful; not cheating or lying.</p>
+        <p class="example">“She was known for being <mark>honest</mark> and for giving fair prices, so people kept coming back.”</p>
+      </li>
+      <li class="entry" id="g-honorary">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-honorary" aria-label="I know the word honorary">
+          <label class="term" for="know-honorary">honorary</label>
+          <button type="button" class="say" data-say="honorary. He gave her an honorary title as a medical woman, which allowed her, legally, to leave the island." aria-label="Say honorary and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#mandeok">Kim Man-deok</a>
+        </div>
+        <p class="meaning">Given as an honour, not because you did the usual job for it.</p>
+        <p class="example">“He gave her an <mark>honorary</mark> title as a medical woman, which allowed her, legally, to leave the island.”</p>
+      </li>
+      <li class="entry" id="g-independence">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-independence" aria-label="I know the word independence">
+          <label class="term" for="know-independence">independence</label>
+          <button type="button" class="say" data-say="independence. He lived through the years when Japan ruled Korea, and he secretly sent money to the Korean independence fighters in Shanghai." aria-label="Say independence and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#choi">The Choi family</a>
+        </div>
+        <p class="meaning">Being free from the control of another country or person.</p>
+        <p class="example">“He lived through the years when Japan ruled Korea, and he secretly sent money to the Korean <mark>independence</mark> fighters in Shanghai.”</p>
+      </li>
+      <li class="entry" id="g-inspire">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-inspire" aria-label="I know the word inspire">
+          <label class="term" for="know-inspire">inspire</label>
+          <button type="button" class="say" data-say="inspire. Bill Gates and Warren Buffett, two of the richest men in the world, said that Feeney was the person who inspired them to start their own promise to give away most of their fortunes." aria-label="Say inspire and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#feeney">Chuck Feeney</a>
+        </div>
+        <p class="meaning">To make someone want to do something good or great.</p>
+        <p class="example">“Bill Gates and Warren Buffett, two of the richest men in the world, said that Feeney was the person who <mark>inspired</mark> them to start their own promise to give away most of their fortunes.”</p>
+      </li>
+      <li class="entry" id="g-invest">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-invest" aria-label="I know the word invest">
+          <label class="term" for="know-invest">invest</label>
+          <button type="button" class="say" data-say="invest. He learned to operate the telegraph by ear, got a job with the railroad, saved his money and invested it cleverly." aria-label="Say invest and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#carnegie">Andrew Carnegie</a>
+        </div>
+        <p class="meaning">To use money in a way that you hope will make more money later.</p>
+        <p class="example">“He learned to operate the telegraph by ear, got a job with the railroad, saved his money and <mark>invested</mark> it cleverly.”</p>
+      </li>
+      <li class="entry" id="g-laid-off">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-laid-off" aria-label="I know the word laid off">
+          <label class="term" for="know-laid-off">laid off</label>
+          <button type="button" class="say" data-say="laid off. Hershey looked at his town and decided that nobody in it would be laid off." aria-label="Say laid off and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#hershey">Milton Hershey</a>
+        </div>
+        <p class="meaning">Told by your employer that there is no more work for you.</p>
+        <p class="example">“Hershey looked at his town and decided that nobody in it would be <mark>laid off</mark>.”</p>
+      </li>
+      <li class="entry" id="g-lawsuit">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-lawsuit" aria-label="I know the word lawsuit">
+          <label class="term" for="know-lawsuit">lawsuit</label>
+          <button type="button" class="say" data-say="lawsuit. The secret only came out in 1997, because of a business lawsuit that forced the paperwork into the open." aria-label="Say lawsuit and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#feeney">Chuck Feeney</a>
+        </div>
+        <p class="meaning">An argument that is taken to a court of law.</p>
+        <p class="example">“The secret only came out in 1997, because of a business <mark>lawsuit</mark> that forced the paperwork into the open.”</p>
+      </li>
+      <li class="entry" id="g-loom">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-loom" aria-label="I know the word loom">
+          <label class="term" for="know-loom">loom</label>
+          <button type="button" class="say" data-say="loom. His father wove cloth on a hand loom at home." aria-label="Say loom and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#carnegie">Andrew Carnegie</a>
+        </div>
+        <p class="meaning">A machine for weaving thread into cloth.</p>
+        <p class="example">“His father wove cloth on a hand <mark>loom</mark> at home.”</p>
+      </li>
+      <li class="entry" id="g-lumber">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-lumber" aria-label="I know the word lumber">
+          <label class="term" for="know-lumber">lumber</label>
+          <button type="button" class="say" data-say="lumber. Families who had almost nothing gave what they had: a few dollars, a wagonload of lumber, days of free labour, a corner of a field to build on." aria-label="Say lumber and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#rosenwald">Julius Rosenwald</a>
+        </div>
+        <p class="meaning">Wood that has been cut into boards for building.</p>
+        <p class="example">“Families who had almost nothing gave what they had: a few dollars, a wagonload of <mark>lumber</mark>, days of free labour, a corner of a field to build on.”</p>
+      </li>
+      <li class="entry" id="g-luxury">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-luxury" aria-label="I know the word luxury">
+          <label class="term" for="know-luxury">luxury</label>
+          <button type="button" class="say" data-say="luxury. Chocolate was a luxury then, made in Switzerland and eaten by the rich." aria-label="Say luxury and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#hershey">Milton Hershey</a>
+        </div>
+        <p class="meaning">Something expensive and pleasant that you do not really need.</p>
+        <p class="example">“Chocolate was a <mark>luxury</mark> then, made in Switzerland and eaten by the rich.”</p>
+      </li>
+      <li class="entry" id="g-magistrate">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-magistrate" aria-label="I know the word magistrate">
+          <label class="term" for="know-magistrate">magistrate</label>
+          <button type="button" class="say" data-say="magistrate. When she was about twenty, she did something bold: she went to the island&#x27;s magistrate and begged him to erase her name from the gisaeng register and give back her family&#x27;s status as ordinary free people." aria-label="Say magistrate and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#mandeok">Kim Man-deok</a>
+        </div>
+        <p class="meaning">The official the king sent to govern a town or an island.</p>
+        <p class="example">“When she was about twenty, she did something bold: she went to the island&#x27;s <mark>magistrate</mark> and begged him to erase her name from the gisaeng register and give back her family&#x27;s status as ordinary free people.”</p>
+      </li>
+      <li class="entry" id="g-mansion">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-mansion" aria-label="I know the word mansion">
+          <label class="term" for="know-mansion">mansion</label>
+          <button type="button" class="say" data-say="mansion. Madam Walker died in 1919, at fifty-one, in a mansion she had built beside the Hudson River, a house so grand that it was meant to show every Black child in America what was possible." aria-label="Say mansion and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">A very large, grand house.</p>
+        <p class="example">“Madam Walker died in 1919, at fifty-one, in a <mark>mansion</mark> she had built beside the Hudson River, a house so grand that it was meant to show every Black child in America what was possible.”</p>
+      </li>
+      <li class="entry" id="g-match">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-match" aria-label="I know the word match">
+          <label class="term" for="know-match">match</label>
+          <button type="button" class="say" data-say="match. Instead, a Black community that wanted one had to raise part of the money itself, the local government had to contribute part, and then Rosenwald would match it." aria-label="Say match and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#rosenwald">Julius Rosenwald</a>
+        </div>
+        <p class="meaning">To give the same amount of money that someone else gives.</p>
+        <p class="example">“Instead, a Black community that wanted one had to raise part of the money itself, the local government had to contribute part, and then Rosenwald would <mark>match</mark> it.”</p>
+      </li>
+      <li class="entry" id="g-mayor">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-mayor" aria-label="I know the word mayor">
+          <label class="term" for="know-mayor">mayor</label>
+          <button type="button" class="say" data-say="mayor. When he became mayor of Bradford in 1848, he tried to make factory owners fit smoke burners to their chimneys." aria-label="Say mayor and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#salt">Titus Salt</a>
+        </div>
+        <p class="meaning">The person chosen to lead a town or city.</p>
+        <p class="example">“When he became <mark>mayor</mark> of Bradford in 1848, he tried to make factory owners fit smoke burners to their chimneys.”</p>
+      </li>
+      <li class="entry" id="g-merchant">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-merchant" aria-label="I know the word merchant">
+          <label class="term" for="know-merchant">merchant</label>
+          <button type="button" class="say" data-say="merchant. And the island still tells the story of the merchant who spent her fortune on rice." aria-label="Say merchant and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#mandeok">Kim Man-deok</a>
+        </div>
+        <p class="meaning">A person who buys and sells goods to make money.</p>
+        <p class="example">“And the island still tells the story of the <mark>merchant</mark> who spent her fortune on rice.”</p>
+      </li>
+      <li class="entry" id="g-ointment">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-ointment" aria-label="I know the word ointment">
+          <label class="term" for="know-ointment">ointment</label>
+          <button type="button" class="say" data-say="ointment. Then she began mixing her own, at first with the help of a company she worked for, and later on her own, until she had a healing ointment she called Wonderful Hair Grower." aria-label="Say ointment and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">A smooth cream you rub on skin to heal it.</p>
+        <p class="example">“Then she began mixing her own, at first with the help of a company she worked for, and later on her own, until she had a healing <mark>ointment</mark> she called Wonderful Hair Grower.”</p>
+      </li>
+      <li class="entry" id="g-orphan">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-orphan" aria-label="I know the word orphan">
+          <label class="term" for="know-orphan">orphan</label>
+          <button type="button" class="say" data-say="orphan. They signed a deed giving their farm, the very farm Milton was born on, to a new school for orphan boys." aria-label="Say orphan and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#hershey">Milton Hershey</a>
+        </div>
+        <p class="meaning">A child whose parents have died.</p>
+        <p class="example">“They signed a deed giving their farm, the very farm Milton was born on, to a new school for <mark>orphan</mark> boys.”</p>
+      </li>
+      <li class="entry" id="g-pedlar">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-pedlar" aria-label="I know the word pedlar">
+          <label class="term" for="know-pedlar">pedlar</label>
+          <button type="button" class="say" data-say="pedlar. His father was a pedlar and then a clothing shopkeeper, and Julius left school at sixteen to learn the same trade in New York." aria-label="Say pedlar and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#rosenwald">Julius Rosenwald</a>
+        </div>
+        <p class="meaning">A person who travels around selling small things.</p>
+        <p class="example">“His father was a <mark>pedlar</mark> and then a clothing shopkeeper, and Julius left school at sixteen to learn the same trade in New York.”</p>
+      </li>
+      <li class="entry" id="g-pension">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-pension" aria-label="I know the word pension">
+          <label class="term" for="know-pension">pension</label>
+          <button type="button" class="say" data-say="pension. It had a row of almshouses where old and sick workers could live for free with a small pension." aria-label="Say pension and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#salt">Titus Salt</a>
+        </div>
+        <p class="meaning">Money paid regularly to people who are too old or too ill to work.</p>
+        <p class="example">“It had a row of almshouses where old and sick workers could live for free with a small <mark>pension</mark>.”</p>
+      </li>
+      <li class="entry" id="g-plantation">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-plantation" aria-label="I know the word plantation">
+          <label class="term" for="know-plantation">plantation</label>
+          <button type="button" class="say" data-say="plantation. She was born in 1867 in a cabin on a cotton plantation in Louisiana, the fifth child in her family and the first one born free." aria-label="Say plantation and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">A huge farm in the American South where, before 1865, enslaved people were forced to work.</p>
+        <p class="example">“She was born in 1867 in a cabin on a cotton <mark>plantation</mark> in Louisiana, the fifth child in her family and the first one born free.”</p>
+      </li>
+      <li class="entry" id="g-porridge">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-porridge" aria-label="I know the word porridge">
+          <label class="term" for="know-porridge">porridge</label>
+          <button type="button" class="say" data-say="porridge. He set up a giant iron pot in the courtyard and cooked porridge for anyone who came." aria-label="Say porridge and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#choi">The Choi family</a>
+        </div>
+        <p class="meaning">A soft, warm food made by boiling grain such as rice or oats in water.</p>
+        <p class="example">“He set up a giant iron pot in the courtyard and cooked <mark>porridge</mark> for anyone who came.”</p>
+      </li>
+      <li class="entry" id="g-profit">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-profit" aria-label="I know the word profit">
+          <label class="term" for="know-profit">profit</label>
+          <button type="button" class="say" data-say="profit. In her will, she left two thirds of her company&#x27;s future profits to charity." aria-label="Say profit and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">The money a business has left after paying all its costs.</p>
+        <p class="example">“In her will, she left two thirds of her company&#x27;s future <mark>profits</mark> to charity.”</p>
+      </li>
+      <li class="entry" id="g-relief">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-relief" aria-label="I know the word relief">
+          <label class="term" for="know-relief">relief</label>
+          <button type="button" class="say" data-say="relief. She kept a little for her relatives and neighbours and gave the rest straight to the island&#x27;s relief office, so that officials could cook it into porridge for everyone." aria-label="Say relief and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#mandeok">Kim Man-deok</a>
+        </div>
+        <p class="meaning">Help, such as food or money, given to people in an emergency.</p>
+        <p class="example">“She kept a little for her relatives and neighbours and gave the rest straight to the island&#x27;s <mark>relief</mark> office, so that officials could cook it into porridge for everyone.”</p>
+      </li>
+      <li class="entry" id="g-scalp">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-scalp" aria-label="I know the word scalp">
+          <label class="term" for="know-scalp">scalp</label>
+          <button type="button" class="say" data-say="scalp. Many women washed their hair only once a month, in homes with no running water, and used harsh soaps and lotions that damaged the scalp." aria-label="Say scalp and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">The skin on the top of your head, under your hair.</p>
+        <p class="example">“Many women washed their hair only once a month, in homes with no running water, and used harsh soaps and lotions that damaged the <mark>scalp</mark>.”</p>
+      </li>
+      <li class="entry" id="g-scholarship">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-scholarship" aria-label="I know the word scholarship">
+          <label class="term" for="know-scholarship">scholarship</label>
+          <button type="button" class="say" data-say="scholarship. She paid for scholarships so that girls could attend the college that Booker T. Washington had built." aria-label="Say scholarship and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">Money given to a student to pay for their education.</p>
+        <p class="example">“She paid for <mark>scholarships</mark> so that girls could attend the college that Booker T. Washington had built.”</p>
+      </li>
+      <li class="entry" id="g-sewer">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-sewer" aria-label="I know the word sewer">
+          <label class="term" for="know-sewer">sewer</label>
+          <button type="button" class="say" data-say="sewer. The river was an open sewer." aria-label="Say sewer and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#salt">Titus Salt</a>
+        </div>
+        <p class="meaning">A pipe or channel that carries away dirty water and waste.</p>
+        <p class="example">“The river was an open <mark>sewer</mark>.”</p>
+      </li>
+      <li class="entry" id="g-shares">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-shares" aria-label="I know the word shares">
+          <label class="term" for="know-shares">shares</label>
+          <button type="button" class="say" data-say="shares. Three years later, quietly, Milton did something almost nobody knew about until a newspaper found out in 1923: he had transferred his entire fortune, all his shares in the chocolate company, worth about sixty million dollars, to the school." aria-label="Say shares and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#hershey">Milton Hershey</a>
+        </div>
+        <p class="meaning">Pieces of ownership of a company. If you own all the shares, you own the company.</p>
+        <p class="example">“Three years later, quietly, Milton did something almost nobody knew about until a newspaper found out in 1923: he had transferred his entire fortune, all his <mark>shares</mark> in the chocolate company, worth about sixty million dollars, to the school.”</p>
+      </li>
+      <li class="entry" id="g-slum">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-slum" aria-label="I know the word slum">
+          <label class="term" for="know-slum">slum</label>
+          <button type="button" class="say" data-say="slum. But the people who moved to Saltaire from the Bradford slums did not complain much." aria-label="Say slum and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#salt">Titus Salt</a>
+        </div>
+        <p class="meaning">A crowded, poor part of a city where the houses are in bad condition.</p>
+        <p class="example">“But the people who moved to Saltaire from the Bradford <mark>slums</mark> did not complain much.”</p>
+      </li>
+      <li class="entry" id="g-starving">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-starving" aria-label="I know the word starving">
+          <label class="term" for="know-starving">starving</label>
+          <button type="button" class="say" data-say="starving. By 1795, thousands of islanders had died, and the rest were starving." aria-label="Say starving and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#mandeok">Kim Man-deok</a>
+        </div>
+        <p class="meaning">Suffering or dying from not having enough food.</p>
+        <p class="example">“By 1795, thousands of islanders had died, and the rest were <mark>starving</mark>.”</p>
+      </li>
+      <li class="entry" id="g-storehouse">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-storehouse" aria-label="I know the word storehouse">
+          <label class="term" for="know-storehouse">storehouse</label>
+          <button type="button" class="say" data-say="storehouse. He opened the family&#x27;s rice storehouse." aria-label="Say storehouse and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#choi">The Choi family</a>
+        </div>
+        <p class="meaning">A building where food or goods are kept.</p>
+        <p class="example">“He opened the family&#x27;s rice <mark>storehouse</mark>.”</p>
+      </li>
+      <li class="entry" id="g-strike">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-strike" aria-label="I know the word strike">
+          <label class="term" for="know-strike">strike</label>
+          <button type="button" class="say" data-say="strike. In 1892, when workers at his Homestead mill went on strike, the company brought in armed guards, there was a battle, and people died." aria-label="Say strike and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#carnegie">Andrew Carnegie</a>
+        </div>
+        <p class="meaning">When workers stop work together to demand better pay or safety.</p>
+        <p class="example">“In 1892, when workers at his Homestead mill went on <mark>strike</mark>, the company brought in armed guards, there was a battle, and people died.”</p>
+      </li>
+      <li class="entry" id="g-surplus">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-surplus" aria-label="I know the word surplus">
+          <label class="term" for="know-surplus">surplus</label>
+          <button type="button" class="say" data-say="surplus. A rich man, he said, should live simply, provide for his family, and then spend the rest of his life giving all the surplus away for the good of everyone." aria-label="Say surplus and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#carnegie">Andrew Carnegie</a>
+        </div>
+        <p class="meaning">The extra amount that is left over after you have what you need.</p>
+        <p class="example">“A rich man, he said, should live simply, provide for his family, and then spend the rest of his life giving all the <mark>surplus</mark> away for the good of everyone.”</p>
+      </li>
+      <li class="entry" id="g-telegraph">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-telegraph" aria-label="I know the word telegraph">
+          <label class="term" for="know-telegraph">telegraph</label>
+          <button type="button" class="say" data-say="telegraph. Then he became a telegraph messenger boy, running messages through the streets of the city." aria-label="Say telegraph and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#carnegie">Andrew Carnegie</a>
+        </div>
+        <p class="meaning">A machine that sent messages along wires as clicks, before telephones.</p>
+        <p class="example">“Then he became a <mark>telegraph</mark> messenger boy, running messages through the streets of the city.”</p>
+      </li>
+      <li class="entry" id="g-tenant-farmer">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-tenant-farmer" aria-label="I know the word tenant farmer">
+          <label class="term" for="know-tenant-farmer">tenant farmer</label>
+          <button type="button" class="say" data-say="tenant farmer. The limit of ten thousand sacks meant that when the harvest was bigger, the extra rice went to the tenant farmers instead of the landlord." aria-label="Say tenant farmer and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#choi">The Choi family</a>
+        </div>
+        <p class="meaning">A farmer who does not own the field and pays part of the harvest to the owner.</p>
+        <p class="example">“The limit of ten thousand sacks meant that when the harvest was bigger, the extra rice went to the <mark>tenant farmers</mark> instead of the landlord.”</p>
+      </li>
+      <li class="entry" id="g-typhoon">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-typhoon" aria-label="I know the word typhoon">
+          <label class="term" for="know-typhoon">typhoon</label>
+          <button type="button" class="say" data-say="typhoon. A great typhoon in 1794 flattened what was left." aria-label="Say typhoon and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#mandeok">Kim Man-deok</a>
+        </div>
+        <p class="meaning">A very powerful storm with strong winds and heavy rain.</p>
+        <p class="example">“A great <mark>typhoon</mark> in 1794 flattened what was left.”</p>
+      </li>
+      <li class="entry" id="g-uprising">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-uprising" aria-label="I know the word uprising">
+          <label class="term" for="know-uprising">uprising</label>
+          <button type="button" class="say" data-say="uprising. When peasant uprisings swept through the region, the rebels went around the Choi house and left it alone." aria-label="Say uprising and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#choi">The Choi family</a>
+        </div>
+        <p class="meaning">When a large group of people fight against the people who rule them.</p>
+        <p class="example">“When peasant <mark>uprisings</mark> swept through the region, the rebels went around the Choi house and left it alone.”</p>
+      </li>
+      <li class="entry" id="g-vaccine">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-vaccine" aria-label="I know the word vaccine">
+          <label class="term" for="know-vaccine">vaccine</label>
+          <button type="button" class="say" data-say="vaccine. In 2020, early in the pandemic, she gave a million dollars to a hospital in Nashville for research into a new kind of vaccine." aria-label="Say vaccine and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#dolly">Dolly Parton</a>
+        </div>
+        <p class="meaning">A medicine that teaches your body to fight a disease before you catch it.</p>
+        <p class="example">“In 2020, early in the pandemic, she gave a million dollars to a hospital in Nashville for research into a new kind of <mark>vaccine</mark>.”</p>
+      </li>
+      <li class="entry" id="g-warehouse">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-warehouse" aria-label="I know the word warehouse">
+          <label class="term" for="know-warehouse">warehouse</label>
+          <button type="button" class="say" data-say="warehouse. Down by the harbour she opened what was called a gaekju, which was an inn, a warehouse and a trading office all in one." aria-label="Say warehouse and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#mandeok">Kim Man-deok</a>
+        </div>
+        <p class="meaning">A large building where goods are stored before they are sold.</p>
+        <p class="example">“Down by the harbour she opened what was called a gaekju, which was an inn, a <mark>warehouse</mark> and a trading office all in one.”</p>
+      </li>
+      <li class="entry" id="g-widow">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-widow" aria-label="I know the word widow">
+          <label class="term" for="know-widow">widow</label>
+          <button type="button" class="say" data-say="widow. She married at fourteen, mostly to get away from a cruel brother-in-law, and by twenty she was a widow with a two-year-old daughter named Lelia." aria-label="Say widow and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">A woman whose husband has died.</p>
+        <p class="example">“She married at fourteen, mostly to get away from a cruel brother-in-law, and by twenty she was a <mark>widow</mark> with a two-year-old daughter named Lelia.”</p>
+      </li>
+      <li class="entry" id="g-wildfire">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-wildfire" aria-label="I know the word wildfire">
+          <label class="term" for="know-wildfire">wildfire</label>
+          <button type="button" class="say" data-say="wildfire. In November 2016, wildfires swept through the Smoky Mountains near Gatlinburg, in Dolly&#x27;s home county." aria-label="Say wildfire and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#dolly">Dolly Parton</a>
+        </div>
+        <p class="meaning">A fire that spreads quickly through forests or countryside.</p>
+        <p class="example">“In November 2016, <mark>wildfires</mark> swept through the Smoky Mountains near Gatlinburg, in Dolly&#x27;s home county.”</p>
+      </li>
+      <li class="entry" id="g-will">
+        <div class="entry-head">
+          <input type="checkbox" class="know" id="know-will" aria-label="I know the word will">
+          <label class="term" for="know-will">will</label>
+          <button type="button" class="say" data-say="will. In her will, she left two thirds of her company&#x27;s future profits to charity." aria-label="Say will and its sentence">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <a class="from" href="#walker">Madam C. J. Walker</a>
+        </div>
+        <p class="meaning">A legal letter that says who gets your money and belongings when you die.</p>
+        <p class="example">“In her <mark>will</mark>, she left two thirds of her company&#x27;s future profits to charity.”</p>
+      </li>
+  </ol>
+</section>
+<section class="closing credits-wrap">
   <p class="credits">The illustrations on this page were drawn for it and are not portraits. For real photographs of each person, follow the links at the end of each story. The stories are told from published biographies and encyclopaedias; the numbers are rounded to the nearest sensible figure.</p>
 </section>
 
 </div>
 <span id="top" style="position:absolute; top:0"></span>
+<div id="reader-bar" hidden>
+  <span class="now" id="reader-now"></span>
+  <button type="button" class="bar-btn" id="reader-pause">Pause</button>
+  <button type="button" class="bar-btn" id="reader-stop">Stop</button>
+</div>
+<script>
+(function(){
+  var synth = window.speechSynthesis;
+  var panel = document.getElementById('reader-panel');
+  if(!synth || !window.SpeechSynthesisUtterance){ return; }
+
+  var ICON = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5a3 3 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12.5 3.5a5.5 5.5 0 0 1 0 9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  var prefs = {};
+  try { prefs = JSON.parse(localStorage.getItem('ngf-reader') || '{}') || {}; } catch (e) { prefs = {}; }
+  function savePrefs(){ try { localStorage.setItem('ngf-reader', JSON.stringify(prefs)); } catch (e) {} }
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  panel.innerHTML =
+    '<button type="button" class="btn" id="read-all">' + ICON + 'Read the whole page aloud</button>' +
+    '<span><label for="voice-select">Voice</label> <select id="voice-select"></select></span>' +
+    '<span><label for="rate-select">Speed</label> <select id="rate-select">' +
+      '<option value="0.85">Slow</option><option value="1">Normal</option><option value="1.15">Fast</option></select></span>';
+  var voiceSel = document.getElementById('voice-select');
+  var rateSel = document.getElementById('rate-select');
+  rateSel.value = prefs.rate || '1';
+  rateSel.addEventListener('change', function(){ prefs.rate = rateSel.value; savePrefs(); });
+
+  var voices = [];
+  function loadVoices(){
+    voices = synth.getVoices().filter(function(v){ return /^en/i.test(v.lang); });
+    if(!voices.length){ voices = synth.getVoices(); }
+    voiceSel.innerHTML = '';
+    voices.forEach(function(v, i){
+      var o = document.createElement('option');
+      o.value = v.name; o.textContent = v.name + ' (' + v.lang + ')';
+      voiceSel.appendChild(o);
+    });
+    var wanted = prefs.voice;
+    if(!wanted || !voices.some(function(v){ return v.name === wanted; })){
+      var nice = voices.find(function(v){ return /Samantha|Daniel|Karen|Moira|Aria|Jenny|Libby|Sonia|Google UK English Female|Google US English/i.test(v.name); });
+      wanted = (nice || voices[0] || {}).name;
+    }
+    if(wanted){ voiceSel.value = wanted; }
+  }
+  loadVoices();
+  if(typeof synth.onvoiceschanged !== 'undefined'){ synth.addEventListener('voiceschanged', loadVoices); }
+  voiceSel.addEventListener('change', function(){ prefs.voice = voiceSel.value; savePrefs(); });
+
+  var bar = document.getElementById('reader-bar');
+  var now = document.getElementById('reader-now');
+  var pauseBtn = document.getElementById('reader-pause');
+  var stopBtn = document.getElementById('reader-stop');
+  var readAll = document.getElementById('read-all');
+
+  function textOf(el){
+    var c = el.cloneNode(true);
+    c.querySelectorAll('.kr, cite').forEach(function(n){ n.remove(); });
+    return c.textContent.replace(/\s+/g, ' ').trim();
+  }
+  function chunks(text){
+    var parts = text.match(/[^.!?]+[.!?]+["\u201D']?\s*|[^.!?]+$/g) || [text];
+    var out = [], cur = '';
+    parts.forEach(function(p){
+      if(cur && (cur + p).length > 190){ out.push(cur.trim()); cur = ''; }
+      cur += p;
+    });
+    if(cur.trim()){ out.push(cur.trim()); }
+    return out;
+  }
+  function chapterUnits(ch){
+    var list = [ch.querySelector('h2'), ch.querySelector('.strap')];
+    ch.querySelectorAll('.story > p, .story > blockquote').forEach(function(n){ list.push(n); });
+    return list.filter(Boolean);
+  }
+  function allUnits(){
+    var list = [];
+    document.querySelectorAll('.opening h1, .opening .lede').forEach(function(n){ list.push(n); });
+    document.querySelectorAll('.chapter').forEach(function(ch){ list = list.concat(chapterUnits(ch)); });
+    document.querySelectorAll('.closing h2, .closing > p, .closing .ideas li').forEach(function(n){ list.push(n); });
+    return list;
+  }
+
+  var state = { queue: [], i: 0, active: false, paused: false, el: null, btn: null };
+  var buttons = [];
+
+  function clearHighlight(){ if(state.el){ state.el.classList.remove('speaking'); state.el = null; } }
+  function resetUI(){
+    clearHighlight();
+    bar.hidden = true;
+    pauseBtn.textContent = 'Pause';
+    buttons.forEach(function(b){ b.setAttribute('aria-pressed', 'false'); b.innerHTML = ICON + b.dataset.label; });
+    state.active = false; state.paused = false; state.btn = null;
+  }
+  function stop(){ synth.cancel(); resetUI(); }
+
+  function speakUnit(){
+    if(!state.active || state.i >= state.queue.length){ resetUI(); return; }
+    var el = state.queue[state.i];
+    clearHighlight();
+    el.classList.add('speaking'); state.el = el;
+    if(el.scrollIntoView){ el.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' }); }
+    var pieces = chunks(textOf(el));
+    var k = 0;
+    var voice = voices.find(function(v){ return v.name === voiceSel.value; });
+    function next(){
+      if(!state.active){ return; }
+      if(k >= pieces.length){ state.i += 1; speakUnit(); return; }
+      var u = new SpeechSynthesisUtterance(pieces[k++]);
+      if(voice){ u.voice = voice; u.lang = voice.lang; } else { u.lang = 'en-US'; }
+      u.rate = parseFloat(rateSel.value) || 1;
+      u.onend = next;
+      u.onerror = function(e){ if(e.error !== 'interrupted' && e.error !== 'canceled'){ next(); } };
+      synth.speak(u);
+    }
+    next();
+  }
+  function start(queue, label, btn){
+    synth.cancel();
+    resetUI();
+    state.queue = queue; state.i = 0; state.active = true; state.btn = btn;
+    now.textContent = label;
+    bar.hidden = false;
+    if(btn){ btn.setAttribute('aria-pressed', 'true'); btn.innerHTML = ICON + 'Reading…'; }
+    speakUnit();
+  }
+  function togglePause(){
+    if(!state.active){ return; }
+    if(state.paused){ synth.resume(); state.paused = false; pauseBtn.textContent = 'Pause'; }
+    else { synth.pause(); state.paused = true; pauseBtn.textContent = 'Resume'; }
+  }
+  pauseBtn.addEventListener('click', togglePause);
+  stopBtn.addEventListener('click', stop);
+
+  readAll.dataset.label = 'Read the whole page aloud';
+  buttons.push(readAll);
+  readAll.addEventListener('click', function(){
+    if(state.btn === readAll && state.active){ togglePause(); return; }
+    start(allUnits(), 'Nine Generous Fortunes', readAll);
+  });
+
+  document.querySelectorAll('.chapter').forEach(function(ch){
+    var strap = ch.querySelector('.strap');
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'btn listen-btn'; b.dataset.label = 'Listen to this story';
+    b.innerHTML = ICON + b.dataset.label; b.setAttribute('aria-pressed', 'false');
+    strap.insertAdjacentElement('afterend', b);
+    buttons.push(b);
+    b.addEventListener('click', function(){
+      if(state.btn === b && state.active){ togglePause(); return; }
+      start(chapterUnits(ch), textOf(ch.querySelector('h2')), b);
+    });
+  });
+
+  window.ngfSpeak = function(text){
+    stop();
+    var u = new SpeechSynthesisUtterance(text);
+    var voice = voices.find(function(v){ return v.name === voiceSel.value; });
+    if(voice){ u.voice = voice; u.lang = voice.lang; } else { u.lang = 'en-US'; }
+    u.rate = parseFloat(rateSel.value) || 1;
+    synth.speak(u);
+  };
+  window.addEventListener('pagehide', function(){ synth.cancel(); });
+})();
+</script>
+<script>
+(function(){
+  var list = document.getElementById('gloss');
+  if(!list){ return; }
+  var entries = Array.prototype.slice.call(list.querySelectorAll('.entry'));
+  var progress = document.getElementById('gloss-progress');
+  var hide = document.getElementById('hide-meanings');
+  var known = {};
+  try { known = JSON.parse(localStorage.getItem('ngf-known') || '{}') || {}; } catch (e) { known = {}; }
+  function save(){ try { localStorage.setItem('ngf-known', JSON.stringify(known)); } catch (e) {} }
+  function refresh(){
+    var n = 0;
+    entries.forEach(function(en){
+      var box = en.querySelector('.know');
+      var on = !!known[en.id];
+      box.checked = on; en.classList.toggle('known', on);
+      if(on){ n += 1; }
+    });
+    progress.textContent = n + ' of ' + entries.length + ' ticked';
+  }
+  entries.forEach(function(en){
+    en.querySelector('.know').addEventListener('change', function(ev){
+      known[en.id] = ev.target.checked; if(!ev.target.checked){ delete known[en.id]; }
+      save(); refresh();
+    });
+    en.addEventListener('click', function(ev){
+      if(!list.classList.contains('quiz')){ return; }
+      if(ev.target.closest('.know, .say, .from, label')){ return; }
+      en.classList.toggle('revealed');
+    });
+    var say = en.querySelector('.say');
+    say.addEventListener('click', function(){
+      if(window.ngfSpeak){ window.ngfSpeak(say.dataset.say); }
+    });
+    if(!window.speechSynthesis){ say.hidden = true; }
+  });
+  hide.addEventListener('change', function(){
+    list.classList.toggle('quiz', hide.checked);
+    entries.forEach(function(en){ en.classList.remove('revealed'); });
+  });
+  document.getElementById('gloss-reset').addEventListener('click', function(){
+    known = {}; save(); refresh();
+  });
+  refresh();
+})();
+</script>
 </body>
 </html>
