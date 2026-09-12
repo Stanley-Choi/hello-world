@@ -43,6 +43,22 @@ Read-aloud uses the browser's built-in speech engine, so there is nothing to
 install and no network call. On iOS, **Share → Add to Home Screen** makes it
 open like an app.
 
+## 📖 Stories: Nine Generous Fortunes
+
+A long-read for Hansol's project about an imaginary person who is **rich, warm
+and caring**: nine true stories of wealthy people who looked after the
+communities they lived in, from the Choi family of Gyeongju and Kim Man-deok
+of Jeju to Andrew Carnegie, Milton Hershey, Julius Rosenwald, Madam C. J.
+Walker, Chuck Feeney and Dolly Parton.
+
+**https://stanley-choi.github.io/hello-world/heroes/**
+
+Each story opens with an original illustration and ends with a "words to know"
+box, a few key numbers, and a short "for your character" note listing what
+made the person rich, warm and caring. A comparison table and a list of ideas
+to borrow close the page. Links to real photographs are given at the end of
+every story. Single self-contained file: `heroes/index.html`.
+
 ## 💻 Use it offline
 
 Download `index.html` and `vocab.js` into the same folder and open

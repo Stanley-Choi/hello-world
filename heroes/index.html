@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nine Generous Fortunes</title>
+<meta name="description" content="True stories of nine people who became rich and used their money to care for the communities they lived in. Written for Hansol's school project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,600;9..144,700,100&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+  :root{
+    --ground:#F6F3EC;
+    --paper:#FFFDF8;
+    --ink:#24312C;
+    --ink-soft:#5B6A64;
+    --line:#D9D3C4;
+    --gold:#B8862B;
+    --gold-soft:#F1E3C2;
+    --sea:#2F5F7E;
+    --sea-soft:#DCE8EE;
+    --plate-sea:#CFE0E8;
+    --plate-field:#DCE3C8;
+    --plate-brick:#EAD5C4;
+    --plate-dusk:#DED6E6;
+    --plate-sun:#F3E5B8;
+    --shadow:0 1px 0 rgba(36,49,44,.06), 0 10px 30px -18px rgba(36,49,44,.35);
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#151C19;
+      --paper:#1D2521;
+      --ink:#E9EEE9;
+      --ink-soft:#A7B3AC;
+      --line:#334039;
+      --gold:#E0B25C;
+      --gold-soft:#3A3120;
+      --sea:#8FC1DE;
+      --sea-soft:#22333C;
+      --plate-sea:#243A46;
+      --plate-field:#2B3A2A;
+      --plate-brick:#4A3328;
+      --plate-dusk:#332C42;
+      --plate-sun:#4A3E1E;
+      --shadow:0 1px 0 rgba(0,0,0,.3), 0 10px 30px -18px rgba(0,0,0,.7);
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#151C19;
+    --paper:#1D2521;
+    --ink:#E9EEE9;
+    --ink-soft:#A7B3AC;
+    --line:#334039;
+    --gold:#E0B25C;
+    --gold-soft:#3A3120;
+    --sea:#8FC1DE;
+    --sea-soft:#22333C;
+    --plate-sea:#243A46;
+    --plate-field:#2B3A2A;
+    --plate-brick:#4A3328;
+    --plate-dusk:#332C42;
+    --plate-sun:#4A3E1E;
+    --shadow:0 1px 0 rgba(0,0,0,.3), 0 10px 30px -18px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Atkinson Hyperlegible", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size:1.0625rem;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:46rem;
+    margin-inline:auto;
+    padding-inline:clamp(16px, 4vw, 32px);
+    padding-block:2rem 5rem;
+  }
+  h1,h2,h3{
+    font-family:"Fraunces", Georgia, "Times New Roman", serif;
+    font-variation-settings:"SOFT" 100;
+    font-weight:600;
+    line-height:1.12;
+    text-wrap:balance;
+    margin:0;
+  }
+  p{margin:0 0 1.1em}
+  p:last-child{margin-bottom:0}
+  a{color:var(--sea); text-decoration-thickness:1px; text-underline-offset:3px}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--gold); outline-offset:3px; border-radius:3px}
+  .eyebrow{
+    font-size:.78rem; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--ink-soft); font-weight:700; margin:0 0 .6rem;
+  }
+
+  /* ---------- opening ---------- */
+  .opening{
+    display:grid; gap:1.4rem;
+    padding-block:1rem 2.5rem;
+    border-bottom:2px solid var(--gold);
+    margin-bottom:2.5rem;
+  }
+  .opening h1{font-size:clamp(2.5rem, 7vw, 4rem); font-weight:700}
+  .opening .lede{font-size:1.2rem; max-width:34em; color:var(--ink)}
+  .opening .for{font-size:.95rem; color:var(--ink-soft)}
+  .coinrow{display:flex; gap:.5rem; align-items:center}
+  .coinrow svg{width:26px; height:26px; flex:none}
+
+  /* ---------- contents ---------- */
+  .contents{
+    background:var(--paper); border:1px solid var(--line);
+    padding:1.4rem clamp(1rem, 3vw, 1.8rem); margin-bottom:3rem;
+    box-shadow:var(--shadow);
+  }
+  .contents h2{font-size:1.35rem; margin-bottom:.9rem}
+  .contents ol{list-style:none; margin:0; padding:0; display:grid; gap:.15rem}
+  .contents li{display:grid; grid-template-columns:6.4rem 1fr; gap:.8rem; align-items:baseline; padding:.45rem 0; border-top:1px dashed var(--line)}
+  .contents li:first-child{border-top:0}
+  .contents .when{font-variant-numeric:tabular-nums; font-size:.85rem; color:var(--ink-soft); white-space:nowrap}
+  .contents a{font-weight:700}
+  .contents .tag{display:block; color:var(--ink-soft); font-size:.92rem}
+  @media (max-width: 480px){
+    .contents li{grid-template-columns:1fr}
+    .contents .when{order:2}
+  }
+
+  /* ---------- chapters ---------- */
+  .chapter{margin-bottom:4.5rem; scroll-margin-top:1rem}
+  .plate{
+    border-radius:14px; overflow:hidden; margin-bottom:1.5rem;
+    box-shadow:var(--shadow); line-height:0;
+  }
+  .plate svg{width:100%; height:auto; display:block; max-width:100%}
+  .plate.sea{background:var(--plate-sea)}
+  .plate.field{background:var(--plate-field)}
+  .plate.brick{background:var(--plate-brick)}
+  .plate.dusk{background:var(--plate-dusk)}
+  .plate.sun{background:var(--plate-sun)}
+  .chapter h2{font-size:clamp(1.9rem, 5vw, 2.5rem); margin-bottom:.35rem}
+  .chapter .kr{font-family:"Fraunces", serif; font-weight:400; color:var(--ink-soft); font-size:.6em; margin-left:.3em; white-space:nowrap}
+  .chapter .strap{
+    font-family:"Fraunces", Georgia, serif; font-variation-settings:"SOFT" 100;
+    font-size:1.25rem; color:var(--ink-soft); font-style:italic; margin:0 0 1.5rem;
+  }
+  .story{max-width:64ch}
+  .story p{margin-bottom:1.15em}
+  .story p.honest{
+    border-left:3px solid var(--gold); padding-left:1rem; color:var(--ink);
+  }
+  .story blockquote{
+    margin:1.5rem 0; padding:0 0 0 1.1rem; border-left:3px solid var(--sea);
+    font-family:"Fraunces", Georgia, serif; font-variation-settings:"SOFT" 100;
+    font-size:1.2rem; line-height:1.4; color:var(--ink);
+  }
+  .story blockquote cite{display:block; font-family:"Atkinson Hyperlegible", sans-serif; font-style:normal; font-size:.85rem; color:var(--ink-soft); margin-top:.5rem}
+
+  .side{display:grid; gap:1.2rem; margin-top:1.8rem}
+  @media (min-width: 640px){ .side{grid-template-columns:1fr 1fr} }
+  .box{
+    background:var(--paper); border:1px solid var(--line); padding:1rem 1.15rem;
+    font-size:.95rem;
+  }
+  .box h3{font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; font-family:"Atkinson Hyperlegible", sans-serif; font-weight:700; color:var(--ink-soft); margin-bottom:.7rem}
+  .box dl{margin:0; display:grid; gap:.55rem}
+  .box dt{font-weight:700}
+  .box dd{margin:0; color:var(--ink)}
+  .box.words dt::after{content:""}
+  .facts dl{grid-template-columns:auto 1fr; column-gap:.9rem; row-gap:.4rem}
+  .facts dt{font-family:"Fraunces", serif; font-variation-settings:"SOFT" 100; font-size:1.35rem; line-height:1.1; color:var(--gold); font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap}
+  .facts dd{align-self:center}
+  .project{
+    margin-top:1.2rem; background:var(--gold-soft); border:1px solid var(--gold);
+    padding:1rem 1.15rem; font-size:.95rem;
+  }
+  .project h3{font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; font-family:"Atkinson Hyperlegible", sans-serif; font-weight:700; margin-bottom:.6rem}
+  .project ul{margin:0; padding-left:1.1rem; display:grid; gap:.3rem}
+  .project b{font-weight:700}
+  .photos{margin-top:.9rem; font-size:.9rem; color:var(--ink-soft)}
+
+  /* ---------- closing ---------- */
+  .closing{border-top:2px solid var(--gold); padding-top:2.5rem}
+  .closing h2{font-size:clamp(1.7rem, 4vw, 2.1rem); margin-bottom:1rem}
+  .tablewrap{overflow-x:auto; margin:1.2rem 0 2.5rem; border:1px solid var(--line); background:var(--paper)}
+  table{border-collapse:collapse; width:100%; font-size:.92rem; min-width:40rem}
+  th,td{text-align:left; padding:.6rem .8rem; vertical-align:top; border-top:1px solid var(--line)}
+  th{font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); border-top:0; background:var(--ground)}
+  td:first-child{font-weight:700; white-space:nowrap}
+  .ideas{display:grid; gap:.9rem; margin:0; padding-left:1.2rem}
+  .ideas li{padding-left:.2rem}
+  .credits{margin-top:3rem; font-size:.85rem; color:var(--ink-soft); border-top:1px dashed var(--line); padding-top:1rem}
+  .top{font-size:.85rem; margin-top:1.6rem; display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="opening">
+  <div class="coinrow" aria-hidden="true">
+    <svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="var(--gold)"/><circle cx="13" cy="13" r="7" fill="none" stroke="var(--paper)" stroke-width="1.6"/></svg>
+    <svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="var(--gold)"/><circle cx="13" cy="13" r="7" fill="none" stroke="var(--paper)" stroke-width="1.6"/></svg>
+    <svg viewBox="0 0 26 26"><circle cx="13" cy="13" r="11" fill="var(--gold)"/><circle cx="13" cy="13" r="7" fill="none" stroke="var(--paper)" stroke-width="1.6"/></svg>
+  </div>
+  <h1>Nine Generous Fortunes</h1>
+  <p class="lede">True stories of people who became very rich, and then used their money to look after the towns, islands and neighbours around them. Some lived three hundred years ago. One is still alive and still giving.</p>
+  <p class="for">Collected for Hansol's project about an imaginary person who is rich, warm and caring. Every story here really happened. Read them slowly, and borrow whatever you like for your own character.</p>
+</header>
+
+<nav class="contents" aria-label="Stories in this collection">
+  <h2>The stories, oldest first</h2>
+  <ol>
+    <li><span class="when">1671 – 1947</span><span><a href="#choi">The Choi family of Gyeongju</a><span class="tag">Twelve generations who kept the doors open</span></span></li>
+    <li><span class="when">1739 – 1812</span><span><a href="#mandeok">Kim Man-deok</a><span class="tag">The merchant who fed an island</span></span></li>
+    <li><span class="when">1803 – 1876</span><span><a href="#salt">Titus Salt</a><span class="tag">The man who built a whole town beside his mill</span></span></li>
+    <li><span class="when">1835 – 1919</span><span><a href="#carnegie">Andrew Carnegie</a><span class="tag">The boy who was lent a library, and gave back thousands</span></span></li>
+    <li><span class="when">1857 – 1945</span><span><a href="#hershey">Milton Hershey</a><span class="tag">The chocolate town with a school at its heart</span></span></li>
+    <li><span class="when">1862 – 1932</span><span><a href="#rosenwald">Julius Rosenwald</a><span class="tag">Five thousand schools</span></span></li>
+    <li><span class="when">1867 – 1919</span><span><a href="#walker">Madam C. J. Walker</a><span class="tag">The washerwoman who built a company for women</span></span></li>
+    <li><span class="when">1931 – 2023</span><span><a href="#feeney">Chuck Feeney</a><span class="tag">The billionaire who wanted to die with nothing</span></span></li>
+    <li><span class="when">1946 – now</span><span><a href="#dolly">Dolly Parton</a><span class="tag">The Book Lady</span></span></li>
+  </ol>
+</nav>
+
+<!-- ================================================================ -->
+<article class="chapter" id="choi">
+  <div class="plate field">
+    <svg viewBox="0 0 600 300" role="img" aria-label="A Korean tiled-roof gate standing open, with a big iron pot of porridge steaming in the courtyard and sacks of rice beside it">
+      <rect x="0" y="240" width="600" height="60" fill="var(--ground)" opacity=".55"/>
+      <!-- roof -->
+      <path d="M60 120 Q300 60 540 120 L560 135 Q300 80 40 135 Z" fill="var(--ink)"/>
+      <path d="M80 135 Q300 92 520 135 L520 150 L80 150 Z" fill="var(--ink-soft)"/>
+      <!-- roof tiles lines -->
+      <g stroke="var(--ground)" stroke-width="2" opacity=".5">
+        <path d="M120 128 L118 150"/><path d="M180 118 L179 150"/><path d="M240 112 L240 150"/><path d="M300 110 L300 150"/><path d="M360 112 L360 150"/><path d="M420 118 L421 150"/><path d="M480 128 L482 150"/>
+      </g>
+      <!-- pillars and wall -->
+      <rect x="95" y="150" width="14" height="90" fill="#8A4B2F"/>
+      <rect x="491" y="150" width="14" height="90" fill="#8A4B2F"/>
+      <rect x="109" y="150" width="90" height="90" fill="var(--paper)"/>
+      <rect x="401" y="150" width="90" height="90" fill="var(--paper)"/>
+      <rect x="199" y="150" width="14" height="90" fill="#8A4B2F"/>
+      <rect x="387" y="150" width="14" height="90" fill="#8A4B2F"/>
+      <!-- open doors -->
+      <path d="M213 150 L213 240 L255 250 L255 160 Z" fill="#A9623C"/>
+      <path d="M387 150 L387 240 L345 250 L345 160 Z" fill="#A9623C"/>
+      <rect x="255" y="160" width="90" height="80" fill="var(--plate-field)"/>
+      <!-- cauldron -->
+      <ellipse cx="300" cy="248" rx="58" ry="10" fill="var(--ink)" opacity=".25"/>
+      <path d="M250 200 Q300 178 350 200 L344 240 Q300 256 256 240 Z" fill="var(--ink)"/>
+      <ellipse cx="300" cy="200" rx="50" ry="10" fill="var(--ink-soft)"/>
+      <ellipse cx="300" cy="200" rx="42" ry="7" fill="var(--paper)"/>
+      <!-- steam -->
+      <g fill="none" stroke="var(--paper)" stroke-width="4" stroke-linecap="round" opacity=".9">
+        <path d="M280 186 q-8 -14 0 -26 q8 -12 0 -24"/>
+        <path d="M300 182 q-8 -14 0 -26 q8 -12 0 -24"/>
+        <path d="M320 186 q-8 -14 0 -26 q8 -12 0 -24"/>
+      </g>
+      <!-- rice sacks -->
+      <g fill="#D9C39A" stroke="#8A4B2F" stroke-width="2">
+        <path d="M40 240 q0 -40 30 -40 q30 0 30 40 z"/>
+        <path d="M95 240 q0 -34 26 -34 q26 0 26 34 z"/>
+        <path d="M500 240 q0 -40 30 -40 q30 0 30 40 z"/>
+      </g>
+      <g stroke="#8A4B2F" stroke-width="3" stroke-linecap="round"><path d="M62 204 l16 0"/><path d="M114 210 l14 0"/><path d="M522 204 l16 0"/></g>
+      <!-- bowls -->
+      <g fill="var(--paper)" stroke="var(--ink)" stroke-width="2">
+        <path d="M160 250 q0 14 14 14 h12 q14 0 14 -14 z"/>
+        <path d="M400 250 q0 14 14 14 h12 q14 0 14 -14 z"/>
+      </g>
+    </svg>
+  </div>
+  <p class="eyebrow">About 1671 to 1947 · Gyeongju, Korea</p>
+  <h2>The Choi family of Gyeongju <span class="kr">경주 최부잣집</span></h2>
+  <p class="strap">Twelve generations who kept the doors open</p>
+
+  <div class="story">
+    <p>In the old city of Gyeongju, near the river and the royal tombs, there is a big traditional house with a tiled roof. For almost three hundred years, one family lived in it and stayed rich the whole time. That is very unusual. Most rich families in old Korea lost everything within a few generations, sometimes because of bad luck, and sometimes because angry, hungry neighbours came and burned the house down.</p>
+    <p>The Choi family never had that problem, and the reason is the most interesting part of the story.</p>
+    <p>The family's founder was Choi Jin-rip, a soldier who died in battle in 1636. His son and grandson were farmers, and they were clever about it. They dug canals, drained wet land and rented fields to farmers who had none. But the family became famous in 1671, in the middle of a terrible famine. That year the grandson, Choi Guk-seon, looked at all the people starving around him and did three things. He opened the family's rice storehouse. He set up a giant iron pot in the courtyard and cooked porridge for anyone who came. And he took out the papers that listed everyone who owed the family money and burned them, saying that you cannot collect a debt from someone who cannot eat.</p>
+    <p>After that, the family wrote down rules for how a rich person should behave, and every child in the family grew up learning them. There were six.</p>
+    <blockquote>
+      Never take a government job higher than the lowest degree. Never gather more than ten thousand sacks of rice in a year. Treat every guest generously. Never buy land in a famine year. A new bride must wear plain cotton clothes for three years. And never let anyone within a hundred li starve.
+      <cite>The six house rules of the Choi family, passed down through twelve generations</cite>
+    </blockquote>
+    <p>Each rule has a reason. Staying out of high government jobs kept the family out of court fights, which is how many families were destroyed. The limit of ten thousand sacks meant that when the harvest was bigger, the extra rice went to the tenant farmers instead of the landlord. Not buying land in a famine year mattered because that is exactly when desperate people sell their fields for almost nothing, and the Choi family refused to get richer from someone else's misery. The cotton clothes taught the next generation not to show off.</p>
+    <p>The last rule was the most famous. A hundred li is about forty kilometres, a whole day's walk in every direction. Inside that circle, the family promised, nobody would die of hunger. In good years, a large share of the family's rice was spent feeding travellers, who could arrive at the gate at any time and be given a meal and a bed. In bad years, the storehouse was opened again and the big pot came out.</p>
+    <p>This is why the house was never burned. When peasant uprisings swept through the region, the rebels went around the Choi house and left it alone. The villagers protected it, because it had protected them.</p>
+    <p>The story has a wonderful ending. The last rich master of the house was Choi Jun, born in 1884. He lived through the years when Japan ruled Korea, and he secretly sent money to the Korean independence fighters in Shanghai. He was caught, arrested and tortured, but he never gave up the names of the others. When Korea became free in 1945, he decided the family's fortune had done its job. He gave nearly all of the remaining land and money to build a college in Daegu so that young Koreans could be educated in their own country. That college grew into Yeungnam University, which still exists today.</p>
+    <p>The house is still standing in Gyochon Hanok Village in Gyeongju, and you can visit it. Look for the rice storehouse. It was the biggest wooden storehouse in Korea.</p>
+  </div>
+
+  <div class="side">
+    <div class="box words">
+      <h3>Words to know</h3>
+      <dl>
+        <dt>famine</dt><dd>A time when there is so little food that many people go hungry or die.</dd>
+        <dt>tenant farmer</dt><dd>A farmer who does not own the field and pays part of the harvest to the owner.</dd>
+        <dt>li (리)</dt><dd>An old Korean unit of distance. A hundred li is about forty kilometres.</dd>
+      </dl>
+    </div>
+    <div class="box facts">
+      <h3>By the numbers</h3>
+      <dl>
+        <dt>12</dt><dd>generations of the family lived by the six rules</dd>
+        <dt>1671</dt><dd>the famine year when the debt papers were burned</dd>
+        <dt>100 li</dt><dd>the circle in which nobody was allowed to starve</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="project">
+    <h3>For your character</h3>
+    <ul>
+      <li><b>Rich:</b> a landowner family with a giant rice storehouse.</li>
+      <li><b>Warm:</b> any traveller could knock on the gate and be fed.</li>
+      <li><b>Caring:</b> they wrote kindness into family rules so it would last after they died.</li>
+    </ul>
+  </div>
+  <p class="photos">Real photos: search for "경주 최부잣집" or "Gyeongju Choi clan house" on <a href="https://ko.wikipedia.org/wiki/경주_최부잣집">Korean Wikipedia</a>.</p>
+  <a class="top" href="#top">Back to the list</a>
+</article>
+
+<!-- ================================================================ -->
+<article class="chapter" id="mandeok">
+  <div class="plate sea">
+    <svg viewBox="0 0 600 300" role="img" aria-label="A wooden sailing boat loaded with sacks of rice crossing the sea toward Jeju Island, with Mount Halla in the distance">
+      <circle cx="500" cy="70" r="30" fill="var(--gold)"/>
+      <!-- island -->
+      <path d="M330 200 L420 120 L470 150 L520 110 L600 200 Z" fill="var(--ink-soft)" opacity=".8"/>
+      <path d="M300 200 L600 200 L600 215 L280 215 Z" fill="var(--ink-soft)" opacity=".5"/>
+      <!-- sea -->
+      <rect x="0" y="215" width="600" height="85" fill="var(--sea)" opacity=".85"/>
+      <g fill="none" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" opacity=".7">
+        <path d="M20 250 q15 -10 30 0 t30 0 t30 0"/>
+        <path d="M400 270 q15 -10 30 0 t30 0 t30 0"/>
+        <path d="M120 285 q15 -10 30 0 t30 0"/>
+        <path d="M480 240 q15 -10 30 0 t30 0"/>
+      </g>
+      <!-- boat -->
+      <path d="M110 215 L120 250 L290 250 L310 215 Z" fill="#8A4B2F"/>
+      <path d="M115 215 L305 215 L300 226 L118 226 Z" fill="#A9623C"/>
+      <rect x="200" y="90" width="6" height="128" fill="#5C3520"/>
+      <path d="M206 96 L290 190 L206 190 Z" fill="var(--paper)"/>
+      <path d="M198 100 L130 190 L198 190 Z" fill="var(--paper)" opacity=".85"/>
+      <g stroke="var(--ink-soft)" stroke-width="1.5" opacity=".5"><path d="M206 125 L250 145"/><path d="M206 150 L270 168"/><path d="M198 125 L160 150"/><path d="M198 150 L145 168"/></g>
+      <!-- rice sacks on deck -->
+      <g fill="#D9C39A" stroke="#8A4B2F" stroke-width="2">
+        <path d="M130 215 q0 -30 22 -30 q22 0 22 30 z"/>
+        <path d="M160 215 q0 -30 22 -30 q22 0 22 30 z"/>
+        <path d="M230 215 q0 -30 22 -30 q22 0 22 30 z"/>
+        <path d="M262 215 q0 -30 22 -30 q22 0 22 30 z"/>
+        <path d="M145 187 q0 -26 20 -26 q20 0 20 26 z"/>
+        <path d="M246 187 q0 -26 20 -26 q20 0 20 26 z"/>
+      </g>
+      <!-- gulls -->
+      <g fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round">
+        <path d="M60 90 q8 -8 16 0 q8 -8 16 0"/>
+        <path d="M100 120 q6 -6 12 0 q6 -6 12 0"/>
+        <path d="M380 70 q6 -6 12 0 q6 -6 12 0"/>
+      </g>
+    </svg>
+  </div>
+  <p class="eyebrow">1739 to 1812 · Jeju Island, Korea</p>
+  <h2>Kim Man-deok <span class="kr">김만덕</span></h2>
+  <p class="strap">The merchant who fed an island</p>
+
+  <div class="story">
+    <p>Two hundred and fifty years ago, Jeju was a hard place to live. It was far from the mainland, the sea around it was rough, and the king's law said that people from Jeju were not allowed to leave the island. Women were not allowed to leave under any circumstances. If you were born on Jeju, you stayed there.</p>
+    <p>Man-deok was born there in 1739. Her family was poor but free. When she was about eleven, her father drowned on a trading trip to the mainland, and not long afterwards her mother died of illness. A girl with no parents had few choices. She was taken into a household of gisaeng, the women who sang and danced for officials, and she was written into the register as one of them. That meant she now belonged to the lowest class.</p>
+    <p>Man-deok hated it. When she was about twenty, she did something bold: she went to the island's magistrate and begged him to erase her name from the gisaeng register and give back her family's status as ordinary free people. The magistrate listened, and agreed.</p>
+    <p>Then she went into business. Down by the harbour she opened what was called a gaekju, which was an inn, a warehouse and a trading office all in one. Ships arrived from the mainland with rice, cloth and cosmetics. Jeju had things the mainland wanted: horsehair hats, dried abalone, seaweed, tangerines. Man-deok bought, stored, sold and shipped. She was known for being honest and for giving fair prices, so people kept coming back. Over the years she became the richest woman on the island, and probably the richest person of any kind.</p>
+    <p>Then the rains came at the wrong times, year after year. From 1792 onward, the crops failed. A great typhoon in 1794 flattened what was left. People ate bark and grass. The king sent ships full of rice to help, but the storms sank them on the way. By 1795, thousands of islanders had died, and the rest were starving.</p>
+    <p>Man-deok was fifty-six years old. She took almost everything she had earned in a lifetime and spent it on rice from the mainland, hundreds of sacks of it, brought across the dangerous sea in her own ships. She kept a little for her relatives and neighbours and gave the rest straight to the island's relief office, so that officials could cook it into porridge for everyone. People said afterwards that Man-deok had saved their lives.</p>
+    <p>The news travelled all the way to Hanyang, the capital, and reached King Jeongjo. He was moved, and he sent word: a woman who had done such a thing could ask for a reward. Anything she wanted.</p>
+    <p>Man-deok did not ask for money or land. She asked for two things that were impossible for a Jeju woman. She wanted to see the king's palace in the capital, and she wanted to climb Mount Geumgang, the most beautiful mountain in the country.</p>
+    <p>The king found a way. He gave her an honorary title as a medical woman, which allowed her, legally, to leave the island. In 1796 Man-deok crossed the sea, travelled north to the capital and was welcomed at the palace by the royal court. The following spring she climbed Mount Geumgang and saw its peaks and waterfalls. The prime minister, Chae Je-gong, was so impressed that he wrote her life story, so that it would not be forgotten.</p>
+    <p>Then she went home to Jeju, and lived there until she was seventy-four.</p>
+    <p>Today there is a memorial hall for her near the harbour where her warehouse stood. Every year, Jeju gives a prize called the Man-deok Award to a woman who has served her community. And the island still tells the story of the merchant who spent her fortune on rice.</p>
+  </div>
+
+  <div class="side">
+    <div class="box words">
+      <h3>Words to know</h3>
+      <dl>
+        <dt>magistrate</dt><dd>The official the king sent to govern a town or island.</dd>
+        <dt>gaekju (객주)</dt><dd>An inn and warehouse where travelling merchants stayed and traded.</dd>
+        <dt>relief office</dt><dd>The government office that handed out food in an emergency.</dd>
+      </dl>
+    </div>
+    <div class="box facts">
+      <h3>By the numbers</h3>
+      <dl>
+        <dt>1795</dt><dd>the famine year when she bought rice for the island</dd>
+        <dt>500</dt><dd>sacks of rice, by the usual telling, brought across the sea</dd>
+        <dt>2</dt><dd>wishes she asked the king for: the palace and the mountain</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="project">
+    <h3>For your character</h3>
+    <ul>
+      <li><b>Rich:</b> a self-made trader who started with nothing.</li>
+      <li><b>Warm:</b> when offered any reward, she asked only to see beautiful places.</li>
+      <li><b>Caring:</b> she spent a lifetime's savings in one year to feed strangers.</li>
+    </ul>
+  </div>
+  <p class="photos">Real pictures: search for "김만덕" on <a href="https://ko.wikipedia.org/wiki/김만덕">Korean Wikipedia</a>, or visit the Kim Man-deok Memorial Hall (김만덕기념관) in Jeju City.</p>
+  <a class="top" href="#top">Back to the list</a>
+</article>
+
+<!-- ================================================================ -->
+<article class="chapter" id="salt">
+  <div class="plate brick">
+    <svg viewBox="0 0 600 300" role="img" aria-label="A large stone mill with a tall chimney beside a river, with neat rows of small houses, trees and a park">
+      <!-- sky sun -->
+      <circle cx="80" cy="60" r="24" fill="var(--gold)"/>
+      <!-- river -->
+      <path d="M0 250 Q150 230 300 250 T600 250 L600 300 L0 300 Z" fill="var(--sea)" opacity=".7"/>
+      <g fill="none" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" opacity=".6"><path d="M60 272 q12 -8 24 0 t24 0"/><path d="M400 280 q12 -8 24 0 t24 0"/></g>
+      <!-- park trees -->
+      <g fill="#4F7A4A"><circle cx="40" cy="215" r="18"/><circle cx="70" cy="222" r="14"/><circle cx="545" cy="212" r="18"/><circle cx="575" cy="220" r="14"/></g>
+      <g stroke="#5C3520" stroke-width="4"><path d="M40 230 v14"/><path d="M545 228 v14"/></g>
+      <!-- mill -->
+      <rect x="150" y="120" width="220" height="120" fill="#B8865B"/>
+      <rect x="150" y="112" width="220" height="10" fill="#8A4B2F"/>
+      <g fill="var(--paper)">
+        <rect x="165" y="132" width="18" height="26"/><rect x="195" y="132" width="18" height="26"/><rect x="225" y="132" width="18" height="26"/><rect x="255" y="132" width="18" height="26"/><rect x="285" y="132" width="18" height="26"/><rect x="315" y="132" width="18" height="26"/><rect x="345" y="132" width="18" height="26"/>
+        <rect x="165" y="172" width="18" height="26"/><rect x="195" y="172" width="18" height="26"/><rect x="225" y="172" width="18" height="26"/><rect x="255" y="172" width="18" height="26"/><rect x="285" y="172" width="18" height="26"/><rect x="315" y="172" width="18" height="26"/><rect x="345" y="172" width="18" height="26"/>
+      </g>
+      <rect x="248" y="208" width="30" height="32" fill="#5C3520"/>
+      <!-- chimney -->
+      <rect x="380" y="40" width="26" height="200" fill="#8A4B2F"/>
+      <rect x="376" y="36" width="34" height="10" fill="#5C3520"/>
+      <g fill="var(--ink-soft)" opacity=".45"><circle cx="393" cy="24" r="10"/><circle cx="405" cy="10" r="12"/><circle cx="422" cy="0" r="10"/></g>
+      <!-- houses row -->
+      <g>
+        <rect x="420" y="190" width="30" height="50" fill="#D9B48C"/><path d="M416 190 L435 172 L454 190 Z" fill="#8A4B2F"/><rect x="431" y="216" width="8" height="24" fill="#5C3520"/>
+        <rect x="455" y="190" width="30" height="50" fill="#D9B48C"/><path d="M451 190 L470 172 L489 190 Z" fill="#8A4B2F"/><rect x="466" y="216" width="8" height="24" fill="#5C3520"/>
+        <rect x="490" y="190" width="30" height="50" fill="#D9B48C"/><path d="M486 190 L505 172 L524 190 Z" fill="#8A4B2F"/><rect x="501" y="216" width="8" height="24" fill="#5C3520"/>
+        <rect x="90" y="190" width="30" height="50" fill="#D9B48C"/><path d="M86 190 L105 172 L124 190 Z" fill="#8A4B2F"/><rect x="101" y="216" width="8" height="24" fill="#5C3520"/>
+        <rect x="55" y="190" width="30" height="50" fill="#D9B48C"/><path d="M51 190 L70 172 L89 190 Z" fill="#8A4B2F"/><rect x="66" y="216" width="8" height="24" fill="#5C3520"/>
+      </g>
+      <!-- school with bell -->
+      <rect x="125" y="196" width="22" height="44" fill="var(--paper)"/><path d="M121 196 L136 182 L151 196 Z" fill="#8A4B2F"/>
+      <!-- ground -->
+      <rect x="0" y="240" width="600" height="12" fill="#4F7A4A" opacity=".6"/>
+    </svg>
+  </div>
+  <p class="eyebrow">1803 to 1876 · Bradford and Saltaire, England</p>
+  <h2>Titus Salt</h2>
+  <p class="strap">The man who built a whole town beside his mill</p>
+
+  <div class="story">
+    <p>In the 1840s, the English town of Bradford was the wool capital of the world, and one of the worst places on earth to live. Hundreds of factory chimneys poured black smoke into the air all day. The river was an open sewer. Whole families lived in one damp room. Diseases like cholera swept through every few years. A child born to a Bradford mill worker could expect to live, on average, to about twenty.</p>
+    <p>Titus Salt was one of the richest of the mill owners. He was a large, quiet, serious man who had made his fortune in a lucky way. In 1836, in a warehouse in Liverpool, he found some bales of a strange wool nobody wanted. It was alpaca hair from South America, and it had been sitting there for so long that the owners were about to throw it out. Salt took some home, experimented with his machines, and worked out how to spin it into a cloth that was soft, shiny and light. Soon fashionable ladies across Europe were wearing alpaca dresses, and Salt owned five mills.</p>
+    <p>What made Salt different from the other rich men in town was that the smoke and the sickness bothered him. When he became mayor of Bradford in 1848, he tried to make factory owners fit smoke burners to their chimneys. His own mills had them. Almost nobody else bothered, and the law did not force them to. Salt gave up on changing Bradford. Instead, he decided to leave it, and to take his workers with him.</p>
+    <p>A few miles north of the city, in green countryside on the banks of the River Aire, he bought land and started building. First came the mill itself, the biggest factory in the world at the time, so long that people said it was a palace. It opened in 1853, on Salt's fiftieth birthday, and he celebrated by sitting down to dinner with three and a half thousand of his workers inside it.</p>
+    <p>Then, around the mill, over the next twenty years, he built a town. He called it Saltaire, from his own name and the name of the river.</p>
+    <p>It was not like any workers' town anyone had seen. Every one of the 850 houses was built of good stone, with its own tap for clean water, gas lighting, a yard, and its own outdoor toilet. In Bradford, dozens of families had shared one toilet. Saltaire had a school for the children, who by law were still working in mills part of the day, so that they would get real lessons. It had a hospital. It had a row of almshouses where old and sick workers could live for free with a small pension. It had a public bath and a wash-house with steam-powered washing machines so that women did not have to scrub clothes in the river. It had churches, a park with a cricket ground, and a grand building called the Institute with a library, a reading room, a gym, a science laboratory and a concert hall.</p>
+    <p>It did not have a pub. Salt believed strongly that beer was ruining working families, and no beerhouse was ever allowed. He had his rules, and he was strict about them. But the people who moved to Saltaire from the Bradford slums did not complain much. They lived longer.</p>
+    <p>Salt said that he wanted his workers to be, in his words, well fed, well clothed and happy. When he died in 1876, more than a hundred thousand people lined the streets to watch his funeral pass.</p>
+    <p>Saltaire is still there. The mill has become a gallery, the houses are still lived in, and in 2001 the whole town was named a World Heritage Site, like the pyramids or the Great Wall, because it changed the way people thought a factory town could be.</p>
+  </div>
+
+  <div class="side">
+    <div class="box words">
+      <h3>Words to know</h3>
+      <dl>
+        <dt>mill</dt><dd>A factory where raw wool or cotton is spun into thread and woven into cloth.</dd>
+        <dt>alpaca</dt><dd>A South American animal, a cousin of the llama, with very soft hair.</dd>
+        <dt>almshouse</dt><dd>A free home for people who are old or poor.</dd>
+      </dl>
+    </div>
+    <div class="box facts">
+      <h3>By the numbers</h3>
+      <dl>
+        <dt>850</dt><dd>stone houses, each with its own water tap</dd>
+        <dt>3,500</dt><dd>workers at the opening dinner inside the mill</dd>
+        <dt>2001</dt><dd>the year Saltaire became a World Heritage Site</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="project">
+    <h3>For your character</h3>
+    <ul>
+      <li><b>Rich:</b> a factory owner who found a fortune in wool nobody wanted.</li>
+      <li><b>Warm:</b> he ate birthday dinner with all his workers.</li>
+      <li><b>Caring:</b> he built clean houses, a school and a hospital before anyone made him.</li>
+    </ul>
+  </div>
+  <p class="photos">Real photos: <a href="https://en.wikipedia.org/wiki/Titus_Salt">Titus Salt</a> and <a href="https://en.wikipedia.org/wiki/Saltaire">Saltaire</a> on Wikipedia.</p>
+  <a class="top" href="#top">Back to the list</a>
+</article>
+
+<!-- ================================================================ -->
+<article class="chapter" id="carnegie">
+  <div class="plate sun">
+    <svg viewBox="0 0 600 300" role="img" aria-label="A library building with four stone columns and the words FREE TO THE PEOPLE carved above the door, with a stack of books beside the steps">
+      <rect x="0" y="240" width="600" height="60" fill="var(--ground)" opacity=".5"/>
+      <!-- steps -->
+      <rect x="120" y="226" width="360" height="14" fill="var(--ink-soft)"/>
+      <rect x="140" y="214" width="320" height="12" fill="var(--ink-soft)" opacity=".8"/>
+      <!-- body -->
+      <rect x="160" y="110" width="280" height="104" fill="var(--paper)"/>
+      <!-- pediment -->
+      <path d="M140 110 L300 40 L460 110 Z" fill="var(--paper)"/>
+      <path d="M140 110 L300 40 L460 110 L452 116 L300 50 L148 116 Z" fill="var(--ink-soft)"/>
+      <rect x="140" y="104" width="320" height="8" fill="var(--ink-soft)"/>
+      <!-- columns -->
+      <g fill="var(--paper)" stroke="var(--ink-soft)" stroke-width="2">
+        <rect x="178" y="118" width="20" height="96"/><rect x="246" y="118" width="20" height="96"/><rect x="334" y="118" width="20" height="96"/><rect x="402" y="118" width="20" height="96"/>
+      </g>
+      <g fill="var(--ink-soft)"><rect x="174" y="112" width="28" height="8"/><rect x="242" y="112" width="28" height="8"/><rect x="330" y="112" width="28" height="8"/><rect x="398" y="112" width="28" height="8"/></g>
+      <!-- door -->
+      <rect x="280" y="150" width="40" height="64" fill="var(--ink)"/>
+      <path d="M280 150 a20 20 0 0 1 40 0 z" fill="var(--ink)"/>
+      <!-- inscription -->
+      <text x="300" y="138" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="13" letter-spacing="2.5" fill="var(--ink)">FREE TO THE PEOPLE</text>
+      <!-- books -->
+      <g>
+        <rect x="40" y="200" width="70" height="14" fill="#8A4B2F"/>
+        <rect x="46" y="186" width="66" height="14" fill="var(--sea)"/>
+        <rect x="42" y="172" width="62" height="14" fill="var(--gold)"/>
+        <rect x="50" y="158" width="58" height="14" fill="#4F7A4A"/>
+        <rect x="500" y="200" width="70" height="14" fill="var(--sea)"/>
+        <rect x="506" y="186" width="60" height="14" fill="#8A4B2F"/>
+        <rect x="498" y="172" width="66" height="14" fill="#4F7A4A"/>
+      </g>
+      <!-- open book -->
+      <path d="M520 150 q20 -8 40 0 v18 q-20 -8 -40 0 z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+      <path d="M520 150 q-20 -8 -40 0 v18 q20 -8 40 0 z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
+      <!-- birds -->
+      <g fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"><path d="M60 60 q8 -8 16 0 q8 -8 16 0"/><path d="M520 50 q6 -6 12 0 q6 -6 12 0"/></g>
+    </svg>
+  </div>
+  <p class="eyebrow">1835 to 1919 · Scotland and Pittsburgh, USA</p>
+  <h2>Andrew Carnegie</h2>
+  <p class="strap">The boy who was lent a library, and gave back thousands</p>
+
+  <div class="story">
+    <p>Andrew Carnegie was born in a one-room cottage in Dunfermline, Scotland, in 1835. His father wove cloth on a hand loom at home. When steam-powered factories arrived, nobody wanted hand-woven cloth any more, and the family slowly went hungry. When Andrew was twelve, his mother borrowed money for tickets, and the family sailed to America to start again in a mill town near Pittsburgh.</p>
+    <p>Andrew went straight to work. His first job was as a bobbin boy in a cotton mill, twelve hours a day, six days a week, for one dollar and twenty cents a week. Then he became a telegraph messenger boy, running messages through the streets of the city. He was quick and cheerful and he memorised every business address in town, so people liked him.</p>
+    <p>One thing happened in those years that he never forgot. A retired army officer named Colonel James Anderson owned a library of about four hundred books, and every Saturday he opened it to any working boy who wanted to borrow one. Andrew had no school and no books of his own. Every week he walked to Colonel Anderson's house, took a book home, read it by candlelight after work, and came back the next Saturday for another. He later wrote that the Colonel had opened a window through which the light of knowledge streamed in.</p>
+    <p>Andrew rose fast. He learned to operate the telegraph by ear, got a job with the railroad, saved his money and invested it cleverly. By his thirties he was building bridges and making iron. Then he moved into steel, the new metal that could build railways, skyscrapers and ships. His company, Carnegie Steel, became the biggest in the world. In 1901, at sixty-five, he sold it for 480 million dollars. That made him the richest man alive.</p>
+    <p class="honest">It is fair to say that not everyone thought of Carnegie as kind. His steelworkers worked twelve-hour shifts in dangerous heat for low pay. In 1892, when workers at his Homestead mill went on strike, the company brought in armed guards, there was a battle, and people died. Carnegie was in Scotland at the time, but it was his company, and the shame of Homestead followed him for the rest of his life.</p>
+    <p>Years before that, though, he had already decided what he was going to do with his money. In 1889 he wrote an essay that became famous. A rich man, he said, should live simply, provide for his family, and then spend the rest of his life giving all the surplus away for the good of everyone. His most famous line was blunt: the man who dies rich dies disgraced.</p>
+    <blockquote>
+      The man who dies thus rich dies disgraced.
+      <cite>Andrew Carnegie, "The Gospel of Wealth", 1889</cite>
+    </blockquote>
+    <p>And so, from the day he sold his company, he set out to give it all away. He gave to universities, to scientific research, to a fund for teachers' pensions, to a hall in New York where the world's best musicians still play, to a fund that rewards ordinary people who risk their lives to save others, and to a palace in the Netherlands where countries could settle arguments without war.</p>
+    <p>But the thing he loved most was libraries, because of Colonel Anderson. His plan was simple and clever. Any town could write to him and ask for a library. If the town promised to give the land and to pay every year to keep the library running and buy books, Carnegie would pay to build it. That way the town would care about its library because it was partly theirs. By the time the programme ended, he had paid for 2,509 libraries around the world, more than sixteen hundred of them in the United States, and others in Britain, Canada, Australia, New Zealand, South Africa, and even Fiji. Above the door of the big one in Pittsburgh, he had four words carved in stone: Free to the People.</p>
+    <p>By the time he died in 1919 he had given away about 350 million dollars, roughly nine tenths of everything he had. Many of his libraries are still open. If you ever walk into an old stone library in a small American town and see the name Carnegie over the door, you are looking at Colonel Anderson's four hundred books, multiplied a few thousand times.</p>
+  </div>
+
+  <div class="side">
+    <div class="box words">
+      <h3>Words to know</h3>
+      <dl>
+        <dt>bobbin boy</dt><dd>A child worker who replaced full spools of thread on spinning machines.</dd>
+        <dt>telegraph</dt><dd>A machine that sent messages along wires as clicks, before telephones.</dd>
+        <dt>strike</dt><dd>When workers stop work together to demand better pay or safety.</dd>
+      </dl>
+    </div>
+    <div class="box facts">
+      <h3>By the numbers</h3>
+      <dl>
+        <dt>$1.20</dt><dd>his pay for a week of twelve-hour days at age twelve</dd>
+        <dt>2,509</dt><dd>libraries he paid for around the world</dd>
+        <dt>90%</dt><dd>roughly the share of his fortune he gave away</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="project">
+    <h3>For your character</h3>
+    <ul>
+      <li><b>Rich:</b> a poor immigrant boy who became the richest man in the world.</li>
+      <li><b>Warm:</b> he remembered the one man who lent him books, and copied him thousands of times.</li>
+      <li><b>Caring:</b> he made the towns pay a little themselves, so the libraries would be loved and last.</li>
+    </ul>
+  </div>
+  <p class="photos">Real photos: <a href="https://en.wikipedia.org/wiki/Andrew_Carnegie">Andrew Carnegie</a> and <a href="https://en.wikipedia.org/wiki/Carnegie_library">Carnegie libraries</a> on Wikipedia.</p>
+  <a class="top" href="#top">Back to the list</a>
+</article>
+
+<!-- ================================================================ -->
+<article class="chapter" id="hershey">
+  <div class="plate brick">
+    <svg viewBox="0 0 600 300" role="img" aria-label="A chocolate bar lying in front of a small town with a factory, a schoolhouse with a bell tower, houses and a trolley">
+      <rect x="0" y="230" width="600" height="70" fill="var(--ground)" opacity=".5"/>
+      <!-- factory -->
+      <rect x="60" y="150" width="150" height="80" fill="#B8865B"/>
+      <rect x="70" y="100" width="18" height="52" fill="#8A4B2F"/><rect x="100" y="100" width="18" height="52" fill="#8A4B2F"/>
+      <g fill="var(--ink-soft)" opacity=".4"><circle cx="79" cy="88" r="8"/><circle cx="109" cy="86" r="9"/><circle cx="122" cy="72" r="7"/></g>
+      <g fill="var(--paper)"><rect x="75" y="165" width="20" height="22"/><rect x="105" y="165" width="20" height="22"/><rect x="135" y="165" width="20" height="22"/><rect x="165" y="165" width="20" height="22"/><rect x="75" y="200" width="20" height="22"/><rect x="105" y="200" width="20" height="22"/><rect x="165" y="200" width="20" height="22"/></g>
+      <!-- houses -->
+      <g>
+        <rect x="230" y="190" width="34" height="40" fill="var(--paper)"/><path d="M226 190 L247 170 L268 190 Z" fill="#8A4B2F"/><rect x="242" y="210" width="10" height="20" fill="#5C3520"/>
+        <rect x="272" y="190" width="34" height="40" fill="var(--paper)"/><path d="M268 190 L289 170 L310 190 Z" fill="#8A4B2F"/><rect x="284" y="210" width="10" height="20" fill="#5C3520"/>
+        <rect x="314" y="190" width="34" height="40" fill="var(--paper)"/><path d="M310 190 L331 170 L352 190 Z" fill="#8A4B2F"/><rect x="326" y="210" width="10" height="20" fill="#5C3520"/>
+      </g>
+      <!-- school with bell tower -->
+      <rect x="400" y="160" width="120" height="70" fill="var(--paper)"/>
+      <path d="M394 160 L460 122 L526 160 Z" fill="#8A4B2F"/>
+      <rect x="448" y="92" width="24" height="34" fill="var(--paper)"/><path d="M444 92 L460 78 L476 92 Z" fill="#8A4B2F"/>
+      <circle cx="460" cy="110" r="5" fill="var(--gold)"/>
+      <g fill="var(--sea)" opacity=".8"><rect x="410" y="175" width="18" height="24"/><rect x="492" y="175" width="18" height="24"/></g>
+      <rect x="450" y="190" width="20" height="40" fill="#5C3520"/>
+      <!-- trees -->
+      <g fill="#4F7A4A"><circle cx="365" cy="205" r="16"/><circle cx="560" cy="205" r="16"/></g>
+      <g stroke="#5C3520" stroke-width="4"><path d="M365 218 v12"/><path d="M560 218 v12"/></g>
+      <!-- chocolate bar -->
+      <g transform="translate(120 245) rotate(-6)">
+        <rect x="0" y="0" width="200" height="44" rx="4" fill="#5C3520"/>
+        <g fill="#7A4A2E">
+          <rect x="6" y="5" width="42" height="15" rx="2"/><rect x="54" y="5" width="42" height="15" rx="2"/><rect x="102" y="5" width="42" height="15" rx="2"/><rect x="150" y="5" width="42" height="15" rx="2"/>
+          <rect x="6" y="24" width="42" height="15" rx="2"/><rect x="54" y="24" width="42" height="15" rx="2"/><rect x="102" y="24" width="42" height="15" rx="2"/><rect x="150" y="24" width="42" height="15" rx="2"/>
+        </g>
+      </g>
+      <!-- wrapper -->
+      <g transform="translate(330 250) rotate(4)">
+        <rect x="0" y="0" width="150" height="38" rx="3" fill="var(--gold)"/>
+        <rect x="14" y="6" width="122" height="26" rx="2" fill="none" stroke="var(--paper)" stroke-width="2"/>
+      </g>
+    </svg>
+  </div>
+  <p class="eyebrow">1857 to 1945 · Hershey, Pennsylvania, USA</p>
+  <h2>Milton Hershey</h2>
+  <p class="strap">The chocolate town with a school at its heart</p>
+
+  <div class="story">
+    <p>Milton Hershey failed at candy twice before he got it right. He grew up on a farm in Pennsylvania and left school after the fourth grade. At fourteen he was sent to learn from a candy maker, and at nineteen he opened his own sweet shop in Philadelphia. It went broke. He tried again in New York, and that shop went broke too. He came home with nothing except a recipe he had picked up along the way for caramels made with fresh milk instead of paraffin, which was what cheap caramels used then.</p>
+    <p>The milk caramels were the success. Within a few years his Lancaster Caramel Company was shipping sweets all over America and to Europe. Then, in 1893, at a big fair in Chicago, Hershey saw a German machine that made chocolate. He bought it on the spot and had it shipped home. Chocolate was a luxury then, made in Switzerland and eaten by the rich. Hershey became convinced that with milk and machines he could make a chocolate bar that an ordinary child could buy for five cents.</p>
+    <p>In 1900 he sold the whole caramel business for a million dollars, kept only the chocolate machinery, and did something people thought was foolish. Instead of building his new factory in a city, he built it in the middle of the farm country where he had grown up, in an empty field surrounded by dairy cows. There was no town there. So he built one.</p>
+    <p>He laid out streets and named them Chocolate Avenue and Cocoa Avenue. He built houses that workers could buy with easy payments, not rent from him. He built a bank, a school, a department store, a park with a swimming pool, a zoo, a trolley line to the nearby villages and a community centre with a theatre and a library. He said he wanted a place where his workers' families could live well, not just a place where they clocked in. The town took the company's name: Hershey.</p>
+    <p>Milton and his wife Catherine, whom everybody called Kitty, had no children of their own, and it was a sadness in their lives. In 1909 they decided what to do about it. They signed a deed giving their farm, the very farm Milton was born on, to a new school for orphan boys. The boys would live there in family-style houses, get a full education and learn a trade, all for free. It started with four boys. Kitty died in 1915, still young. Three years later, quietly, Milton did something almost nobody knew about until a newspaper found out in 1923: he had transferred his entire fortune, all his shares in the chocolate company, worth about sixty million dollars, to the school. The company that made the chocolate now belonged to the children.</p>
+    <p>There is a strange footnote to his life. In 1912 the Hersheys had paid a deposit for a cabin on the biggest, newest ship in the world for the trip home from Europe. At the last minute, business kept Milton in France and they changed their booking. The ship they missed was the Titanic.</p>
+    <p>His finest hour came at the end of his life. In 1929 the world's economy collapsed, and across America factories closed and millions of people lost their jobs. Hershey looked at his town and decided that nobody in it would be laid off. Instead he started building. Through the worst years of the Great Depression, the town's workers built a grand hotel on a hilltop, a theatre, a sports arena, a stadium and a community building, all paid for by Hershey, all designed mainly to keep people working and earning. People called it the Great Building Campaign. The story goes that when a steam shovel was brought in to speed up one job, Hershey sent it away, because it would have done the work of forty men.</p>
+    <p>Milton Hershey died in 1945, at eighty-eight. The school he and Kitty started now has about two thousand students, girls as well as boys, and every one of them attends for free, paid for by the chocolate. If you have ever eaten a Hershey bar, a little of the price went to a child's education.</p>
+  </div>
+
+  <div class="side">
+    <div class="box words">
+      <h3>Words to know</h3>
+      <dl>
+        <dt>deed</dt><dd>A legal paper that gives something you own to someone else.</dd>
+        <dt>shares</dt><dd>Pieces of ownership of a company. If you own all the shares, you own the company.</dd>
+        <dt>Great Depression</dt><dd>The years after 1929 when businesses failed and huge numbers of people had no work.</dd>
+      </dl>
+    </div>
+    <div class="box facts">
+      <h3>By the numbers</h3>
+      <dl>
+        <dt>2</dt><dd>candy businesses that failed before the one that worked</dd>
+        <dt>$60m</dt><dd>the fortune he secretly gave to the school in 1918</dd>
+        <dt>2,000</dt><dd>students at the Milton Hershey School today, all for free</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="project">
+    <h3>For your character</h3>
+    <ul>
+      <li><b>Rich:</b> a candy maker who failed twice and then built a chocolate empire.</li>
+      <li><b>Warm:</b> he built a park, a pool and a zoo for the families in his town.</li>
+      <li><b>Caring:</b> he gave everything to children who had no parents, and kept people working when the world stopped.</li>
+    </ul>
+  </div>
+  <p class="photos">Real photos: <a href="https://en.wikipedia.org/wiki/Milton_S._Hershey">Milton S. Hershey</a> and <a href="https://en.wikipedia.org/wiki/Milton_Hershey_School">Milton Hershey School</a> on Wikipedia.</p>
+  <a class="top" href="#top">Back to the list</a>
+</article>
+
+<!-- ================================================================ -->
+<article class="chapter" id="rosenwald">
+  <div class="plate field">
+    <svg viewBox="0 0 600 300" role="img" aria-label="A small white wooden schoolhouse with a wall of tall windows, a bell, and children walking toward it along a path">
+      <rect x="0" y="235" width="600" height="65" fill="var(--ground)" opacity=".5"/>
+      <!-- path -->
+      <path d="M40 300 Q220 250 300 235 L360 235 Q460 250 600 300 Z" fill="#D9C39A" opacity=".8"/>
+      <!-- schoolhouse -->
+      <rect x="180" y="130" width="260" height="105" fill="var(--paper)"/>
+      <path d="M170 130 L310 70 L450 130 Z" fill="#8A4B2F"/>
+      <rect x="170" y="126" width="280" height="6" fill="var(--ink-soft)"/>
+      <!-- bell cupola -->
+      <rect x="296" y="46" width="28" height="30" fill="var(--paper)"/><path d="M290 46 L310 32 L330 46 Z" fill="#8A4B2F"/>
+      <circle cx="310" cy="62" r="6" fill="var(--gold)"/>
+      <!-- tall windows -->
+      <g fill="var(--sea)" opacity=".85">
+        <rect x="192" y="145" width="22" height="60"/><rect x="222" y="145" width="22" height="60"/><rect x="252" y="145" width="22" height="60"/>
+        <rect x="346" y="145" width="22" height="60"/><rect x="376" y="145" width="22" height="60"/><rect x="406" y="145" width="22" height="60"/>
+      </g>
+      <g stroke="var(--paper)" stroke-width="2" opacity=".8">
+        <path d="M203 145 v60 M233 145 v60 M263 145 v60 M357 145 v60 M387 145 v60 M417 145 v60"/>
+        <path d="M192 175 h82 M346 175 h82"/>
+      </g>
+      <!-- door -->
+      <rect x="295" y="175" width="30" height="60" fill="#5C3520"/>
+      <rect x="288" y="235" width="44" height="6" fill="var(--ink-soft)"/>
+      <!-- trees -->
+      <g fill="#4F7A4A"><circle cx="90" cy="180" r="30"/><circle cx="60" cy="200" r="20"/><circle cx="520" cy="185" r="28"/><circle cx="560" cy="205" r="18"/></g>
+      <g stroke="#5C3520" stroke-width="5"><path d="M90 205 v30"/><path d="M520 210 v25"/></g>
+      <!-- children -->
+      <g>
+        <circle cx="150" cy="250" r="8" fill="#6B4A32"/><rect x="144" y="258" width="12" height="20" rx="3" fill="var(--sea)"/>
+        <circle cx="175" cy="256" r="7" fill="#8A5A3C"/><rect x="170" y="263" width="11" height="17" rx="3" fill="var(--gold)"/>
+        <circle cx="445" cy="252" r="8" fill="#4A3020"/><rect x="439" y="260" width="12" height="20" rx="3" fill="#8A4B2F"/>
+        <circle cx="470" cy="258" r="7" fill="#6B4A32"/><rect x="465" y="265" width="11" height="17" rx="3" fill="var(--sea)"/>
+      </g>
+      <!-- books in hands -->
+      <g fill="#8A4B2F"><rect x="157" y="266" width="8" height="6"/><rect x="430" y="268" width="8" height="6"/></g>
+      <!-- sun -->
+      <circle cx="530" cy="60" r="26" fill="var(--gold)"/>
+    </svg>
+  </div>
+  <p class="eyebrow">1862 to 1932 · Chicago and the American South</p>
+  <h2>Julius Rosenwald</h2>
+  <p class="strap">Five thousand schools</p>
+
+  <div class="story">
+    <p>Julius Rosenwald sold clothes. He was born in 1862 in Springfield, Illinois, to Jewish parents who had come from Germany with almost nothing. His father was a pedlar and then a clothing shopkeeper, and Julius left school at sixteen to learn the same trade in New York. He was good with numbers and careful with money. In 1895 he was offered a chance to buy a share of a small mail-order company in Chicago that sold watches and, increasingly, everything else, through a thick catalogue that farmers ordered from by post. The company was called Sears, Roebuck.</p>
+    <p>Rosenwald turned Sears into a giant. He organised the warehouses so that orders were filled in minutes. He promised customers their money back if they were unhappy, which was unusual then. Millions of American families, many of them on lonely farms far from any shop, learned to buy their clothes, tools, stoves and even whole houses from the Sears catalogue. By 1908 Rosenwald was president of the company and one of the richest men in America.</p>
+    <p>What he did with the money began with a book and a meeting. Around 1910 he read the life story of Booker T. Washington, a Black educator who had been born into slavery and had built a college in Alabama. In 1911 the two men met, and Washington told him about something shameful. In the southern United States at that time, Black children were sent to separate schools from white children, and those schools were often no more than a leaking shack with no windows, one teacher, and a few months of lessons a year. Many counties spent almost nothing on them at all.</p>
+    <p>Rosenwald agreed to pay for six small schools in Alabama as an experiment. They worked so well that he made it a programme, and he designed it in a way that shows the kind of person he was.</p>
+    <p>He would not simply hand over a school. Instead, a Black community that wanted one had to raise part of the money itself, the local government had to contribute part, and then Rosenwald would match it. Families who had almost nothing gave what they had: a few dollars, a wagonload of lumber, days of free labour, a corner of a field to build on. There are stories of farmers who sold their only cow. Because the community had built the school with its own hands, the community owned it, protected it, and made sure children actually went.</p>
+    <p>The schools themselves were designed with care by architects, and the plans were given away free. They had huge banks of windows on one side, because most of them had no electricity and children needed daylight to read by. They had proper blackboards, cloakrooms and desks. Next to many of them stood a small house for the teacher and a workshop for learning trades.</p>
+    <p>By the time the programme ended in 1932, the year Rosenwald died, it had built 4,977 schools, plus hundreds of teachers' homes and workshops, across fifteen states. About one third of all Black children in the rural South went to a Rosenwald school. Some of the students who sat at those desks grew up to be famous: the poet Maya Angelou, the writer Ralph Ellison and the civil rights leader John Lewis all attended Rosenwald schools.</p>
+    <p>Rosenwald had one more unusual idea about giving. Most rich men set up foundations that were meant to last forever, with their names on them. Rosenwald thought that was selfish. Each generation, he said, has its own problems and should solve them with its own money. So he ordered that his fund had to spend every dollar within twenty-five years of his death, and it did. When Chicago wanted to name a great new science museum after him, because he had paid for it, he refused, and it is still simply called the Museum of Science and Industry. He said the important thing was not that people knew who gave the money. It was that the museum existed.</p>
+  </div>
+
+  <div class="side">
+    <div class="box words">
+      <h3>Words to know</h3>
+      <dl>
+        <dt>mail-order catalogue</dt><dd>A thick book of things to buy by post, before there were online shops.</dd>
+        <dt>segregated</dt><dd>Kept apart by law because of race, as schools in the American South once were.</dd>
+        <dt>matching gift</dt><dd>A promise to give the same amount that others manage to raise.</dd>
+      </dl>
+    </div>
+    <div class="box facts">
+      <h3>By the numbers</h3>
+      <dl>
+        <dt>4,977</dt><dd>schools built across fifteen states</dd>
+        <dt>1 in 3</dt><dd>Black children in the rural South who attended one</dd>
+        <dt>25</dt><dd>years his fund was allowed to exist after his death, then it had to be empty</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="project">
+    <h3>For your character</h3>
+    <ul>
+      <li><b>Rich:</b> the boss of the biggest catalogue store in the world.</li>
+      <li><b>Warm:</b> he refused to put his name on his gifts.</li>
+      <li><b>Caring:</b> he let communities build their own schools, so the schools belonged to them.</li>
+    </ul>
+  </div>
+  <p class="photos">Real photos: <a href="https://en.wikipedia.org/wiki/Julius_Rosenwald">Julius Rosenwald</a> and <a href="https://en.wikipedia.org/wiki/Rosenwald_School">Rosenwald Schools</a> on Wikipedia.</p>
+  <a class="top" href="#top">Back to the list</a>
+</article>
+
+<!-- ================================================================ -->
+<article class="chapter" id="walker">
+  <div class="plate dusk">
+    <svg viewBox="0 0 600 300" role="img" aria-label="A round tin of hair ointment labelled Wonderful Hair Grower, a comb, and a travelling case, with a trail of footsteps leading to a front door">
+      <rect x="0" y="235" width="600" height="65" fill="var(--ground)" opacity=".5"/>
+      <!-- door at right -->
+      <rect x="470" y="90" width="90" height="145" fill="var(--paper)"/>
+      <rect x="486" y="110" width="58" height="125" fill="#8A4B2F"/>
+      <rect x="494" y="120" width="42" height="40" fill="#A9623C"/><rect x="494" y="170" width="42" height="55" fill="#A9623C"/>
+      <circle cx="530" cy="180" r="4" fill="var(--gold)"/>
+      <rect x="462" y="235" width="106" height="8" fill="var(--ink-soft)"/>
+      <!-- footsteps -->
+      <g fill="var(--ink)" opacity=".5">
+        <ellipse cx="300" cy="270" rx="7" ry="11" transform="rotate(20 300 270)"/><ellipse cx="330" cy="256" rx="7" ry="11" transform="rotate(20 330 256)"/>
+        <ellipse cx="365" cy="262" rx="7" ry="11" transform="rotate(20 365 262)"/><ellipse cx="395" cy="248" rx="7" ry="11" transform="rotate(20 395 248)"/>
+        <ellipse cx="430" cy="254" rx="7" ry="11" transform="rotate(20 430 254)"/>
+      </g>
+      <!-- tin -->
+      <g transform="translate(70 120)">
+        <ellipse cx="80" cy="96" rx="80" ry="18" fill="var(--ink)" opacity=".25"/>
+        <rect x="0" y="40" width="160" height="56" rx="6" fill="var(--gold)"/>
+        <ellipse cx="80" cy="40" rx="80" ry="22" fill="#D9A441"/>
+        <ellipse cx="80" cy="40" rx="66" ry="16" fill="var(--paper)"/>
+        <text x="80" y="35" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-weight="700" fill="var(--ink)" letter-spacing="1">WONDERFUL</text>
+        <text x="80" y="49" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="10" fill="var(--ink)" letter-spacing="1">HAIR GROWER</text>
+        <rect x="14" y="58" width="132" height="22" rx="3" fill="var(--paper)" opacity=".9"/>
+        <text x="80" y="73" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="10" font-style="italic" fill="var(--ink)">Mme. C. J. Walker</text>
+      </g>
+      <!-- comb -->
+      <g transform="translate(250 150) rotate(-18)">
+        <rect x="0" y="0" width="120" height="14" rx="4" fill="var(--ink)"/>
+        <g fill="var(--ink)"><rect x="8" y="14" width="4" height="30"/><rect x="18" y="14" width="4" height="30"/><rect x="28" y="14" width="4" height="30"/><rect x="38" y="14" width="4" height="30"/><rect x="48" y="14" width="4" height="30"/><rect x="58" y="14" width="4" height="30"/><rect x="68" y="14" width="4" height="30"/><rect x="78" y="14" width="4" height="30"/><rect x="88" y="14" width="4" height="30"/><rect x="98" y="14" width="4" height="30"/><rect x="108" y="14" width="4" height="30"/></g>
+      </g>
+      <!-- case -->
+      <g transform="translate(270 190)">
+        <rect x="0" y="0" width="110" height="60" rx="6" fill="#8A4B2F"/>
+        <rect x="0" y="0" width="110" height="20" rx="6" fill="#A9623C"/>
+        <rect x="44" y="-12" width="22" height="14" rx="5" fill="none" stroke="#5C3520" stroke-width="5"/>
+        <rect x="18" y="4" width="8" height="52" fill="var(--gold)"/><rect x="84" y="4" width="8" height="52" fill="var(--gold)"/>
+        <rect x="50" y="26" width="10" height="8" fill="var(--gold)"/>
+      </g>
+      <!-- sun -->
+      <circle cx="60" cy="60" r="24" fill="var(--gold)"/>
+    </svg>
+  </div>
+  <p class="eyebrow">1867 to 1919 · Louisiana, St. Louis, Denver and Indianapolis, USA</p>
+  <h2>Madam C. J. Walker</h2>
+  <p class="strap">The washerwoman who built a company for women</p>
+
+  <div class="story">
+    <p>Her real name was Sarah Breedlove. She was born in 1867 in a cabin on a cotton plantation in Louisiana, the fifth child in her family and the first one born free. Her older brothers and sisters had been born slaves. By the time she was seven, both her parents had died. She married at fourteen, mostly to get away from a cruel brother-in-law, and by twenty she was a widow with a two-year-old daughter named Lelia.</p>
+    <p>She went to St. Louis, where her brothers were barbers, and found the only work she could: washing other people's clothes. For almost twenty years she was a washerwoman, bent over a tub with a scrubbing board, earning about a dollar and a half a day. It was enough to keep Lelia in school, which was what mattered to her most.</p>
+    <p>Around this time her hair began to fall out. It was common then. Many women washed their hair only once a month, in homes with no running water, and used harsh soaps and lotions that damaged the scalp. Sarah tried every product she could find. Then she began mixing her own, at first with the help of a company she worked for, and later on her own, until she had a healing ointment she called Wonderful Hair Grower.</p>
+    <p>In 1905 she moved to Denver with a dollar and a half in her pocket, married a newspaper man named Charles Joseph Walker, and began calling herself Madam C. J. Walker, a name she thought sounded confident and grand. She sold her ointment door to door, demonstrating it on herself. Then she travelled by train from town to town across the South, speaking in churches and meeting halls, showing women how to care for their hair.</p>
+    <p>Her real idea was not the ointment. It was the women. Walker trained other Black women to become "Walker agents", selling her products in their own neighbourhoods and teaching her method to their customers. For a Black woman in America in 1910, the only jobs available were usually cooking, cleaning and laundry. A Walker agent could earn many times that, run her own small business, and hold her head up. Walker opened a beauty school in Pittsburgh and named it after her daughter. By the time she died there were thousands of agents across the country, and she had become one of the first American women of any race to make her own fortune from nothing.</p>
+    <blockquote>
+      I am not merely satisfied in making money for myself, for I am endeavoring to provide employment for hundreds of women of my race.
+      <cite>Madam C. J. Walker, speaking to a business convention in 1912</cite>
+    </blockquote>
+    <p>In 1910 she built a factory in Indianapolis, with a laboratory, a beauty school and offices, on land she owned. She was very proud of that. And then she began to give.</p>
+    <p>She gave to the orphanage she had once relied on. When Black families in Indianapolis were raising money for a YMCA of their own, she gave a thousand dollars, more than any woman in the city had ever given to anything. She paid for scholarships so that girls could attend the college that Booker T. Washington had built. In 1918, when a campaign began to make lynching, the murder of Black people by mobs, a federal crime, she gave five thousand dollars to the cause, which was the largest single gift the campaign had ever received.</p>
+    <p>Most of all, she taught her agents to give. She organised them into clubs, and every year at the company convention she handed out prizes. The prizes did not go to the agents who had sold the most. They went to the clubs that had done the most charity in their own towns. Kindness, she made clear, was part of the job.</p>
+    <p>Madam Walker died in 1919, at fifty-one, in a mansion she had built beside the Hudson River, a house so grand that it was meant to show every Black child in America what was possible. In her will, she left two thirds of her company's future profits to charity.</p>
+  </div>
+
+  <div class="side">
+    <div class="box words">
+      <h3>Words to know</h3>
+      <dl>
+        <dt>plantation</dt><dd>A huge farm in the American South where, before 1865, enslaved people were forced to work.</dd>
+        <dt>agent</dt><dd>Someone who sells a company's products in their own area and keeps part of the money.</dd>
+        <dt>will</dt><dd>A legal letter that says who gets your money and belongings when you die.</dd>
+      </dl>
+    </div>
+    <div class="box facts">
+      <h3>By the numbers</h3>
+      <dl>
+        <dt>$1.50</dt><dd>her pay for a day of washing clothes, and all she had when she moved to Denver</dd>
+        <dt>$5,000</dt><dd>her gift to the campaign against lynching, the largest it had received</dd>
+        <dt>2/3</dt><dd>of her company's future profits left to charity in her will</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="project">
+    <h3>For your character</h3>
+    <ul>
+      <li><b>Rich:</b> a washerwoman who invented a product and built a company.</li>
+      <li><b>Warm:</b> she gave prizes for kindness, not for sales.</li>
+      <li><b>Caring:</b> she made sure her success lifted up thousands of other women too.</li>
+    </ul>
+  </div>
+  <p class="photos">Real photos: <a href="https://en.wikipedia.org/wiki/Madam_C._J._Walker">Madam C. J. Walker</a> on Wikipedia.</p>
+  <a class="top" href="#top">Back to the list</a>
+</article>
+
+<!-- ================================================================ -->
+<article class="chapter" id="feeney">
+  <div class="plate sea">
+    <svg viewBox="0 0 600 300" role="img" aria-label="A plain plastic shopping bag, a cheap wristwatch and an economy plane ticket, next to an envelope with no name spilling coins">
+      <rect x="0" y="235" width="600" height="65" fill="var(--ground)" opacity=".5"/>
+      <!-- plastic bag -->
+      <g transform="translate(60 90)">
+        <path d="M20 40 L10 160 L150 160 L140 40 Z" fill="var(--paper)"/>
+        <path d="M45 40 q0 -34 20 -34 q20 0 20 34" fill="none" stroke="var(--ink-soft)" stroke-width="5"/>
+        <path d="M75 40 q0 -34 20 -34 q20 0 20 34" fill="none" stroke="var(--ink-soft)" stroke-width="5"/>
+        <path d="M30 70 L40 150" stroke="var(--line)" stroke-width="2"/>
+        <rect x="45" y="80" width="70" height="50" fill="var(--sea)" opacity=".25"/>
+      </g>
+      <!-- watch -->
+      <g transform="translate(250 60)">
+        <rect x="26" y="0" width="28" height="150" rx="6" fill="var(--ink)"/>
+        <g stroke="var(--ink-soft)" stroke-width="2"><path d="M26 20 h28 M26 30 h28 M26 40 h28 M26 110 h28 M26 120 h28 M26 130 h28"/></g>
+        <rect x="8" y="48" width="64" height="54" rx="8" fill="var(--ink-soft)"/>
+        <rect x="16" y="56" width="48" height="38" rx="3" fill="#9FB39B"/>
+        <text x="40" y="82" text-anchor="middle" font-family="monospace" font-size="16" font-weight="700" fill="var(--ink)">12:04</text>
+      </g>
+      <!-- ticket -->
+      <g transform="translate(340 170) rotate(-8)">
+        <rect x="0" y="0" width="170" height="60" rx="4" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+        <path d="M120 0 v60" stroke="var(--gold)" stroke-width="2" stroke-dasharray="4 4"/>
+        <text x="12" y="22" font-family="Atkinson Hyperlegible, sans-serif" font-size="11" font-weight="700" fill="var(--ink)">ECONOMY</text>
+        <text x="12" y="40" font-family="Atkinson Hyperlegible, sans-serif" font-size="10" fill="var(--ink-soft)">SEAT 38B</text>
+        <path d="M60 46 l6 -6 l14 4 l10 -8 l3 3 l-8 9 l3 12 l-3 1 l-6 -9 l-7 6 l1 5 l-2 1 l-4 -6 l-6 -3 l1 -2 l6 0 z" fill="var(--ink)" opacity=".7"/>
+      </g>
+      <!-- envelope -->
+      <g transform="translate(400 70)">
+        <rect x="0" y="0" width="140" height="80" fill="var(--paper)" stroke="var(--ink-soft)" stroke-width="2"/>
+        <path d="M0 0 L70 50 L140 0" fill="none" stroke="var(--ink-soft)" stroke-width="2"/>
+        <path d="M30 60 h60" stroke="var(--line)" stroke-width="3" stroke-dasharray="6 5"/>
+      </g>
+      <!-- coins flying -->
+      <g fill="var(--gold)" stroke="var(--paper)" stroke-width="2">
+        <circle cx="560" cy="40" r="10"/><circle cx="520" cy="22" r="8"/><circle cx="580" cy="90" r="7"/><circle cx="470" cy="30" r="6"/>
+      </g>
+    </svg>
+  </div>
+  <p class="eyebrow">1931 to 2023 · New Jersey, Hong Kong, Ireland, Vietnam and the world</p>
+  <h2>Chuck Feeney</h2>
+  <p class="strap">The billionaire who wanted to die with nothing</p>
+
+  <div class="story">
+    <p>Charles Feeney grew up in Elizabeth, New Jersey, during the Great Depression, in an Irish-American family with very little. His mother was a nurse. He remembered that she used to offer a neighbour who was ill a lift in her car every day, and pretend she happened to be driving that way, so the man would not feel he was a burden. Chuck said later that this was the first lesson in giving he ever had: do it so quietly that the other person does not feel small.</p>
+    <p>As a boy he sold Christmas cards door to door and shovelled snow for money. He served in the United States Air Force during the Korean War, and the government paid for him to go to Cornell University afterwards, where he sold sandwiches to hungry students at night to make extra cash. Then he went to Europe and, with a college friend, started selling tax-free alcohol and perfume to American sailors coming ashore. That grew into a company called Duty Free Shoppers, the shops you walk through in airports, which spread across Hong Kong, Hawaii, Guam and the world. By the 1980s, Feeney was a billionaire.</p>
+    <p>Almost nobody knew, because he did not act like one. He flew economy class. He wore a plastic watch that cost about fifteen dollars. He carried his papers in a plastic shopping bag. He did not own a car, and he did not own a house; he and his wife lived in a rented apartment in San Francisco. When friends asked why, he said that a first-class seat did not get you there any faster.</p>
+    <p>In 1984 he did something that stayed secret for thirteen years. He signed over his entire share of the company, almost everything he owned, to a foundation he had set up in Bermuda called Atlantic Philanthropies. Then the foundation began giving money away, in enormous amounts, on one strict condition: nobody could ever say where it came from. Universities received buildings and were forbidden from putting his name on them. Hospitals were built. Whole research centres appeared. The people who received the money were told only that it came from an anonymous donor who would stop giving if they ever told.</p>
+    <p>The secret only came out in 1997, because of a business lawsuit that forced the paperwork into the open. Reporters discovered that the quiet man with the plastic bag had already given away hundreds of millions of dollars, and was planning to give away everything else.</p>
+    <p>Once his name was known, he decided to use it. He wanted other rich people to see that giving your money away while you are still alive is much more fun and much more useful than leaving it behind. He called this "Giving While Living". Bill Gates and Warren Buffett, two of the richest men in the world, said that Feeney was the person who inspired them to start their own promise to give away most of their fortunes.</p>
+    <p>Feeney's money went to places he had a connection with. Because his family was Irish, he gave more than a billion dollars to universities all over Ireland, at a time when the country was poor, and he quietly helped pay for the peace talks that ended the fighting in Northern Ireland. Because he had served in the Korean War, he cared about the countries of Asia, and he paid for hospitals, medical schools and libraries in Vietnam. Because Cornell had given him his start, he gave it nearly a billion dollars, and it named nothing after him. He gave to children's hospitals in Australia, to research on ageing, to the fight for fairer laws for young people in the United States.</p>
+    <p>He had a rule about how the money should work. He did not want to pay for things forever. He wanted to fix things, hand them over, and move on. And he wanted the foundation itself to close. In 2020, after giving away eight billion dollars, Atlantic Philanthropies made its final grant and shut its doors, exactly as he had planned.</p>
+    <p>Chuck Feeney died in 2023, at ninety-two, in the rented apartment. He had about two million dollars left, enough to be comfortable and no more. He had spent fifty years trying to die with nothing, and he had very nearly managed it.</p>
+    <blockquote>
+      I cannot think of a more personally rewarding and appropriate use of wealth than to give while one is living.
+      <cite>Chuck Feeney, in a letter to the people who signed the Giving Pledge, 2011</cite>
+    </blockquote>
+  </div>
+
+  <div class="side">
+    <div class="box words">
+      <h3>Words to know</h3>
+      <dl>
+        <dt>duty free</dt><dd>Goods sold at airports and borders without the usual tax, so they cost less.</dd>
+        <dt>foundation</dt><dd>An organisation set up to give money to good causes.</dd>
+        <dt>anonymous</dt><dd>Without giving your name.</dd>
+      </dl>
+    </div>
+    <div class="box facts">
+      <h3>By the numbers</h3>
+      <dl>
+        <dt>$8bn</dt><dd>given away over his lifetime</dd>
+        <dt>13</dt><dd>years his giving stayed a complete secret</dd>
+        <dt>$15</dt><dd>the price of the plastic watch he wore</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="project">
+    <h3>For your character</h3>
+    <ul>
+      <li><b>Rich:</b> the founder of the airport shops, worth billions.</li>
+      <li><b>Warm:</b> he lived like a normal person and gave so that nobody felt small.</li>
+      <li><b>Caring:</b> he gave everything away while alive, secretly, and asked for no buildings with his name.</li>
+    </ul>
+  </div>
+  <p class="photos">Real photos: <a href="https://en.wikipedia.org/wiki/Chuck_Feeney">Chuck Feeney</a> on Wikipedia.</p>
+  <a class="top" href="#top">Back to the list</a>
+</article>
+
+<!-- ================================================================ -->
+<article class="chapter" id="dolly">
+  <div class="plate sun">
+    <svg viewBox="0 0 600 300" role="img" aria-label="A rural mailbox on a post with its flag up and a picture book sticking out, with the Smoky Mountains behind and butterflies in the air">
+      <!-- mountains -->
+      <path d="M0 200 L90 120 L170 180 L260 100 L350 170 L430 110 L520 170 L600 120 L600 240 L0 240 Z" fill="var(--sea)" opacity=".35"/>
+      <path d="M0 220 L120 160 L220 210 L330 150 L440 205 L540 160 L600 190 L600 250 L0 250 Z" fill="#4F7A4A" opacity=".55"/>
+      <rect x="0" y="240" width="600" height="60" fill="var(--ground)" opacity=".5"/>
+      <!-- post -->
+      <rect x="290" y="170" width="16" height="80" fill="#5C3520"/>
+      <!-- mailbox -->
+      <path d="M220 120 h130 a30 30 0 0 1 30 30 v30 h-190 v-30 a30 30 0 0 1 30 -30 z" fill="var(--sea)"/>
+      <path d="M190 150 a30 30 0 0 1 30 -30 v60 h-30 z" fill="var(--sea)"/>
+      <ellipse cx="220" cy="150" rx="30" ry="30" fill="var(--sea)"/>
+      <ellipse cx="220" cy="150" rx="22" ry="22" fill="var(--ink)" opacity=".85"/>
+      <!-- book sticking out -->
+      <g transform="translate(205 128) rotate(-10)">
+        <rect x="0" y="0" width="34" height="42" rx="2" fill="var(--gold)"/>
+        <rect x="3" y="3" width="28" height="36" rx="1" fill="var(--paper)"/>
+        <rect x="6" y="8" width="22" height="10" fill="var(--sea)" opacity=".5"/>
+        <path d="M8 24 h18 M8 29 h18 M8 34 h12" stroke="var(--ink-soft)" stroke-width="1.5"/>
+      </g>
+      <!-- flag -->
+      <rect x="352" y="112" width="6" height="40" fill="#B5573F"/>
+      <rect x="358" y="112" width="26" height="16" fill="#B5573F"/>
+      <!-- name on box -->
+      <text x="285" y="165" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--paper)">a book a month</text>
+      <!-- butterflies -->
+      <g fill="var(--gold)">
+        <path d="M100 80 q-14 -18 -24 -4 q10 14 24 4 z"/><path d="M100 80 q14 -18 24 -4 q-10 14 -24 4 z"/>
+        <path d="M480 60 q-12 -16 -20 -3 q8 12 20 3 z"/><path d="M480 60 q12 -16 20 -3 q-8 12 -20 3 z"/>
+        <path d="M430 240 q-10 -14 -18 -3 q8 10 18 3 z"/><path d="M430 240 q10 -14 18 -3 q-8 10 -18 3 z"/>
+      </g>
+      <g fill="#B5573F"><path d="M140 130 q-10 -14 -18 -3 q8 10 18 3 z"/><path d="M140 130 q10 -14 18 -3 q-8 10 -18 3 z"/></g>
+      <!-- path -->
+      <path d="M60 300 Q200 260 300 255 Q400 262 560 300 Z" fill="#D9C39A" opacity=".7"/>
+      <!-- sun -->
+      <circle cx="70" cy="50" r="24" fill="var(--gold)"/>
+    </svg>
+  </div>
+  <p class="eyebrow">Born 1946 · The Smoky Mountains, Tennessee, USA</p>
+  <h2>Dolly Parton</h2>
+  <p class="strap">The Book Lady</p>
+
+  <div class="story">
+    <p>Dolly Parton was born in 1946 in a one-room cabin in the Smoky Mountains of Tennessee, the fourth of twelve children. The family had no electricity and no running water. Her father, Lee, was a farmer and building worker who could not read or write. The doctor who delivered Dolly was paid with a sack of cornmeal. She grew up singing in church and on the porch, and at eighteen, the morning after she finished high school, she got on a bus to Nashville with a cardboard suitcase to become a country singer.</p>
+    <p>She became one of the most famous singers in the world. She wrote thousands of songs, sold millions of records, starred in films and built a fortune. And then she did what most famous people do not do: she went home.</p>
+    <p>In 1986, she bought into a small amusement park in her home county and turned it into Dollywood. Her friends in the music business thought it was a strange thing to spend money on. But Sevier County was poor and many families there had no steady work. Today Dollywood is the biggest employer in the county, with thousands of jobs, and it brings millions of visitors to the mountains every year. Dolly said she wanted people in her home town to be able to make a living without leaving, the way she had had to.</p>
+    <p>Then, in 1995, she started something small, because of her father. Lee Parton had been ashamed all his life that he could not read. Dolly decided that every child born in Sevier County would get a book in the post every month, addressed to the child by name, from the day they were born until they started school. Not to the family, to the child. Sixty books, free, no forms to fill in beyond a sign-up sheet at the hospital. She called it the Imagination Library. Her father, she said, was prouder of that than of any of her songs, and the children of the county started calling her the Book Lady.</p>
+    <p>Other towns asked if they could join. Then other states. Then other countries. Dolly's rule was that a local partner, a town, a library or a charity, had to pay for the books, and her foundation would handle the printing and posting and choose the titles. That way every town's programme belonged to the town. Today the Imagination Library sends out more than three million books every month, in the United States, Canada, the United Kingdom, Ireland and Australia. In total it has sent well over two hundred million books to children.</p>
+    <p>In November 2016, wildfires swept through the Smoky Mountains near Gatlinburg, in Dolly's home county. Fourteen people died and more than two thousand homes and businesses burned. Within days, Dolly announced that every family who had lost their home would receive a thousand dollars a month from her, for six months, to help them get back on their feet. About nine hundred families received it. At the end of the six months, she sent each family a final gift of five thousand dollars, which nobody had expected.</p>
+    <p>In 2020, early in the pandemic, she gave a million dollars to a hospital in Nashville for research into a new kind of vaccine. Part of that money helped fund the early testing of one of the first vaccines that worked. Scientists put her name in the acknowledgements of the scientific paper.</p>
+    <p>Dolly has said that when she was a little girl with no shoes in a cabin, she dreamed of being rich, and she is not embarrassed about that. But she has also said that the reason to be rich is so that you can turn around and reach back for the people behind you. She has never stopped doing that in the county where she was born.</p>
+    <blockquote>
+      If you see someone without a smile, give them one of yours.
+      <cite>Dolly Parton, a saying she repeats often, and credits to her mother</cite>
+    </blockquote>
+  </div>
+
+  <div class="side">
+    <div class="box words">
+      <h3>Words to know</h3>
+      <dl>
+        <dt>literacy</dt><dd>Being able to read and write.</dd>
+        <dt>county</dt><dd>A local area with its own government, like a gun (군) in Korea.</dd>
+        <dt>vaccine</dt><dd>A medicine that teaches your body to fight a disease before you catch it.</dd>
+      </dl>
+    </div>
+    <div class="box facts">
+      <h3>By the numbers</h3>
+      <dl>
+        <dt>12</dt><dd>children in the cabin she grew up in</dd>
+        <dt>3m</dt><dd>free books mailed to children every month</dd>
+        <dt>$1,000</dt><dd>a month, for six months, to each family who lost a home in the fires</dd>
+      </dl>
+    </div>
+  </div>
+  <div class="project">
+    <h3>For your character</h3>
+    <ul>
+      <li><b>Rich:</b> a singer who became one of the wealthiest entertainers alive.</li>
+      <li><b>Warm:</b> books arrive addressed to each child by name.</li>
+      <li><b>Caring:</b> she built jobs in her poor home county and sent money straight to neighbours when disaster struck.</li>
+    </ul>
+  </div>
+  <p class="photos">Real photos: <a href="https://en.wikipedia.org/wiki/Dolly_Parton">Dolly Parton</a> and <a href="https://en.wikipedia.org/wiki/Dolly_Parton%27s_Imagination_Library">Imagination Library</a> on Wikipedia.</p>
+  <a class="top" href="#top">Back to the list</a>
+</article>
+
+<!-- ================================================================ -->
+<section class="closing" id="closing">
+  <h2>Putting them side by side</h2>
+  <p>Nine people, four hundred years, five countries. They earned their money in very different ways, but look at how often the same ideas come back: they gave what they themselves had once lacked, they gave close to home, and the best of them found ways to make the gift belong to the people who received it.</p>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr><th>Who</th><th>When and where</th><th>How they got rich</th><th>What they gave</th><th>What they had lacked</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Choi family</td><td>1600s–1947, Gyeongju</td><td>Farmland and rice</td><td>Food for anyone within a day's walk, for 300 years; then a university</td><td>Nothing, but they remembered a famine</td></tr>
+        <tr><td>Kim Man-deok</td><td>1739–1812, Jeju</td><td>Trading between the island and the mainland</td><td>Her savings, spent on rice for a starving island</td><td>Parents, freedom to leave the island</td></tr>
+        <tr><td>Titus Salt</td><td>1803–1876, England</td><td>Alpaca wool cloth</td><td>A clean town with houses, a school, a hospital and a park</td><td>Clean air in the city he worked in</td></tr>
+        <tr><td>Andrew Carnegie</td><td>1835–1919, Scotland and USA</td><td>Steel</td><td>2,509 free libraries and much more</td><td>School and books as a boy</td></tr>
+        <tr><td>Milton Hershey</td><td>1857–1945, Pennsylvania</td><td>Milk chocolate</td><td>A town, and his whole fortune to a school for orphans</td><td>Children of his own</td></tr>
+        <tr><td>Julius Rosenwald</td><td>1862–1932, Chicago and the South</td><td>The Sears catalogue</td><td>4,977 schools built together with Black communities</td><td>He had been treated as an outsider himself</td></tr>
+        <tr><td>Madam C. J. Walker</td><td>1867–1919, USA</td><td>Hair-care products and a sales network</td><td>Jobs for thousands of women, gifts for schools and justice</td><td>Parents, and any chance at a good job</td></tr>
+        <tr><td>Chuck Feeney</td><td>1931–2023, USA and the world</td><td>Duty-free shops</td><td>Eight billion dollars, most of it in secret</td><td>Money, growing up in the Depression</td></tr>
+        <tr><td>Dolly Parton</td><td>Born 1946, Tennessee</td><td>Songs</td><td>Jobs in her home county, a free book every month for millions of children</td><td>Books, shoes, a father who could read</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ideas to borrow for your imaginary person</h2>
+  <ol class="ideas">
+    <li><b>Give them a reason.</b> Almost every person here gave what they once lacked. Carnegie had no books, so he built libraries. Dolly's father could not read, so she mails books. What did your character not have as a child?</li>
+    <li><b>Give them a home.</b> The most caring people here cared for a particular place: an island, a valley, a county, a circle a hundred li wide. Where is your character's place?</li>
+    <li><b>Give them a way of giving.</b> Some gave quietly, like Feeney and Hershey. Some made rules, like the Choi family. Some asked the receivers to help build it, like Carnegie and Rosenwald, so the gift would last. Which way suits your character?</li>
+    <li><b>Give them a small habit.</b> Feeney's mother pretended she happened to be driving that way. Walker gave prizes for kindness. Small habits make a character feel real.</li>
+    <li><b>Let them be human.</b> Carnegie's workers suffered. Salt banned pubs. Real generous people are not perfect, and a character with one flaw is more interesting than one without.</li>
+  </ol>
+
+  <p class="credits">The illustrations on this page were drawn for it and are not portraits. For real photographs of each person, follow the links at the end of each story. The stories are told from published biographies and encyclopaedias; the numbers are rounded to the nearest sensible figure.</p>
+</section>
+
+</div>
+<span id="top" style="position:absolute; top:0"></span>
+</body>
+</html>
