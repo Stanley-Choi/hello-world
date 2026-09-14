@@ -43,6 +43,18 @@ Read-aloud uses the browser's built-in speech engine, so there is nothing to
 install and no network call. On iOS, **Share → Add to Home Screen** makes it
 open like an app.
 
+## 📢 한성대 신문사 일정 공지
+
+A one-page schedule notice for the Hansung University newspaper alumni:
+the sports day moved from 10/17 to **2026-10-31 (Sat) 2 pm** at the university
+gymnasium, and the **50th anniversary event on 2026-12-18 (Fri) 6:30 pm**.
+
+**https://stanley-choi.github.io/hello-world/hansung/**
+
+- `hansung/index.html` — the notice page (D-day counters, change reason and
+  run-of-show, copy-to-clipboard button for KakaoTalk, add-to-calendar `.ics`)
+- `hansung/notice.md` — the same notice as plain text, ready to paste
+
 ## 💻 Use it offline
 
 Download `index.html` and `vocab.js` into the same folder and open
