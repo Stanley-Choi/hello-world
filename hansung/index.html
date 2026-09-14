@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="한성대 신문사 50주년 기념식 준비 일정 안내 — 2026년 10월 31일(토) 한성대학교 체육관">
+<meta name="theme-color" content="#1e3a8a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%A2%3C/text%3E%3C/svg%3E">
+<title>한성대 신문사 50주년 기념식 일정 안내</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@700;900&display=swap">
+<style>
+  :root{
+    color-scheme:light dark;
+    --bg:#f4f6fb; --card:#ffffff; --ink:#111827; --muted:#5b6474; --line:#dfe4ee;
+    --navy:#1e3a8a; --navy-soft:#e3e9fb; --gold:#b98a1c; --gold-soft:#fbf1d6;
+    --ok:#15803d; --ok-soft:#dcf5e5; --wait:#b45309; --wait-soft:#fdeacc;
+    --shadow:0 1px 0 rgba(17,24,39,.04),0 10px 24px -14px rgba(30,58,138,.45);
+    --r:16px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#0b1220; --card:#131c2e; --ink:#e8edf7; --muted:#9aa6bd; --line:#26324a;
+      --navy:#8fb0ff; --navy-soft:#1b2a4d; --gold:#e6c364; --gold-soft:#3a2f12;
+      --ok:#5fd08a; --ok-soft:#123222; --wait:#f0b25a; --wait-soft:#3a2a12;
+      --shadow:0 10px 24px -14px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0b1220; --card:#131c2e; --ink:#e8edf7; --muted:#9aa6bd; --line:#26324a;
+    --navy:#8fb0ff; --navy-soft:#1b2a4d; --gold:#e6c364; --gold-soft:#3a2f12;
+    --ok:#5fd08a; --ok-soft:#123222; --wait:#f0b25a; --wait-soft:#3a2a12;
+    --shadow:0 10px 24px -14px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+    padding:0 16px; padding-block:20px 48px;
+  }
+  .wrap{max-width:640px;margin:0 auto}
+
+  .hero{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--r);
+    box-shadow:var(--shadow); padding:26px 22px 22px; position:relative; overflow:hidden;
+  }
+  .hero::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--navy),var(--gold))}
+  .kicker{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;letter-spacing:.06em;
+    color:var(--navy);background:var(--navy-soft);padding:4px 10px;border-radius:999px}
+  h1{font-family:"Noto Serif KR","Noto Sans KR",serif;font-weight:900;font-size:clamp(22px,5.6vw,30px);line-height:1.3;margin:14px 0 6px}
+  h1 .n{color:var(--gold)}
+  .lead{margin:0;color:var(--muted);font-size:14.5px}
+
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+  .fact{background:var(--navy-soft);border-radius:12px;padding:12px 14px}
+  .fact .l{font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+  .fact .v{font-size:17px;font-weight:700;color:var(--ink);margin-top:2px;line-height:1.35}
+  .fact .s{font-size:12px;color:var(--muted);margin-top:2px}
+  .dday{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;
+    background:var(--gold-soft);border-radius:12px;padding:10px 14px;font-size:13.5px;color:var(--ink)}
+  .dday b{font-size:20px;color:var(--gold);font-variant-numeric:tabular-nums}
+
+  section{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:20px 22px}
+  h2{font-size:15px;font-weight:700;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+  h2::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--navy)}
+
+  .tl{list-style:none;margin:0;padding:0}
+  .tl li{display:grid;grid-template-columns:22px 1fr;gap:12px;position:relative;padding-bottom:16px}
+  .tl li:last-child{padding-bottom:0}
+  .tl li::before{content:"";position:absolute;left:10px;top:22px;bottom:-2px;width:2px;background:var(--line)}
+  .tl li:last-child::before{display:none}
+  .dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:900;
+    background:var(--line);color:var(--muted);margin-top:1px}
+  .done .dot{background:var(--ok);color:#fff}
+  .now .dot{background:var(--wait);color:#fff}
+  .goal .dot{background:var(--gold);color:#fff}
+  .tl .t{font-weight:700;font-size:15px}
+  .tl .d{font-size:13px;color:var(--muted)}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;margin-left:6px;vertical-align:1px}
+  .done .tag{background:var(--ok-soft);color:var(--ok)}
+  .now .tag{background:var(--wait-soft);color:var(--wait)}
+  .goal .tag{background:var(--gold-soft);color:var(--gold)}
+
+  ul.plain{margin:0;padding-left:18px}
+  ul.plain li{margin:4px 0}
+  .note{margin-top:10px;font-size:13.5px;color:var(--muted);background:var(--bg);border-radius:10px;padding:10px 12px}
+
+  .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  button{font:inherit;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);
+    padding:10px 14px;border-radius:12px;cursor:pointer;box-shadow:var(--shadow)}
+  button.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+  :root[data-theme="dark"] button.primary,
+  :root:not([data-theme="light"]) button.primary{color:#fff}
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) button.primary{background:#2f55b8;border-color:#2f55b8} }
+  :root[data-theme="dark"] button.primary{background:#2f55b8;border-color:#2f55b8}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);
+    padding:9px 16px;border-radius:999px;font-size:13.5px;opacity:0;transition:opacity .2s;pointer-events:none}
+  .toast.show{opacity:1}
+  footer{margin-top:22px;text-align:center;font-size:12.5px;color:var(--muted)}
+  @media (max-width:400px){ .facts{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="kicker">📢 공지</span>
+    <h1>한성대 신문사 <span class="n">50주년</span> 기념식<br>준비 일정 안내</h1>
+    <p class="lead">기념식 준비 진행 상황과 앞으로의 일정을 안내드립니다.</p>
+
+    <div class="facts">
+      <div class="fact">
+        <div class="l">일시</div>
+        <div class="v">2026년 10월 31일 (토)</div>
+        <div class="s">시작 시간은 추후 안내</div>
+      </div>
+      <div class="fact">
+        <div class="l">장소</div>
+        <div class="v">한성대학교 체육관</div>
+        <div class="s">예약 확정</div>
+      </div>
+    </div>
+    <div class="dday"><span>기념식까지</span><b id="dday">D-</b></div>
+  </header>
+
+  <section>
+    <h2>진행 경과와 일정</h2>
+    <ol class="tl">
+      <li class="done">
+        <span class="dot">✓</span>
+        <div><div class="t">회장님 면담 <span class="tag">완료</span></div>
+        <div class="d">9월 11일 (금) · 기념식 준비 방향 논의</div></div>
+      </li>
+      <li class="done">
+        <span class="dot">✓</span>
+        <div><div class="t">체육관 예약 확정 <span class="tag">완료</span></div>
+        <div class="d">10월 31일 (토) 한성대학교 체육관</div></div>
+      </li>
+      <li class="now">
+        <span class="dot">…</span>
+        <div><div class="t">회장님 추가 면담 <span class="tag">일정 조율 중</span></div>
+        <div class="d">모금 방식 · 참여 인원 등 세부 사항 논의</div></div>
+      </li>
+      <li>
+        <span class="dot">4</span>
+        <div><div class="t">세부 안내 공지 <span class="tag" style="background:var(--line);color:var(--muted)">예정</span></div>
+        <div class="d">면담 결과 · 모금 안내 · 세부 프로그램 · 참석 여부 회신 요청</div></div>
+      </li>
+      <li class="goal">
+        <span class="dot">★</span>
+        <div><div class="t">50주년 기념식 <span class="tag">10/31</span></div>
+        <div class="d">한성대학교 체육관</div></div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>향후 논의 사항</h2>
+    <ul class="plain">
+      <li><b>모금 방식</b> — 후원금 모집 방법과 절차</li>
+      <li><b>참여 인원</b> — 초청 범위와 예상 인원</li>
+    </ul>
+    <div class="note">회장님과 추가 면담 일정을 조율 중이며, 확정되는 대로 공유드리겠습니다.</div>
+  </section>
+
+  <section>
+    <h2>앞으로의 안내 예정</h2>
+    <ul class="plain">
+      <li>추가 면담 결과 및 모금 안내</li>
+      <li>기념식 세부 프로그램 및 시간표</li>
+      <li>참석 여부 회신 요청</li>
+    </ul>
+    <div class="actions">
+      <button class="primary" id="copy">📋 공지 텍스트 복사 (카톡용)</button>
+      <button id="cal">📅 캘린더에 추가</button>
+    </div>
+  </section>
+
+  <footer>많은 관심과 참여 부탁드립니다. 감사합니다.</footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+  const NOTICE = `📢 [공지] 한성대 신문사 50주년 기념식 준비 일정 안내
+
+안녕하세요.
+한성대 신문사 50주년 기념식 준비 진행 상황과 앞으로의 일정을 안내드립니다.
+
+■ 기념식 일정 (확정)
+· 일시: 2026년 10월 31일 (토) ※ 시작 시간은 추후 안내
+· 장소: 한성대학교 체육관 (예약 확정)
+
+■ 진행 경과
+· 9/11 (금) 회장님 면담 — 기념식 준비 방향 논의
+· 체육관 10/31 예약 확정
+
+■ 향후 논의 사항
+· 모금 방식 (후원금 모집 방법·절차)
+· 참여 인원 (초청 범위·예상 인원)
+→ 회장님과 추가 면담 일정을 조율 중이며, 확정되는 대로 공유드리겠습니다.
+
+■ 앞으로의 안내 예정
+· 추가 면담 결과 및 모금 안내
+· 기념식 세부 프로그램 및 시간표
+· 참석 여부 회신 요청
+
+많은 관심과 참여 부탁드립니다. 감사합니다.`;
+
+  // D-day (Asia/Seoul 기준 날짜 차이)
+  (function(){
+    const fmt = new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'});
+    const today = new Date(fmt.format(new Date())+'T00:00:00Z');
+    const target = new Date('2026-10-31T00:00:00Z');
+    const diff = Math.round((target-today)/86400000);
+    const el = document.getElementById('dday');
+    el.textContent = diff>0 ? 'D-'+diff : diff===0 ? 'D-Day' : 'D+'+(-diff);
+  })();
+
+  function toast(msg){
+    const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+    clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),1800);
+  }
+  document.getElementById('copy').addEventListener('click', async ()=>{
+    try{ await navigator.clipboard.writeText(NOTICE); toast('공지 텍스트를 복사했어요'); }
+    catch(e){
+      const ta=document.createElement('textarea'); ta.value=NOTICE; document.body.appendChild(ta);
+      ta.select(); try{ document.execCommand('copy'); toast('공지 텍스트를 복사했어요'); }catch(_){ toast('복사에 실패했어요'); }
+      ta.remove();
+    }
+  });
+  document.getElementById('cal').addEventListener('click', ()=>{
+    // 종일 일정(.ics) — 시간은 추후 확정
+    const ics = [
+      'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//hansung-newspaper-50th//KO','BEGIN:VEVENT',
+      'UID:hansung-newspaper-50th-20261031@stanley-choi.github.io',
+      'DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+Z$/,'Z'),
+      'DTSTART;VALUE=DATE:20261031','DTEND;VALUE=DATE:20261101',
+      'SUMMARY:한성대 신문사 50주년 기념식','LOCATION:한성대학교 체육관',
+      'DESCRIPTION:시작 시간은 추후 안내. 모금 방식·참여 인원 등 세부 사항은 회장님 추가 면담 후 공지.',
+      'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    const url = URL.createObjectURL(new Blob([ics],{type:'text/calendar;charset=utf-8'}));
+    const a=document.createElement('a'); a.href=url; a.download='hansung-newspaper-50th.ics'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  });
+</script>
+</body>
+</html>
